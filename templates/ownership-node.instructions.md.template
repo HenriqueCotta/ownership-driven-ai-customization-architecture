@@ -1,0 +1,10 @@
+---
+description: "Ownership node for <path family>."
+applyTo: "<replace-with-real-paths>"
+---
+
+<add repository-owned guidance here>
+
+## Follow-Through Triggers
+
+- <optional downstream consequences owned by this instruction>

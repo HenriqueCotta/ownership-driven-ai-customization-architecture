@@ -1,0 +1,30 @@
+name: Adoption question or proposal
+description: Share an adoption scenario, design proposal, or improvement idea
+title: "[Proposal]: "
+labels:
+  - proposal
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Repository context
+      description: What kind of repository or team setup are you working with?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or proposal
+      description: What are you trying to improve?
+    validations:
+      required: true
+  - type: textarea
+    id: model
+    attributes:
+      label: Ownership map or concern map
+      description: If relevant, describe the ownership tree or overlays you expect to need.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add constraints, trade-offs, or examples.

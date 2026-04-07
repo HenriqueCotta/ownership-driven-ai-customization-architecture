@@ -1,0 +1,10 @@
+---
+description: "Cross-cutting overlay for <concern>."
+applyTo: "<replace-with-real-paths>"
+---
+
+<add repository-owned guidance here>
+
+## Follow-Through Triggers
+
+- <optional downstream consequences owned by this overlay>

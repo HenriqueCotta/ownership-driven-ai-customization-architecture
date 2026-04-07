@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a problem in the docs, starter kit, templates, or repo workflow
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Affected path or page
+      description: Which file, folder, or doc page is affected?
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Why does this matter for adopters or maintainers?
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix
+      description: If you already have an idea, share it here.

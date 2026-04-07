@@ -1,0 +1,22 @@
+name: docs-hygiene
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate repository
+        run: |
+          python scripts/check_repo.py
