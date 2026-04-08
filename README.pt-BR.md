@@ -1,12 +1,8 @@
 # Ownership-Driven AI Customization
 
-Uma arquitetura reutilizável para escalar a personalização do GitHub Copilot com:
+Uma arquitetura escalável para GitHub Copilot custom instructions, path-specific instructions, skills e AGENTS.md em repositórios grandes e monorepos.
 
-- `baseline`
-- `ownership tree`
-- `cross-cutting overlays`
-- `Follow-Through Triggers`
-- `skills` como extensões opcionais de workflow
+Ela ajuda times a organizar instruções de baseline, roteamento baseado em ownership, cross-cutting overlays, Follow-Through Triggers e skills opcionais sem transformar tudo em custom agents.
 
 Nome formal da arquitetura:
 
@@ -15,6 +11,48 @@ Nome formal da arquitetura:
 Versão em inglês:
 
 - [README.md](./README.md)
+
+## Para Quem É
+
+Este repositório é para times que precisam escalar a customização do GitHub Copilot em:
+
+- repositórios grandes
+- monorepos
+- mapas de instruction path-specific
+- skills compartilhadas
+- compatibilidade com AGENTS.md
+- codebases de longa vida com múltiplos boundaries de ownership
+
+## Exemplo Mínimo Funcional
+
+```text
+.github/
+  copilot-instructions.md
+  instructions/
+    ownership/
+      src.instructions.md
+      src/
+        api.instructions.md
+        api/
+          orders.instructions.md
+        lib/
+          feature-flags.instructions.md
+      docs.instructions.md
+    overlays/
+      quality/
+        testing-quality.instructions.md
+      operability/
+        observability.instructions.md
+  skills/
+    debug-behavior/
+      SKILL.md
+```
+
+Esse exemplo mostra a ownership tree ficando mais estreita dentro de `src/` apenas quando o subtree realmente precisa de guidance diferente.
+
+Ele também pode ir direto de um nó amplo como `src.instructions.md` para um nó nichado de arquivo como `feature-flags.instructions.md`, sem inventar camadas intermediárias desnecessárias.
+
+Este repositório documenta como desenhar essa estrutura para que ela permaneça previsível, manutenível e legível ao longo do tempo.
 
 ## Por Que Este Repositório Existe
 

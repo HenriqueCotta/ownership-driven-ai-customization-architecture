@@ -1,12 +1,8 @@
 # Ownership-Driven AI Customization
 
-A reusable architecture for scaling GitHub Copilot customization with:
+A scalable architecture for GitHub Copilot custom instructions, path-specific instructions, skills, and AGENTS.md across large repositories and monorepos.
 
-- `baseline`
-- `ownership tree`
-- `cross-cutting overlays`
-- `Follow-Through Triggers`
-- `skills` as optional workflow extensions
+It helps teams organize baseline instructions, ownership-based routing, cross-cutting overlays, Follow-Through Triggers, and optional skills without turning everything into custom agents.
 
 Formal architecture name:
 
@@ -15,6 +11,48 @@ Formal architecture name:
 Portuguese version:
 
 - [README.pt-BR.md](./README.pt-BR.md)
+
+## Who This Is For
+
+This repository is for teams that need to scale GitHub Copilot customization across:
+
+- large repositories
+- monorepos
+- path-specific instruction maps
+- shared skills
+- AGENTS.md compatibility
+- long-lived codebases with multiple ownership boundaries
+
+## Minimal Working Example
+
+```text
+.github/
+  copilot-instructions.md
+  instructions/
+    ownership/
+      src.instructions.md
+      src/
+        api.instructions.md
+        api/
+          orders.instructions.md
+        lib/
+          feature-flags.instructions.md
+      docs.instructions.md
+    overlays/
+      quality/
+        testing-quality.instructions.md
+      operability/
+        observability.instructions.md
+  skills/
+    debug-behavior/
+      SKILL.md
+```
+
+That example shows the ownership tree becoming narrower inside `src/` only where the subtree truly needs different guidance.
+
+It can also jump straight from a broad node such as `src.instructions.md` to a niche file-level node such as `feature-flags.instructions.md` without inventing unnecessary middle layers.
+
+This repository documents how to design that structure so it stays predictable, maintainable, and readable over time.
 
 ## Why This Exists
 
