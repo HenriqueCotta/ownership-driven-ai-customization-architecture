@@ -1,6 +1,7 @@
 ---
-description: "Ownership node for repository documentation."
-applyTo: "docs/**, README.md"
+name: "ownership: docs general"
+description: "Ownership guidance for repository documentation."
+applyTo: "docs/**"
 ---
 
 Keep docs accurate, skimmable, and aligned with the real system.

@@ -55,10 +55,14 @@ Use this architecture when you want:
   - the business case, expected gains, non-goals, and alignment with official guidance
 - [Core Model](./core-model.md)
   - the conceptual model, core terms, routing logic, and where follow-through belongs
+- [Ownership Tree Convention](./ownership-tree-convention.md)
+  - the canonical folder-based layout for ownership nodes, naming rules, and teaching examples
 - [Instruction Conflicts And Precedence](./instruction-conflicts-and-precedence.md)
   - what the platform really guarantees, how refinement should work, and how to avoid ambiguous instruction maps
-- [Examples And Flows](./examples-and-flows.md)
-  - worked examples that teach the model by scenario
+- [Examples](./examples/README.md)
+  - worked examples grouped by theme, including classification, follow-through, and ownership-tree layout
+- [Example Repositories](./example-repositories/README.md)
+  - generic repository archetypes that show healthy ownership trees and everyday situations
 - [Replication Playbook](./replication-playbook.md)
   - how to reproduce the architecture in other repositories
 
@@ -69,25 +73,30 @@ If this is your first contact with the architecture:
 1. Read this file.
 2. Read [Why This Architecture](./why-this-architecture.md).
 3. Read [Core Model](./core-model.md).
-4. Read [Examples And Flows](./examples-and-flows.md).
+4. Read [Ownership Tree Convention](./ownership-tree-convention.md).
+5. Read [Examples](./examples/README.md).
+6. Read [Example Repositories](./example-repositories/README.md) if you want full repository archetypes.
 
 If you are designing a new repository:
 
 1. Read this file.
 2. Read [Why This Architecture](./why-this-architecture.md).
 3. Read [Core Model](./core-model.md).
-4. Read [Replication Playbook](./replication-playbook.md).
+4. Read [Ownership Tree Convention](./ownership-tree-convention.md).
+5. Read [Replication Playbook](./replication-playbook.md).
+6. Read [Example Repositories](./example-repositories/README.md) when you want to compare archetypes.
 
 If you are debugging ambiguity or instruction conflicts:
 
 1. Read this file.
 2. Read [Instruction Conflicts And Precedence](./instruction-conflicts-and-precedence.md).
 3. Read [Core Model](./core-model.md).
-4. Read [Examples And Flows](./examples-and-flows.md).
+4. Read [Examples](./examples/README.md).
 
 ## Core Design Rules
 
 - Start with stable ownership boundaries, not abstract themes.
+- Represent ownership boundaries with a tree that is easy to read before it is easy to optimize.
 - Use overlays only for concerns that truly span multiple owners.
 - Keep downstream review/update logic in `Follow-Through Triggers`, not in extra file types.
 - Treat narrower instructions as refinements of broader ones, not as arbitrary reversals.

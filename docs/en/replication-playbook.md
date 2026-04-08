@@ -13,6 +13,7 @@ The stable part is the structure:
 
 - baseline,
 - ownership tree,
+- the node-folder grammar used to represent ownership boundaries,
 - cross-cutting overlays,
 - skills,
 - hygiene checks.
@@ -82,6 +83,48 @@ Bad sources:
 If a boundary changes how Copilot should think about the files in that path, it may deserve an ownership-tree instruction.
 
 The tree should become more specific only when the narrower subtree really needs different guidance.
+
+## Canonical Node-Folder Layout
+
+Use one visual grammar for the whole ownership tree:
+
+- every owned boundary becomes a folder node
+- repository directories stay folder nodes
+- repository files also become folder nodes, such as `orders.ts/`
+- instruction files inside a node folder are named by concern, not by the path again
+- a node folder may contain zero, one, or many instruction files
+- child folders represent narrower ownership boundaries
+
+Example:
+
+```text
+.github/instructions/
+  ownership/
+    src/
+      general.instructions.md
+      api/
+        general.instructions.md
+        admin/
+          authorization.instructions.md
+        orders.ts/
+          contract.instructions.md
+          framework.instructions.md
+```
+
+This layout is recommended because it:
+
+- supports file-level nodes and directory-level nodes with the same grammar
+- avoids renaming a file node later when it needs a second instruction
+- keeps concern names such as `contract` and `framework` meaningful
+- makes mixed children easy to read and explain
+
+When filenames such as `general.instructions.md` repeat across the tree, prefer setting an explicit frontmatter `name` for clearer UI labels.
+
+Optional shortcut:
+
+- if a leaf file node needs exactly one instruction, you may write it directly as `orders.ts.instructions.md`
+- use that only as a convenience shortcut for simple cases
+- switch back to the canonical folder form when the file node needs multiple instruction files
 
 ## How To Identify Cross-Cutting Overlays
 
@@ -180,6 +223,24 @@ Finally add the downstream rule:
 
 - if `create_order.ts` changes public behavior, a `Follow-Through Triggers` section may tell Copilot to review tests and docs
 
+Then show what that can look like on disk:
+
+```text
+.github/instructions/
+  ownership/
+    src/
+      general.instructions.md
+      api/
+        general.instructions.md
+        orders/
+          general.instructions.md
+    docs/
+      general.instructions.md
+  overlays/
+    quality/
+      testing-quality.instructions.md
+```
+
 Important distinction:
 
 - step 5 is about the extra quality lens that applies when those files are in scope
@@ -259,6 +320,7 @@ Review the structure whenever one of these happens:
 The model is healthy when:
 
 - maintainers can explain the ownership map clearly,
+- maintainers can explain the folder grammar without introducing special cases for file nodes,
 - the instruction set is small enough to reason about,
 - downstream consequences are handled through `Follow-Through Triggers` sections instead of ad hoc duplication,
 - the same structure can be reused in another repository with a different ownership map.

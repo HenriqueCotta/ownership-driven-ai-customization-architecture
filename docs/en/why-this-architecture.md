@@ -68,6 +68,38 @@ That gives teams a concrete and scalable unit for organization:
 
 Path-first routing is easier to reason about than theme-first routing because it stays tied to the repository's actual structure.
 
+## Why The Ownership Tree Uses One Folder Grammar
+
+The architecture does not stop at "use paths."
+
+It also recommends one canonical disk layout for ownership nodes:
+
+- every owned boundary becomes a folder node
+- repository directories stay directories
+- repository files also become folder nodes
+- instruction files inside the node are named by concern
+
+That choice matters because mixed naming systems usually create friction:
+
+- some nodes look like files and some look like folders
+- file-level owners need to be renamed later when they gain a second instruction
+- new maintainers have to learn exceptions before they can read the tree confidently
+
+One folder grammar avoids those problems.
+
+It is more teachable because the explanation becomes:
+
+1. find the repository path,
+2. walk the same path inside `ownership/`,
+3. read the instruction files in the matching node folders.
+
+It is more scalable because:
+
+- one file can have one or many instruction files without changing its identity,
+- mixed children are natural,
+- concern-based filenames remain meaningful when paths evolve,
+- teams can extend the tree without redesigning the naming convention.
+
 ## Why Skills Stay Optional And Selective
 
 The architecture includes skills, but deliberately avoids making them the main routing mechanism.
@@ -131,6 +163,13 @@ That separation makes growth easier to control:
 - new owners are added by path,
 - new overlays are added only when a concern truly spans multiple owners,
 - new workflows become skills only when always-on instructions would be the wrong tool.
+
+The ownership-tree folder grammar reinforces that scalability:
+
+- the tree can grow without changing how readers interpret it,
+- file-level nodes and directory-level nodes use the same shape,
+- multi-instruction nodes do not require a second representation,
+- maintainers can inspect the structure by walking folders instead of decoding special cases.
 
 ## Why This Is Safer Than Ad Hoc Customization
 
@@ -196,7 +235,7 @@ This documentation set is organized to support both fast onboarding and deeper e
   - conceptual structure and routing logic
 - `Instruction Conflicts And Precedence`
   - ambiguity, refinement, and non-determinism
-- `Examples And Flows`
+- `Examples`
   - scenario-based learning
 - `Replication Playbook`
   - rollout and maintenance guidance

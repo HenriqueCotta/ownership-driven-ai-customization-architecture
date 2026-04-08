@@ -13,6 +13,7 @@ A parte estável é a estrutura:
 
 - baseline,
 - ownership tree,
+- a gramática de pastas de nó usada para representar boundaries de ownership,
 - cross-cutting overlays,
 - skills,
 - checks de higiene.
@@ -82,6 +83,48 @@ Fontes ruins:
 Se um boundary muda a forma como o Copilot deve pensar sobre os arquivos daquele caminho, ele pode merecer uma instruction da ownership tree.
 
 A árvore só deve ficar mais específica quando o subtree mais estreito realmente precisar de guidance diferente.
+
+## Layout Canônico de Pastas de Nó
+
+Use uma única gramática visual para toda a ownership tree:
+
+- todo boundary owned vira uma pasta de nó
+- diretórios do repositório continuam sendo pastas de nó
+- arquivos do repositório também viram pastas de nó, como `orders.ts/`
+- os arquivos de instruction dentro de uma pasta de nó são nomeados pela concern, e não pelo caminho outra vez
+- uma pasta de nó pode conter zero, um ou vários arquivos de instruction
+- pastas filhas representam boundaries de ownership mais estreitos
+
+Exemplo:
+
+```text
+.github/instructions/
+  ownership/
+    src/
+      general.instructions.md
+      api/
+        general.instructions.md
+        admin/
+          authorization.instructions.md
+        orders.ts/
+          contract.instructions.md
+          framework.instructions.md
+```
+
+Este layout é recomendado porque:
+
+- suporta nós de arquivo e nós de diretório com a mesma gramática
+- evita renomear um nó de arquivo depois quando ele precisar de uma segunda instruction
+- mantém nomes de concern como `contract` e `framework` significativos
+- torna filhos mistos fáceis de ler e explicar
+
+Quando nomes como `general.instructions.md` se repetirem pela árvore, prefira definir um `name` explícito na frontmatter para rótulos mais claros na UI.
+
+Atalho opcional:
+
+- se um nó leaf de arquivo precisar de exatamente uma instruction, você pode escrevê-lo diretamente como `orders.ts.instructions.md`
+- use isso apenas como atalho de conveniência para casos simples
+- volte para a forma canônica em pasta quando o nó de arquivo precisar de vários arquivos de instruction
 
 ## Como Identificar Cross-Cutting Overlays
 
@@ -180,6 +223,24 @@ Por fim, adicione a regra downstream:
 
 - se `create_order.ts` mudar comportamento público, uma seção `Follow-Through Triggers` pode orientar o Copilot a revisar testes e docs
 
+Depois mostre como isso pode parecer no disco:
+
+```text
+.github/instructions/
+  ownership/
+    src/
+      general.instructions.md
+      api/
+        general.instructions.md
+        orders/
+          general.instructions.md
+    docs/
+      general.instructions.md
+  overlays/
+    quality/
+      testing-quality.instructions.md
+```
+
 Distinção importante:
 
 - o passo 5 fala da lente extra de qualidade que se aplica quando esses arquivos entram em escopo
@@ -259,6 +320,7 @@ Revise a estrutura sempre que uma destas coisas acontecer:
 O modelo está saudável quando:
 
 - mantenedores conseguem explicar o mapa de ownership com clareza,
+- mantenedores conseguem explicar a gramática das pastas sem introduzir casos especiais para nós de arquivo,
 - o conjunto de instructions é pequeno o bastante para ser raciocinável,
 - consequências downstream são tratadas por seções `Follow-Through Triggers` em vez de duplicação ad hoc,
 - a mesma estrutura pode ser reutilizada em outro repositório com um mapa de ownership diferente.

@@ -1,5 +1,6 @@
 ---
-description: "Ownership node for API-specific code paths."
+name: "ownership: src api general"
+description: "Ownership guidance for API-specific code paths."
 applyTo: "src/api/**"
 ---
 

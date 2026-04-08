@@ -71,6 +71,32 @@ Exemplos:
 
 Use ownership quando o próprio caminho é dono de um tipo de lógica.
 
+### Layout Canônico dos Nós
+
+Nesta arquitetura, o layout canônico representa todo boundary owned como uma pasta de nó dentro de `.github/instructions/ownership/`.
+
+Isso significa:
+
+- um diretório do repositório vira uma pasta de nó com o mesmo caminho
+- um arquivo do repositório também vira uma pasta de nó, como `orders.ts/`
+- uma pasta de nó pode conter zero, um ou vários arquivos de instruction
+- os nomes dos arquivos de instruction devem descrever a concern que carregam, como `general`, `contract` ou `framework`
+- pastas filhas representam boundaries de ownership mais estreitos
+
+Isso mantém a tree ensinável porque nós de pasta e nós de arquivo seguem a mesma gramática visual.
+
+Atalho opcional:
+
+- um nó leaf de arquivo com exatamente uma instruction pode ser escrito diretamente como `orders.ts.instructions.md`
+- use isso apenas quando quiser uma tree mais curta para um owner de arquivo simples
+- mude para a forma em pasta quando esse owner de arquivo precisar de vários arquivos de instruction
+
+Também mantém a estrutura escalável porque um nó de arquivo pode crescer de uma instruction para várias sem precisar ser renomeado ou "promovido" depois.
+
+Como nomes baseados em concern costumam se repetir, use explicitamente o campo `name` na frontmatter quando quiser rótulos mais claros nas UIs das ferramentas.
+
+Para a convenção completa e exemplos trabalhados, leia [Estrutura da Ownership Tree](./estrutura-da-ownership-tree.md).
+
 ### Cross-Cutting Overlays
 
 Um overlay adiciona uma lente extra sobre vários owners.

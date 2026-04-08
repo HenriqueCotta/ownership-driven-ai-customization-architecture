@@ -1,4 +1,5 @@
 ---
+name: "<set-a-clear-ui-label>"
 description: "Ownership node for <path family>."
 applyTo: "<replace-with-real-paths>"
 ---

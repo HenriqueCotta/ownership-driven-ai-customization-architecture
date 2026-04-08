@@ -30,14 +30,17 @@ Este repositório é para times que precisam escalar a customização do GitHub 
   copilot-instructions.md
   instructions/
     ownership/
-      src.instructions.md
       src/
-        api.instructions.md
+        general.instructions.md
         api/
-          orders.instructions.md
-        lib/
-          feature-flags.instructions.md
-      docs.instructions.md
+          general.instructions.md
+          admin/
+            authorization.instructions.md
+          orders.ts/
+            contract.instructions.md
+            framework.instructions.md
+      docs/
+        general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
@@ -48,11 +51,27 @@ Este repositório é para times que precisam escalar a customização do GitHub 
       SKILL.md
 ```
 
-Esse exemplo mostra a ownership tree ficando mais estreita dentro de `src/` apenas quando o subtree realmente precisa de guidance diferente.
+O layout canônico trata todo boundary owned como uma pasta de nó dentro de `ownership/`.
 
-Ele também pode ir direto de um nó amplo como `src.instructions.md` para um nó nichado de arquivo como `feature-flags.instructions.md`, sem inventar camadas intermediárias desnecessárias.
+Isso significa que pastas do repositório continuam sendo pastas, e arquivos do repositório também viram pastas como `orders.ts/`.
+
+Os arquivos de instruction dentro de cada nó são nomeados pela concern que carregam, como `general`, `contract` ou `framework`.
+
+Não existe um arquivo "main" obrigatório para um nó. Uma pasta de nó pode conter zero, um ou vários arquivos de instruction.
+
+Como atalho opcional, um nó leaf de arquivo com exatamente uma instruction pode ser escrito diretamente como `orders.ts.instructions.md`.
 
 Este repositório documenta como desenhar essa estrutura para que ela permaneça previsível, manutenível e legível ao longo do tempo.
+
+## Por Que Esta Tree Escala
+
+- uma gramática visual única para nós de pasta e nós de arquivo
+- nenhum passo de "promoção" quando um arquivo cresce de uma instruction para várias
+- nomes baseados em concern, como `contract.instructions.md`, continuam fazendo sentido mesmo quando caminhos mudam
+- filhos mistos são naturais, então uma pasta pode conter subtrees e nós de arquivo sem regras especiais
+- mantenedores conseguem explicar a tree caminhando pelos diretórios, em vez de ensinar vários sistemas de nomenclatura
+
+A convenção detalhada está em [docs/pt-BR/estrutura-da-ownership-tree.md](./docs/pt-BR/estrutura-da-ownership-tree.md).
 
 ## Por Que Este Repositório Existe
 
@@ -83,7 +102,7 @@ Este projeto propõe um modelo operacional mais simples:
 ## Começo Rápido
 
 1. Leia a arquitetura em [docs/pt-BR](./docs/pt-BR/README.md).
-2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md) e [Modelo Central](./docs/pt-BR/modelo-central.md).
+2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md), [Modelo Central](./docs/pt-BR/modelo-central.md) e [Estrutura da Ownership Tree](./docs/pt-BR/estrutura-da-ownership-tree.md).
 3. Copie o [starter-kit](./starter-kit/README.md) para um repositório de teste.
 4. Adapte o mapa de ownership aos seus caminhos reais.
 5. Adicione apenas os overlays que realmente atravessam vários owners.

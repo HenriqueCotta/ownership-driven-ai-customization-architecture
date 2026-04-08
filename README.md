@@ -30,14 +30,17 @@ This repository is for teams that need to scale GitHub Copilot customization acr
   copilot-instructions.md
   instructions/
     ownership/
-      src.instructions.md
       src/
-        api.instructions.md
+        general.instructions.md
         api/
-          orders.instructions.md
-        lib/
-          feature-flags.instructions.md
-      docs.instructions.md
+          general.instructions.md
+          admin/
+            authorization.instructions.md
+          orders.ts/
+            contract.instructions.md
+            framework.instructions.md
+      docs/
+        general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
@@ -48,11 +51,27 @@ This repository is for teams that need to scale GitHub Copilot customization acr
       SKILL.md
 ```
 
-That example shows the ownership tree becoming narrower inside `src/` only where the subtree truly needs different guidance.
+The canonical layout treats every owned boundary as a node folder in `ownership/`.
 
-It can also jump straight from a broad node such as `src.instructions.md` to a niche file-level node such as `feature-flags.instructions.md` without inventing unnecessary middle layers.
+That means repository folders stay folders, and repository files also become folders such as `orders.ts/`.
+
+Instruction files inside each node are named for the concern they carry, such as `general`, `contract`, or `framework`.
+
+There is no required "main" instruction file for a node. A node folder can contain zero, one, or many instruction files.
+
+As an optional shortcut, a leaf file node with exactly one instruction may be written directly as `orders.ts.instructions.md`.
 
 This repository documents how to design that structure so it stays predictable, maintainable, and readable over time.
+
+## Why This Tree Scales
+
+- one visual grammar for folder nodes and file nodes
+- no "promotion" step when a file grows from one instruction to several
+- concern-based file names such as `contract.instructions.md` stay meaningful even when paths change
+- mixed children are natural, so one folder can contain subtree nodes and file nodes without special rules
+- maintainers can explain the tree by walking directories instead of teaching multiple naming systems
+
+The detailed convention lives in [docs/en/ownership-tree-convention.md](./docs/en/ownership-tree-convention.md).
 
 ## Why This Exists
 
@@ -83,7 +102,7 @@ This project proposes a simpler operating model:
 ## Quick Start
 
 1. Read the architecture docs in [docs/en](./docs/en/README.md).
-2. Read [Why This Architecture](./docs/en/why-this-architecture.md) and [Core Model](./docs/en/core-model.md).
+2. Read [Why This Architecture](./docs/en/why-this-architecture.md), [Core Model](./docs/en/core-model.md), and [Ownership Tree Convention](./docs/en/ownership-tree-convention.md).
 3. Copy the [starter-kit](./starter-kit/README.md) into a test repository.
 4. Adapt the ownership map to your own paths.
 5. Add only the overlays that truly span multiple owners.

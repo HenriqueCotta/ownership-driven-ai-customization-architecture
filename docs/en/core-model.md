@@ -71,6 +71,40 @@ Examples:
 
 Use ownership when the path itself is the owner of a kind of logic.
 
+### Canonical Node Layout
+
+In this architecture, the canonical layout represents every owned boundary as a node folder under `.github/instructions/ownership/`.
+
+Use this short rule:
+
+- repository directories become node folders with the same path
+- repository files also become node folders, such as `orders.ts/`
+- instruction files inside a node folder are named by concern, such as `general`, `contract`, or `framework`
+- child folders represent narrower ownership boundaries
+
+Minimal example:
+
+```text
+.github/instructions/
+  ownership/
+    src/
+      general.instructions.md
+      api/
+        general.instructions.md
+        orders.ts/
+          contract.instructions.md
+```
+
+This gives the model one visual grammar for directory owners and file owners.
+
+Optional shortcut:
+
+- a leaf file node with exactly one instruction may be written directly as `orders.ts.instructions.md`
+- use that only when you want a shorter tree for a simple file owner
+- switch to the folder form once that file owner needs several instruction files
+
+For the full convention, naming guidance, and edge cases, read [Ownership Tree Convention](./ownership-tree-convention.md).
+
 ### Cross-Cutting Overlays
 
 An overlay adds one extra lens across multiple owners.

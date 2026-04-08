@@ -55,10 +55,14 @@ Use esta arquitetura quando você quiser:
   - caso de negócio, ganhos esperados, não-objetivos e alinhamento com guidance oficial
 - [Modelo Central](./modelo-central.md)
   - o modelo conceitual, os termos centrais, a lógica de roteamento e onde o follow-through deve morar
+- [Estrutura da Ownership Tree](./estrutura-da-ownership-tree.md)
+  - a convenção canônica baseada em pastas para os nós de ownership, regras de nome e exemplos de ensino
 - [Conflitos e Precedência de Instruções](./conflitos-e-precedencia-de-instrucoes.md)
   - o que a plataforma realmente garante, como refinamento deve funcionar e como evitar mapas ambíguos
 - [Exemplos e Fluxos](./exemplos-e-fluxos.md)
   - exemplos trabalhados que ensinam o modelo por cenário
+- [Repositórios-Exemplo](./repositorios-exemplo/README.md)
+  - arquétipos genéricos de repositório que mostram ownership trees saudáveis e situações do cotidiano
 - [Playbook de Replicação](./playbook-de-replicacao.md)
   - como reproduzir a arquitetura em outros repositórios
 
@@ -69,14 +73,18 @@ Se este for seu primeiro contato com a arquitetura:
 1. Leia este arquivo.
 2. Leia [Por Que Esta Arquitetura](./por-que-esta-arquitetura.md).
 3. Leia [Modelo Central](./modelo-central.md).
-4. Leia [Exemplos e Fluxos](./exemplos-e-fluxos.md).
+4. Leia [Estrutura da Ownership Tree](./estrutura-da-ownership-tree.md).
+5. Leia [Exemplos e Fluxos](./exemplos-e-fluxos.md).
+6. Leia [Repositórios-Exemplo](./repositorios-exemplo/README.md) se quiser ver arquétipos completos.
 
 Se você estiver desenhando um novo repositório:
 
 1. Leia este arquivo.
 2. Leia [Por Que Esta Arquitetura](./por-que-esta-arquitetura.md).
 3. Leia [Modelo Central](./modelo-central.md).
-4. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
+4. Leia [Estrutura da Ownership Tree](./estrutura-da-ownership-tree.md).
+5. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
+6. Leia [Repositórios-Exemplo](./repositorios-exemplo/README.md) quando quiser comparar arquétipos.
 
 Se você estiver investigando ambiguidade ou conflito entre instructions:
 
@@ -88,6 +96,7 @@ Se você estiver investigando ambiguidade ou conflito entre instructions:
 ## Regras Centrais de Design
 
 - Comece por boundaries estáveis de ownership, não por temas abstratos.
+- Represente boundaries de ownership com uma tree fácil de ler antes de tentar otimizá-la.
 - Use overlays apenas para concerns que realmente atravessam vários owners.
 - Mantenha a lógica downstream de revisão e atualização em `Follow-Through Triggers`, e não em novos tipos de arquivo.
 - Trate instructions mais estreitas como refinamentos das mais amplas, e não como reversões arbitrárias.

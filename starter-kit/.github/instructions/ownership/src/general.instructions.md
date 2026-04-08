@@ -1,10 +1,11 @@
 ---
-description: "Ownership node for broad source-code behavior."
+name: "ownership: src general"
+description: "Broad ownership guidance for source code."
 applyTo: "src/**"
 ---
 
 This node holds broad rules for source code.
-Keep local specialization in narrower ownership nodes.
+Keep narrower node folders only where a smaller boundary truly needs different guidance.
 
 - Keep boundaries explicit.
 - Keep behavior readable and traceable.
