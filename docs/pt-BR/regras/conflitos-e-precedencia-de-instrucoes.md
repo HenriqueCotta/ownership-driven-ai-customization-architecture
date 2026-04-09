@@ -1,7 +1,17 @@
 # Conflitos e Precedência de Instruções
 
 Público: mantenedores que precisam desenhar um mapa de instructions seguro e evitar guidance ambígua.  
-Objetivo: explicar como instructions compatíveis se comportam na prática, o que a plataforma garante e como escrever refinamento com segurança.
+Objetivo: explicar o que a plataforma garante com clareza, o que ela não garante, e como escrever refinamento com segurança.
+
+## Nesta Página
+
+- [Realidade Operacional](#realidade-operacional)
+- [Modelo Mental Seguro](#modelo-mental-seguro)
+- [Padrão Seguro de Refinamento](#padrão-seguro-de-refinamento)
+- [Regras Práticas de Precedência](#regras-práticas-de-precedência)
+- [Sinais de Conflito](#sinais-de-conflito)
+- [Como Corrigir um Conflito](#como-corrigir-um-conflito)
+- [Documentos Relacionados de Arquitetura](#documentos-relacionados-de-arquitetura)
 
 ## Realidade Operacional
 
@@ -38,13 +48,13 @@ Escreva instructions pai e filho como refinamento, não como reversão.
 
 Bom:
 
-- pai: "API handlers devem permanecer finos e delegar o trabalho de negócio"
-- filho: "dentro de `src/api/orders/**`, mapeie cedo a entrada HTTP e chame diretamente os services de pedidos"
+- pai: "API handlers devem permanecer finos e delegar trabalho de negócio"
+- filho: "Dentro de `src/api/orders/**`, mapeie cedo a entrada HTTP e chame diretamente os services de pedidos"
 
 Ruim:
 
-- pai: "API handlers devem permanecer finos e delegar o trabalho de negócio"
-- filho: "dentro de `src/api/orders/**`, coloque validação, regras de negócio, persistência e retries diretamente no handler"
+- pai: "API handlers devem permanecer finos e delegar trabalho de negócio"
+- filho: "Dentro de `src/api/orders/**`, coloque validação, regras de negócio, persistência e retries diretamente no handler"
 
 Por que o primeiro é mais seguro:
 
@@ -89,6 +99,14 @@ Quando houver conflito, comece pelo mapa:
 2. Mova especialização local para o owner estreito real.
 3. Reescreva guidance filha como refinamento, e não como reversão.
 4. Mova concerns realmente transversais para overlays.
-5. Mantenha comportamento downstream de revisão e atualização dentro de `Follow-Through Triggers`, em vez de inventar uma camada nova.
+5. Mantenha comportamento downstream de revisão e atualização dentro de `Follow-Through Triggers`, em vez de inventar uma nova camada.
 
 Se o mapa estiver limpo, a necessidade de resolução dura de conflito normalmente cai bastante.
+
+## Documentos Relacionados de Arquitetura
+
+- [Ownership vs Overlay](../modelo/ownership-vs-overlay.md)
+- [Follow-Through Triggers](../modelo/follow-through-triggers.md)
+- [Regras de Decisão](./regras-de-decisao.md)
+- [Gramática da Ownership Tree](./gramatica-da-ownership-tree.md)
+- [Exemplos e Fluxos](../exemplos-e-fluxos.md)

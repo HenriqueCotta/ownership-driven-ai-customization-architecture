@@ -2,7 +2,7 @@
 
 A scalable architecture for GitHub Copilot custom instructions, path-specific instructions, skills, and AGENTS.md across large repositories and monorepos.
 
-It helps teams organize baseline instructions, ownership-based routing, cross-cutting overlays, Follow-Through Triggers, and optional skills without turning everything into custom agents.
+It helps teams organize `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers`, and `skills` without turning everything into custom agents.
 
 Formal architecture name:
 
@@ -11,6 +11,18 @@ Formal architecture name:
 Portuguese version:
 
 - [README.pt-BR.md](./README.pt-BR.md)
+
+## On This Page
+
+- [Who This Is For](#who-this-is-for)
+- [Architecture Snapshot](#architecture-snapshot)
+- [Why This Exists](#why-this-exists)
+- [What You Get](#what-you-get)
+- [Quick Start](#quick-start)
+- [Repository Map](#repository-map)
+- [Principles](#principles)
+- [Open Source Intent](#open-source-intent)
+- [License](#license)
 
 ## Who This Is For
 
@@ -23,73 +35,38 @@ This repository is for teams that need to scale GitHub Copilot customization acr
 - AGENTS.md compatibility
 - long-lived codebases with multiple ownership boundaries
 
-## Minimal Working Example
+## Architecture Snapshot
 
-```text
-.github/
-  copilot-instructions.md
-  instructions/
-    ownership/
-      src/
-        general.instructions.md
-        api/
-          general.instructions.md
-          admin/
-            authorization.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
-      docs/
-        general.instructions.md
-    overlays/
-      quality/
-        testing-quality.instructions.md
-      operability/
-        observability.instructions.md
-  skills/
-    debug-behavior/
-      SKILL.md
-```
+At a glance, the model separates:
 
-The canonical layout treats every owned boundary as a node folder in `ownership/`.
+- `baseline`
+- `ownership tree`
+- `cross-cutting overlays`
+- `skills`
 
-That means repository folders stay folders, and repository files also become folders such as `orders.ts/`.
+Keep the repository overview short here.
 
-Instruction files inside each node are named for the concern they carry, such as `general`, `contract`, or `framework`.
+Put the canonical ownership-tree layout, naming rules, and shortcuts in [docs/en/rules/ownership-tree-grammar.md](./docs/en/rules/ownership-tree-grammar.md).
 
-There is no required "main" instruction file for a node. A node folder can contain zero, one, or many instruction files.
-
-As an optional shortcut, a leaf file node with exactly one instruction may be written directly as `orders.ts.instructions.md`.
-
-This repository documents how to design that structure so it stays predictable, maintainable, and readable over time.
-
-## Why This Tree Scales
-
-- one visual grammar for folder nodes and file nodes
-- no "promotion" step when a file grows from one instruction to several
-- concern-based file names such as `contract.instructions.md` stay meaningful even when paths change
-- mixed children are natural, so one folder can contain subtree nodes and file nodes without special rules
-- maintainers can explain the tree by walking directories instead of teaching multiple naming systems
-
-The detailed convention lives in [docs/en/ownership-tree-convention.md](./docs/en/ownership-tree-convention.md).
+Put worked scenarios in [docs/en/examples/README.md](./docs/en/examples/README.md) and full repository archetypes in [docs/en/example-repositories/README.md](./docs/en/example-repositories/README.md).
 
 ## Why This Exists
 
 Many Copilot setups grow in the same unhealthy direction:
 
-- one large repository-wide instruction file,
-- duplicated rules across multiple files,
-- unclear responsibility boundaries,
-- custom agents created for topics that should have been instructions or skills,
-- stale docs and templates that drift away from the actual routing model.
+- one large repository-wide instruction file
+- duplicated rules across multiple files
+- unclear responsibility boundaries
+- custom agents created for topics that should have been instructions or skills
+- stale docs and templates that drift away from the actual routing model
 
 This project proposes a simpler operating model:
 
-- keep the baseline short,
-- tie most behavior to ownership boundaries,
-- use overlays only for truly cross-cutting concerns,
-- keep downstream review/update behavior in `Follow-Through Triggers`,
-- use skills only for reusable workflows that would bloat always-on instructions.
+- keep the baseline short
+- tie most behavior to ownership boundaries
+- use overlays only for truly cross-cutting concerns
+- keep downstream review and update behavior in `Follow-Through Triggers`
+- use skills only for reusable workflows that would bloat always-on instructions
 
 ## What You Get
 
@@ -102,7 +79,7 @@ This project proposes a simpler operating model:
 ## Quick Start
 
 1. Read the architecture docs in [docs/en](./docs/en/README.md).
-2. Read [Why This Architecture](./docs/en/why-this-architecture.md), [Core Model](./docs/en/core-model.md), and [Ownership Tree Convention](./docs/en/ownership-tree-convention.md).
+2. Read [Why This Architecture](./docs/en/why-this-architecture.md), [Operating Model](./docs/en/model/operating-model.md), [Decision Rules](./docs/en/rules/decision-rules.md), and [Ownership Tree Grammar](./docs/en/rules/ownership-tree-grammar.md).
 3. Copy the [starter-kit](./starter-kit/README.md) into a test repository.
 4. Adapt the ownership map to your own paths.
 5. Add only the overlays that truly span multiple owners.
@@ -111,9 +88,9 @@ This project proposes a simpler operating model:
 ## Repository Map
 
 - [docs/en](./docs/en/README.md)
-  - English reference docs
+  - English architecture docs
 - [docs/pt-BR](./docs/pt-BR/README.md)
-  - Documentação em português do Brasil
+  - documentation in Brazilian Portuguese
 - [starter-kit](./starter-kit/README.md)
   - a copyable `.github` example
 - [templates](./templates/README.md)
@@ -139,10 +116,10 @@ This project is meant to be improved in public.
 
 If you adopt the architecture in another repository, open an issue or pull request with:
 
-- what worked,
-- what felt unclear,
-- what broke down at scale,
-- what naming or routing decisions improved the model.
+- what worked
+- what felt unclear
+- what broke down at scale
+- what naming or routing decisions improved the model
 
 ## License
 

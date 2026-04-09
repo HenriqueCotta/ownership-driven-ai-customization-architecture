@@ -1,19 +1,17 @@
 # Ownership-Driven AI Customization Architecture
 
 Audience: maintainers designing a scalable Copilot customization model for one or many repositories.  
-Goal: define a reusable structure that is predictable, low-overhead, and easy to maintain.
+Goal: provide a documentation portal that makes the architecture easy to learn, inspect, and reuse.
 
 ## What This Folder Documents
 
-This folder is repository-agnostic.
-
 It documents a reusable architecture for organizing:
 
-- repository-wide Copilot instructions,
-- path-based ownership instructions,
-- cross-cutting overlays,
-- reusable skills,
-- downstream review/update behavior.
+- repository-wide Copilot instructions
+- path-based ownership instructions
+- cross-cutting overlays
+- reusable skills
+- downstream review and update behavior
 
 Formal name:
 
@@ -23,48 +21,71 @@ Operational shorthand:
 
 - `baseline + ownership tree + cross-cutting overlays`
 
-## Architecture At A Glance
+This folder is repository-agnostic.
 
-The architecture has four structural parts:
+## On This Page
 
-- `baseline`
-  - the short repository-wide operating layer
-- `ownership tree`
-  - instructions tied to stable path-owned responsibility boundaries
-- `cross-cutting overlays`
-  - instructions for concerns that span multiple owners
-- `skills`
-  - reusable workflows that are deeper than always-on instructions
+- [What This Folder Documents](#what-this-folder-documents)
+- [Documentation Structure](#documentation-structure)
+- [Documentation Map](#documentation-map)
+- [Suggested Reading Paths](#suggested-reading-paths)
+- [Core Design Rules](#core-design-rules)
 
-`Follow-Through Triggers` is not another file type.
+## Documentation Structure
 
-It is a section that may live inside baseline, ownership-tree, or overlay instructions to describe what else may need review after a meaningful change.
+This documentation set is organized by reading intent:
 
-## When This Architecture Fits
+- explanation
+  - why the architecture exists
+- model
+  - what the system is and how its parts relate
+- rules
+  - the conventions and decision boundaries you consult while designing the map
+- how-to
+  - how to roll the model out in a real repository
+- examples
+  - how the model behaves in concrete situations
 
-Use this architecture when you want:
+Each document should have one primary job.
 
-- a path-based customization model that can scale across many repositories,
-- predictable routing without turning every concern into an agent,
-- clear separation between ownership and cross-cutting concerns,
-- a structure that stays readable for both first-time readers and long-term maintainers.
+If a page starts repeating another page, it should usually link instead of restating.
 
 ## Documentation Map
 
+### Explanation
+
 - [Why This Architecture](./why-this-architecture.md)
-  - the business case, expected gains, non-goals, and alignment with official guidance
-- [Core Model](./core-model.md)
-  - the conceptual model, core terms, routing logic, and where follow-through belongs
-- [Ownership Tree Convention](./ownership-tree-convention.md)
-  - the canonical folder-based layout for ownership nodes, naming rules, and teaching examples
-- [Instruction Conflicts And Precedence](./instruction-conflicts-and-precedence.md)
-  - what the platform really guarantees, how refinement should work, and how to avoid ambiguous instruction maps
+  - the business case, expected gains, non-goals, and standards alignment
+
+### Model
+
+- [Operating Model](./model/operating-model.md)
+  - the structural vocabulary of the architecture
+- [Ownership vs Overlay](./model/ownership-vs-overlay.md)
+  - the core conceptual distinction in the model
+- [Follow-Through Triggers](./model/follow-through-triggers.md)
+  - what downstream review and update guidance is for
+
+### Rules
+
+- [Decision Rules](./rules/decision-rules.md)
+  - where guidance belongs and what to do when classification is unclear
+- [Ownership Tree Grammar](./rules/ownership-tree-grammar.md)
+  - the canonical on-disk grammar, naming rules, and shortcut policy
+- [Instruction Conflicts And Precedence](./rules/instruction-conflicts-and-precedence.md)
+  - what the platform clearly guarantees and how to avoid ambiguous maps
+
+### How-To
+
+- [Replication Playbook](./replication-playbook.md)
+  - how to reproduce the architecture in another repository
+
+### Worked Examples
+
 - [Examples](./examples/README.md)
-  - worked examples grouped by theme, including classification, follow-through, and ownership-tree layout
+  - short scenario-based examples grouped by theme
 - [Example Repositories](./example-repositories/README.md)
   - generic repository archetypes that show healthy ownership trees and everyday situations
-- [Replication Playbook](./replication-playbook.md)
-  - how to reproduce the architecture in other repositories
 
 ## Suggested Reading Paths
 
@@ -72,32 +93,35 @@ If this is your first contact with the architecture:
 
 1. Read this file.
 2. Read [Why This Architecture](./why-this-architecture.md).
-3. Read [Core Model](./core-model.md).
-4. Read [Ownership Tree Convention](./ownership-tree-convention.md).
-5. Read [Examples](./examples/README.md).
-6. Read [Example Repositories](./example-repositories/README.md) if you want full repository archetypes.
+3. Read [Operating Model](./model/operating-model.md).
+4. Read [Ownership vs Overlay](./model/ownership-vs-overlay.md).
+5. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
+6. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+7. Read [Examples](./examples/README.md).
 
 If you are designing a new repository:
 
 1. Read this file.
 2. Read [Why This Architecture](./why-this-architecture.md).
-3. Read [Core Model](./core-model.md).
-4. Read [Ownership Tree Convention](./ownership-tree-convention.md).
-5. Read [Replication Playbook](./replication-playbook.md).
-6. Read [Example Repositories](./example-repositories/README.md) when you want to compare archetypes.
+3. Read [Operating Model](./model/operating-model.md).
+4. Read [Decision Rules](./rules/decision-rules.md).
+5. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+6. Read [Replication Playbook](./replication-playbook.md).
+7. Read [Example Repositories](./example-repositories/README.md).
 
 If you are debugging ambiguity or instruction conflicts:
 
 1. Read this file.
-2. Read [Instruction Conflicts And Precedence](./instruction-conflicts-and-precedence.md).
-3. Read [Core Model](./core-model.md).
-4. Read [Examples](./examples/README.md).
+2. Read [Instruction Conflicts And Precedence](./rules/instruction-conflicts-and-precedence.md).
+3. Read [Ownership vs Overlay](./model/ownership-vs-overlay.md).
+4. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
+5. Read [Examples](./examples/README.md).
 
 ## Core Design Rules
 
 - Start with stable ownership boundaries, not abstract themes.
 - Represent ownership boundaries with a tree that is easy to read before it is easy to optimize.
 - Use overlays only for concerns that truly span multiple owners.
-- Keep downstream review/update logic in `Follow-Through Triggers`, not in extra file types.
+- Keep downstream review and update logic in `Follow-Through Triggers`, not in extra file types.
 - Treat narrower instructions as refinements of broader ones, not as arbitrary reversals.
-- Keep the overview short and push detail into dedicated reference documents.
+- Keep overview pages short and move detail into focused model and rules documents.

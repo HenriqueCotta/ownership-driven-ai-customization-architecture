@@ -1,7 +1,17 @@
 # Instruction Conflicts And Precedence
 
 Audience: maintainers who need to design a safe instruction map and avoid ambiguous guidance.  
-Goal: explain how matching instructions behave in practice, what the platform guarantees, and how to write refinement safely.
+Goal: explain what the platform clearly guarantees, what it does not guarantee, and how to write refinement safely.
+
+## On This Page
+
+- [Operational Reality](#operational-reality)
+- [Safe Mental Model](#safe-mental-model)
+- [Safe Refinement Pattern](#safe-refinement-pattern)
+- [Practical Precedence Rules](#practical-precedence-rules)
+- [Conflict Smells](#conflict-smells)
+- [How To Fix A Conflict](#how-to-fix-a-conflict)
+- [Related Architecture Docs](#related-architecture-docs)
 
 ## Operational Reality
 
@@ -39,12 +49,12 @@ Write parent and child instructions as refinement, not reversal.
 Good:
 
 - parent: "API handlers should stay thin and delegate business work"
-- child: "inside `src/api/orders/**`, map HTTP input early and call order services directly"
+- child: "Inside `src/api/orders/**`, map HTTP input early and call order services directly"
 
 Bad:
 
 - parent: "API handlers should stay thin and delegate business work"
-- child: "inside `src/api/orders/**`, put validation, business rules, persistence, and retries directly in the handler"
+- child: "Inside `src/api/orders/**`, put validation, business rules, persistence, and retries directly in the handler"
 
 Why the first one is safer:
 
@@ -63,7 +73,7 @@ When in doubt, use these rules:
 1. Put the broad default in the broadest owner that truly owns it.
 2. Put local specialization in the narrowest owner that truly needs it.
 3. Put cross-cutting quality guidance in overlays.
-4. Put downstream review/update rules in `Follow-Through Triggers`.
+4. Put downstream review and update rules in `Follow-Through Triggers`.
 5. If two instructions seem to fight, fix the ownership map instead of hoping precedence will save you.
 
 In other words:
@@ -89,6 +99,14 @@ When conflict appears, start with the map itself:
 2. Move local specialization downward into the narrowest real owner.
 3. Rewrite child guidance as refinement instead of reversal.
 4. Move truly cross-cutting concerns into overlays.
-5. Keep downstream review/update behavior inside `Follow-Through Triggers` rather than inventing a new layer.
+5. Keep downstream review and update behavior inside `Follow-Through Triggers` rather than inventing a new layer.
 
 If the map is clean, the need for hard conflict resolution usually drops sharply.
+
+## Related Architecture Docs
+
+- [Ownership vs Overlay](../model/ownership-vs-overlay.md)
+- [Follow-Through Triggers](../model/follow-through-triggers.md)
+- [Decision Rules](./decision-rules.md)
+- [Ownership Tree Grammar](./ownership-tree-grammar.md)
+- [Examples](../examples/README.md)

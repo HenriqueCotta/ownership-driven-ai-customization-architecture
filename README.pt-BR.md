@@ -2,7 +2,7 @@
 
 Uma arquitetura escalável para GitHub Copilot custom instructions, path-specific instructions, skills e AGENTS.md em repositórios grandes e monorepos.
 
-Ela ajuda times a organizar instruções de baseline, roteamento baseado em ownership, cross-cutting overlays, Follow-Through Triggers e skills opcionais sem transformar tudo em custom agents.
+Ela ajuda times a organizar `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers` e `skills` sem transformar tudo em custom agents.
 
 Nome formal da arquitetura:
 
@@ -11,6 +11,18 @@ Nome formal da arquitetura:
 Versão em inglês:
 
 - [README.md](./README.md)
+
+## Nesta Página
+
+- [Para Quem É](#para-quem-é)
+- [Visão Rápida da Arquitetura](#visão-rápida-da-arquitetura)
+- [Por Que Este Repositório Existe](#por-que-este-repositório-existe)
+- [O Que Você Encontra Aqui](#o-que-você-encontra-aqui)
+- [Começo Rápido](#começo-rápido)
+- [Mapa do Repositório](#mapa-do-repositório)
+- [Princípios](#princípios)
+- [Intenção Open Source](#intenção-open-source)
+- [Licença](#licença)
 
 ## Para Quem É
 
@@ -23,73 +35,38 @@ Este repositório é para times que precisam escalar a customização do GitHub 
 - compatibilidade com AGENTS.md
 - codebases de longa vida com múltiplos boundaries de ownership
 
-## Exemplo Mínimo Funcional
+## Visão Rápida da Arquitetura
 
-```text
-.github/
-  copilot-instructions.md
-  instructions/
-    ownership/
-      src/
-        general.instructions.md
-        api/
-          general.instructions.md
-          admin/
-            authorization.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
-      docs/
-        general.instructions.md
-    overlays/
-      quality/
-        testing-quality.instructions.md
-      operability/
-        observability.instructions.md
-  skills/
-    debug-behavior/
-      SKILL.md
-```
+Em alto nível, o modelo separa:
 
-O layout canônico trata todo boundary owned como uma pasta de nó dentro de `ownership/`.
+- `baseline`
+- `ownership tree`
+- `cross-cutting overlays`
+- `skills`
 
-Isso significa que pastas do repositório continuam sendo pastas, e arquivos do repositório também viram pastas como `orders.ts/`.
+Mantenha a visão geral do repositório curta aqui.
 
-Os arquivos de instruction dentro de cada nó são nomeados pela concern que carregam, como `general`, `contract` ou `framework`.
+Coloque o layout canônico da ownership tree, as regras de nome e os atalhos em [docs/pt-BR/regras/gramatica-da-ownership-tree.md](./docs/pt-BR/regras/gramatica-da-ownership-tree.md).
 
-Não existe um arquivo "main" obrigatório para um nó. Uma pasta de nó pode conter zero, um ou vários arquivos de instruction.
-
-Como atalho opcional, um nó leaf de arquivo com exatamente uma instruction pode ser escrito diretamente como `orders.ts.instructions.md`.
-
-Este repositório documenta como desenhar essa estrutura para que ela permaneça previsível, manutenível e legível ao longo do tempo.
-
-## Por Que Esta Tree Escala
-
-- uma gramática visual única para nós de pasta e nós de arquivo
-- nenhum passo de "promoção" quando um arquivo cresce de uma instruction para várias
-- nomes baseados em concern, como `contract.instructions.md`, continuam fazendo sentido mesmo quando caminhos mudam
-- filhos mistos são naturais, então uma pasta pode conter subtrees e nós de arquivo sem regras especiais
-- mantenedores conseguem explicar a tree caminhando pelos diretórios, em vez de ensinar vários sistemas de nomenclatura
-
-A convenção detalhada está em [docs/pt-BR/estrutura-da-ownership-tree.md](./docs/pt-BR/estrutura-da-ownership-tree.md).
+Coloque cenários trabalhados em [docs/pt-BR/exemplos-e-fluxos.md](./docs/pt-BR/exemplos-e-fluxos.md) e arquétipos completos em [docs/pt-BR/repositorios-exemplo/README.md](./docs/pt-BR/repositorios-exemplo/README.md).
 
 ## Por Que Este Repositório Existe
 
 Muitos setups de Copilot crescem sempre para a mesma direção ruim:
 
-- um único arquivo gigante de instruções gerais do repositório,
-- regras duplicadas em vários arquivos,
-- boundaries de responsabilidade pouco claros,
-- custom agents criados para assuntos que deveriam ser instructions ou skills,
-- docs e templates desatualizados e fora do modelo real de roteamento.
+- um único arquivo gigante de instruções gerais do repositório
+- regras duplicadas em vários arquivos
+- boundaries de responsabilidade pouco claros
+- custom agents criados para assuntos que deveriam ser instructions ou skills
+- docs e templates desatualizados e fora do modelo real de roteamento
 
 Este projeto propõe um modelo operacional mais simples:
 
-- manter o baseline curto,
-- ligar a maior parte do comportamento a boundaries de ownership,
-- usar overlays apenas para concerns realmente transversais,
-- manter comportamento downstream de revisão e atualização em `Follow-Through Triggers`,
-- usar skills apenas para workflows reutilizáveis que inchariam instructions always-on.
+- manter o baseline curto
+- ligar a maior parte do comportamento a boundaries de ownership
+- usar overlays apenas para concerns realmente transversais
+- manter comportamento downstream de revisão e atualização em `Follow-Through Triggers`
+- usar skills apenas para workflows reutilizáveis que inchariam instructions always-on
 
 ## O Que Você Encontra Aqui
 
@@ -102,7 +79,7 @@ Este projeto propõe um modelo operacional mais simples:
 ## Começo Rápido
 
 1. Leia a arquitetura em [docs/pt-BR](./docs/pt-BR/README.md).
-2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md), [Modelo Central](./docs/pt-BR/modelo-central.md) e [Estrutura da Ownership Tree](./docs/pt-BR/estrutura-da-ownership-tree.md).
+2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md), [Modelo Operacional](./docs/pt-BR/modelo/modelo-operacional.md), [Regras de Decisão](./docs/pt-BR/regras/regras-de-decisao.md) e [Gramática da Ownership Tree](./docs/pt-BR/regras/gramatica-da-ownership-tree.md).
 3. Copie o [starter-kit](./starter-kit/README.md) para um repositório de teste.
 4. Adapte o mapa de ownership aos seus caminhos reais.
 5. Adicione apenas os overlays que realmente atravessam vários owners.
@@ -139,10 +116,10 @@ Este projeto foi feito para ser melhorado em público.
 
 Se você adotar a arquitetura em outro repositório, abra uma issue ou pull request contando:
 
-- o que funcionou,
-- o que ficou confuso,
-- o que se quebrou em escala,
-- que decisões de nomenclatura ou roteamento melhoraram o modelo.
+- o que funcionou
+- o que ficou confuso
+- o que se quebrou em escala
+- que decisões de nomenclatura ou roteamento melhoraram o modelo
 
 ## Licença
 

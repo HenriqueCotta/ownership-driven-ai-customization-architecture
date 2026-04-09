@@ -3,21 +3,38 @@
 Audience: maintainers, platform teams, and engineering leaders evaluating whether this pattern is worth adopting.  
 Goal: explain the business case, technical rationale, expected gains, limits, and standards alignment behind the model.
 
+## Jump To
+
+- [Executive Summary](#executive-summary)
+- [Why The Model Makes Sense](#why-the-model-makes-sense)
+- [Why The Baseline Stays Intentionally Short](#why-the-baseline-stays-intentionally-short)
+- [Why The Model Is Path-First](#why-the-model-is-path-first)
+- [Why The Ownership Tree Uses One Folder Grammar](#why-the-ownership-tree-uses-one-folder-grammar)
+- [Why Skills Stay Optional And Selective](#why-skills-stay-optional-and-selective)
+- [Expected Gains](#expected-gains)
+- [Why This Is Scalable](#why-this-is-scalable)
+- [Why This Is Safer Than Ad Hoc Customization](#why-this-is-safer-than-ad-hoc-customization)
+- [Support And Portability Reality](#support-and-portability-reality)
+- [Limits And Non-Goals](#limits-and-non-goals)
+- [Alignment With Official Guidance](#alignment-with-official-guidance)
+- [Documentation Design Notes](#documentation-design-notes)
+- [References](#references)
+
 ## Executive Summary
 
 `Ownership-Driven AI Customization Architecture` exists to solve a practical problem:
 
-- repository custom instructions often start small,
-- then collapse into one large baseline file or a pile of overlapping rules,
-- and eventually become hard to trust, hard to change, and hard to reuse across repositories.
+- repository custom instructions often start small
+- then collapse into one large baseline file or a pile of overlapping rules
+- and eventually become hard to trust, hard to change, and hard to reuse across repositories
 
 This architecture answers that problem with a small set of stable structural decisions:
 
-- keep repository-wide guidance short,
-- route most behavior through stable ownership paths,
-- add overlays only for concerns that truly span multiple owners,
-- keep downstream review/update behavior explicit through `Follow-Through Triggers`,
-- use skills only for deeper workflows that should not stay always-on.
+- keep repository-wide guidance short
+- route most behavior through stable ownership paths
+- add overlays only for concerns that truly span multiple owners
+- keep downstream review and update behavior explicit through `Follow-Through Triggers`
+- use skills only for deeper workflows that should not stay always-on
 
 ## Why The Model Makes Sense
 
@@ -27,10 +44,10 @@ GitHub's documentation recommends short, self-contained custom instructions and 
 
 That combination leads to a practical design conclusion:
 
-- keep the baseline short,
-- use path-based ownership as the main routing mechanism,
-- keep overlays narrow and purposeful,
-- reduce duplication before it reaches the model.
+- keep the baseline short
+- use path-based ownership as the main routing mechanism
+- keep overlays narrow and purposeful
+- reduce duplication before it reaches the model
 
 Skills fit the same logic. GitHub recommends custom instructions for simple guidance that is relevant to almost every task, and skills for more detailed guidance that Copilot should access only when relevant.
 
@@ -42,15 +59,15 @@ That is not just a stylistic preference.
 
 It follows directly from the platform:
 
-- GitHub recommends short, self-contained instruction statements.
-- GitHub recommends path-specific instructions so repository-wide instructions do not become overloaded with guidance that only applies to certain files.
-- GitHub documents that Copilot code review reads only a limited portion of each custom instruction file.
+- GitHub recommends short, self-contained instruction statements
+- GitHub recommends path-specific instructions so repository-wide instructions do not become overloaded with guidance that only applies to certain files
+- GitHub documents that Copilot code review reads only a limited portion of each custom instruction file
 
 Those constraints make a long baseline structurally weak:
 
-- it becomes harder to maintain,
-- it increases conflict risk,
-- and part of it may not even be visible in important surfaces such as code review.
+- it becomes harder to maintain
+- it increases conflict risk
+- and part of it may not even be visible in important surfaces such as code review
 
 ## Why The Model Is Path-First
 
@@ -62,9 +79,9 @@ GitHub and VS Code both support path-specific instructions under `.github/instru
 
 That gives teams a concrete and scalable unit for organization:
 
-- broad owners,
-- narrower owners,
-- overlays only where a concern truly crosses those ownership boundaries.
+- broad owners
+- narrower owners
+- overlays only where a concern truly crosses those ownership boundaries
 
 Path-first routing is easier to reason about than theme-first routing because it stays tied to the repository's actual structure.
 
@@ -76,7 +93,7 @@ It also recommends one canonical disk layout for ownership nodes:
 
 - every owned boundary becomes a folder node
 - repository directories stay directories
-- repository files also become folder nodes
+- repository files may also become folder nodes
 - instruction files inside the node are named by concern
 
 That choice matters because mixed naming systems usually create friction:
@@ -89,16 +106,16 @@ One folder grammar avoids those problems.
 
 It is more teachable because the explanation becomes:
 
-1. find the repository path,
-2. walk the same path inside `ownership/`,
-3. read the instruction files in the matching node folders.
+1. find the repository path
+2. walk the same path inside `ownership/`
+3. read the instruction files in the matching node folders
 
 It is more scalable because:
 
-- one file can have one or many instruction files without changing its identity,
-- mixed children are natural,
-- concern-based filenames remain meaningful when paths evolve,
-- teams can extend the tree without redesigning the naming convention.
+- one file can have one or many instruction files without changing its identity
+- mixed children are natural
+- concern-based filenames remain meaningful when paths evolve
+- teams can extend the tree without redesigning the naming convention
 
 ## Why Skills Stay Optional And Selective
 
@@ -106,9 +123,9 @@ The architecture includes skills, but deliberately avoids making them the main r
 
 This is also grounded in official guidance:
 
-- GitHub recommends skills for more detailed instructions that should only be accessed when relevant.
-- GitHub's CLI documentation explicitly says that if behavior is only needed in one workflow, a skill is the better fit.
-- The same documentation warns against overloading Copilot's context window with instructions that are not relevant to the current task.
+- GitHub recommends skills for more detailed instructions that should only be accessed when relevant
+- GitHub's CLI documentation explicitly says that if behavior is only needed in one workflow, a skill is the better fit
+- the same documentation warns against overloading Copilot's context window with instructions that are not relevant to the current task
 
 That is why skills appear here as workflow extensions rather than as the foundation of the model.
 
@@ -124,7 +141,7 @@ Relevant context is tied to stable paths and stable concerns instead of being sp
 
 ### Less Duplication And Conflict
 
-Ownership-tree nodes carry local behavioral guidance. Overlays add cross-cutting lenses. That separation reduces the chance that the same rule is repeated in multiple places with slightly different wording.
+Ownership nodes carry local behavioral guidance. Overlays add cross-cutting lenses. That separation reduces the chance that the same rule is repeated in multiple places with slightly different wording.
 
 ### Better Scalability Across Repositories
 
@@ -134,10 +151,10 @@ The model is reusable because it depends on a small number of structural ideas, 
 
 `Follow-Through Triggers` make secondary work visible:
 
-- docs that may now be stale,
-- tests that may need updates,
-- configs that may need review,
-- workflow artifacts that may need adjustment.
+- docs that may now be stale
+- tests that may need updates
+- configs that may need review
+- workflow artifacts that may need adjustment
 
 ### Better Cost Discipline
 
@@ -154,22 +171,22 @@ The model scales because each part has a narrow job:
 - `cross-cutting overlays`
   - one extra lens across several owners
 - `Follow-Through Triggers`
-  - downstream review/update consequences
+  - downstream review and update consequences
 - `skills`
   - reusable workflows that should not always be loaded
 
 That separation makes growth easier to control:
 
-- new owners are added by path,
-- new overlays are added only when a concern truly spans multiple owners,
-- new workflows become skills only when always-on instructions would be the wrong tool.
+- new owners are added by path
+- new overlays are added only when a concern truly spans multiple owners
+- new workflows become skills only when always-on instructions would be the wrong tool
 
 The ownership-tree folder grammar reinforces that scalability:
 
-- the tree can grow without changing how readers interpret it,
-- file-level nodes and directory-level nodes use the same shape,
-- multi-instruction nodes do not require a second representation,
-- maintainers can inspect the structure by walking folders instead of decoding special cases.
+- the tree can grow without changing how readers interpret it
+- file-level nodes and directory-level nodes use the same shape
+- multi-instruction nodes do not require a second representation
+- maintainers can inspect the structure by walking folders instead of decoding special cases
 
 ## Why This Is Safer Than Ad Hoc Customization
 
@@ -191,19 +208,19 @@ A reusable model should anchor itself in the most broadly documented repository-
 
 That is one reason this architecture puts the main weight on:
 
-- repository-wide instructions,
-- path-specific instructions,
-- and careful use of skills.
+- repository-wide instructions
+- path-specific instructions
+- careful use of skills
 
 ## Limits And Non-Goals
 
 This architecture does not:
 
-- guarantee that Copilot will always obey every instruction,
-- replace code review, CI, testing, or security controls,
-- prescribe the internal prose format of each instruction,
-- eliminate the need for judgment when mapping ownership or overlays,
-- turn skills into a deterministic orchestration engine.
+- guarantee that Copilot will always obey every instruction
+- replace code review, CI, testing, or security controls
+- prescribe the internal prose format of each instruction
+- eliminate the need for judgment when mapping ownership or overlays
+- turn skills into a deterministic orchestration engine
 
 It is a structure for reducing confusion and improving reuse, not a formal execution engine.
 
@@ -219,20 +236,28 @@ This project is intentionally aligned with the official GitHub Copilot customiza
 
 It also follows common documentation guidance:
 
-- keep overview pages short,
-- split explanation from examples and replication guidance,
-- use text-based diagrams that are easy to maintain alongside code and docs.
+- keep overview pages short
+- split explanation from model docs, rules, how-to guidance, and examples
+- use text-based diagrams that are easy to maintain alongside code and docs
 
 ## Documentation Design Notes
 
-This documentation set is organized to support both fast onboarding and deeper evaluation:
+This documentation set is organized so each document has one primary job:
 
 - `README`
-  - quick overview and reading paths
+  - portal, reading paths, and documentation map
 - `Why This Architecture`
-  - business case, gains, and limits
-- `Core Model`
-  - conceptual structure and routing logic
+  - business case, gains, limits, and standards alignment
+- `Operating Model`
+  - structural vocabulary
+- `Ownership vs Overlay`
+  - the main conceptual distinction in the model
+- `Follow-Through Triggers`
+  - downstream review and update behavior
+- `Decision Rules`
+  - guidance classification and follow-through placement
+- `Ownership Tree Grammar`
+  - canonical on-disk grammar and shortcut policy
 - `Instruction Conflicts And Precedence`
   - ambiguity, refinement, and non-determinism
 - `Examples`
@@ -240,7 +265,7 @@ This documentation set is organized to support both fast onboarding and deeper e
 - `Replication Playbook`
   - rollout and maintenance guidance
 
-This split is influenced by Diataxis, which distinguishes explanation, reference, how-to guidance, and tutorial-style needs.
+This split is influenced by Diataxis, which distinguishes explanation, model and rules material, how-to guidance, and tutorial-style needs.
 
 ## References
 
