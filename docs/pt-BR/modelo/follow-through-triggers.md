@@ -70,4 +70,4 @@ Exemplos típicos:
 - [Modelo Operacional](./modelo-operacional.md)
 - [Ownership vs Overlay](./ownership-vs-overlay.md)
 - [Regras de Decisão](../regras/regras-de-decisao.md)
-- [Exemplos e Fluxos](../exemplos-e-fluxos.md)
+- [Exemplos](../exemplos/README.md)

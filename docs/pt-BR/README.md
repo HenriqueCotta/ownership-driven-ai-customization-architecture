@@ -82,10 +82,8 @@ Se uma página começa a repetir outra, normalmente ela deve linkar em vez de re
 
 ### Exemplos Trabalhados
 
-- [Exemplos e Fluxos](./exemplos-e-fluxos.md)
-  - exemplos curtos por cenário
-- [Repositórios-Exemplo](./repositorios-exemplo/README.md)
-  - arquétipos genéricos de repositório com ownership trees saudáveis e situações do cotidiano
+- [Exemplos](./exemplos/README.md)
+  - exemplos curtos por cenário e arquétipos de repositório na mesma pasta
 
 ## Trilhas Sugeridas de Leitura
 
@@ -97,7 +95,7 @@ Se este for seu primeiro contato com a arquitetura:
 4. Leia [Ownership vs Overlay](./modelo/ownership-vs-overlay.md).
 5. Leia [Follow-Through Triggers](./modelo/follow-through-triggers.md).
 6. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
-7. Leia [Exemplos e Fluxos](./exemplos-e-fluxos.md).
+7. Leia [Exemplos](./exemplos/README.md).
 
 Se você estiver desenhando um novo repositório:
 
@@ -107,7 +105,7 @@ Se você estiver desenhando um novo repositório:
 4. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
 5. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
 6. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
-7. Leia [Repositórios-Exemplo](./repositorios-exemplo/README.md).
+7. Leia [Exemplos](./exemplos/README.md).
 
 Se você estiver investigando ambiguidade ou conflito entre instructions:
 
@@ -115,7 +113,7 @@ Se você estiver investigando ambiguidade ou conflito entre instructions:
 2. Leia [Conflitos e Precedência de Instruções](./regras/conflitos-e-precedencia-de-instrucoes.md).
 3. Leia [Ownership vs Overlay](./modelo/ownership-vs-overlay.md).
 4. Leia [Follow-Through Triggers](./modelo/follow-through-triggers.md).
-5. Leia [Exemplos e Fluxos](./exemplos-e-fluxos.md).
+5. Leia [Exemplos](./exemplos/README.md).
 
 ## Regras Centrais de Design
 

@@ -48,7 +48,7 @@ Mantenha a visão geral do repositório curta aqui.
 
 Coloque o layout canônico da ownership tree, as regras de nome e os atalhos em [docs/pt-BR/regras/gramatica-da-ownership-tree.md](./docs/pt-BR/regras/gramatica-da-ownership-tree.md).
 
-Coloque cenários trabalhados em [docs/pt-BR/exemplos-e-fluxos.md](./docs/pt-BR/exemplos-e-fluxos.md) e arquétipos completos em [docs/pt-BR/repositorios-exemplo/README.md](./docs/pt-BR/repositorios-exemplo/README.md).
+Coloque cenários trabalhados e arquétipos de repositório em [docs/pt-BR/exemplos/README.md](./docs/pt-BR/exemplos/README.md).
 
 ## Por Que Este Repositório Existe
 

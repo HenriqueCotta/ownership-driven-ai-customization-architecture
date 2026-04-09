@@ -83,9 +83,7 @@ If a page starts repeating another page, it should usually link instead of resta
 ### Worked Examples
 
 - [Examples](./examples/README.md)
-  - short scenario-based examples grouped by theme
-- [Example Repositories](./example-repositories/README.md)
-  - generic repository archetypes that show healthy ownership trees and everyday situations
+  - short scenario-based examples plus repository archetypes inside the same folder
 
 ## Suggested Reading Paths
 
@@ -107,7 +105,7 @@ If you are designing a new repository:
 4. Read [Decision Rules](./rules/decision-rules.md).
 5. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
 6. Read [Replication Playbook](./replication-playbook.md).
-7. Read [Example Repositories](./example-repositories/README.md).
+7. Read [Examples](./examples/README.md).
 
 If you are debugging ambiguity or instruction conflicts:
 

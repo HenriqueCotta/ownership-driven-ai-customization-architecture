@@ -14,6 +14,17 @@ REQUIRED_FILES = [
     "scripts/check_repo.py",
     ".github/copilot-instructions.md",
     ".github/workflows/docs-hygiene.yml",
+    ".github/instructions/ownership/.github/general.instructions.md",
+    ".github/instructions/ownership/docs/general.instructions.md",
+    ".github/instructions/ownership/starter-kit/general.instructions.md",
+    ".github/instructions/ownership/templates/general.instructions.md",
+    ".github/instructions/ownership/scripts/general.instructions.md",
+    ".github/instructions/ownership/README.md.instructions.md",
+    ".github/instructions/ownership/README.pt-BR.md.instructions.md",
+    ".github/instructions/overlays/quality/markdown-quality.instructions.md",
+    ".github/instructions/overlays/quality/bilingual-parity.instructions.md",
+    ".github/instructions/overlays/quality/repo-hygiene.instructions.md",
+    ".github/instructions/overlays/workflow/community-health.instructions.md",
     "docs/en/README.md",
     "docs/pt-BR/README.md",
     "starter-kit/README.md",
@@ -25,7 +36,21 @@ REQUIRED_DIRS = [
     ".github/instructions/ownership",
     ".github/instructions/overlays",
     "docs/en",
+    "docs/en/model",
+    "docs/en/rules",
+    "docs/en/examples",
+    "docs/en/examples/classification",
+    "docs/en/examples/follow-through",
+    "docs/en/examples/ownership-tree",
+    "docs/en/examples/repositories",
     "docs/pt-BR",
+    "docs/pt-BR/exemplos",
+    "docs/pt-BR/exemplos/classification",
+    "docs/pt-BR/exemplos/follow-through",
+    "docs/pt-BR/exemplos/ownership-tree",
+    "docs/pt-BR/exemplos/repositorios",
+    "docs/pt-BR/modelo",
+    "docs/pt-BR/regras",
     "starter-kit/.github/instructions/ownership",
     "starter-kit/.github/instructions/overlays",
     "templates",
@@ -144,27 +169,66 @@ def ensure_markdown_links() -> None:
 
 def ensure_language_doc_sets() -> None:
     english = {
-        "README.md",
-        "core-model.md",
-        "why-this-architecture.md",
-        "instruction-conflicts-and-precedence.md",
-        "examples-and-flows.md",
-        "replication-playbook.md",
+        "docs/en/README.md",
+        "docs/en/why-this-architecture.md",
+        "docs/en/replication-playbook.md",
+        "docs/en/model/operating-model.md",
+        "docs/en/model/ownership-vs-overlay.md",
+        "docs/en/model/follow-through-triggers.md",
+        "docs/en/rules/decision-rules.md",
+        "docs/en/rules/ownership-tree-grammar.md",
+        "docs/en/rules/instruction-conflicts-and-precedence.md",
+        "docs/en/examples/README.md",
+        "docs/en/examples/classification/01-one-path-one-owner.md",
+        "docs/en/examples/classification/02-a-real-overlay.md",
+        "docs/en/examples/classification/03-narrower-owner-vs-overlay.md",
+        "docs/en/examples/follow-through/01-contract-change.md",
+        "docs/en/examples/follow-through/02-configuration-change.md",
+        "docs/en/examples/follow-through/03-documentation-as-its-own-owner.md",
+        "docs/en/examples/follow-through/04-board-or-task-follow-through.md",
+        "docs/en/examples/follow-through/05-no-follow-through-needed.md",
+        "docs/en/examples/ownership-tree/01-one-file-node-with-two-instruction-files.md",
+        "docs/en/examples/ownership-tree/02-mixed-children-under-one-parent.md",
+        "docs/en/examples/ownership-tree/03-why-a-folder-grammar-is-easier-to-teach.md",
+        "docs/en/examples/repositories/README.md",
+        "docs/en/examples/repositories/01-api-service.md",
+        "docs/en/examples/repositories/02-web-product-app.md",
+        "docs/en/examples/repositories/03-product-monorepo.md",
     }
     portuguese = {
-        "README.md",
-        "modelo-central.md",
-        "por-que-esta-arquitetura.md",
-        "conflitos-e-precedencia-de-instrucoes.md",
-        "exemplos-e-fluxos.md",
-        "playbook-de-replicacao.md",
+        "docs/pt-BR/README.md",
+        "docs/pt-BR/por-que-esta-arquitetura.md",
+        "docs/pt-BR/playbook-de-replicacao.md",
+        "docs/pt-BR/modelo/modelo-operacional.md",
+        "docs/pt-BR/modelo/ownership-vs-overlay.md",
+        "docs/pt-BR/modelo/follow-through-triggers.md",
+        "docs/pt-BR/regras/regras-de-decisao.md",
+        "docs/pt-BR/regras/gramatica-da-ownership-tree.md",
+        "docs/pt-BR/regras/conflitos-e-precedencia-de-instrucoes.md",
+        "docs/pt-BR/exemplos/README.md",
+        "docs/pt-BR/exemplos/classification/01-um-caminho-um-owner.md",
+        "docs/pt-BR/exemplos/classification/02-um-overlay-de-verdade.md",
+        "docs/pt-BR/exemplos/classification/03-owner-mais-estreito-vs-overlay.md",
+        "docs/pt-BR/exemplos/follow-through/01-mudanca-de-contrato.md",
+        "docs/pt-BR/exemplos/follow-through/02-mudanca-de-configuracao.md",
+        "docs/pt-BR/exemplos/follow-through/03-documentacao-como-seu-proprio-owner.md",
+        "docs/pt-BR/exemplos/follow-through/04-follow-through-de-board-ou-task.md",
+        "docs/pt-BR/exemplos/follow-through/05-nenhum-follow-through-necessario.md",
+        "docs/pt-BR/exemplos/ownership-tree/01-um-no-de-arquivo-com-dois-arquivos-de-instruction.md",
+        "docs/pt-BR/exemplos/ownership-tree/02-filhos-mistos-sob-um-mesmo-pai.md",
+        "docs/pt-BR/exemplos/ownership-tree/03-por-que-uma-gramatica-de-pastas-e-mais-facil-de-ensinar.md",
+        "docs/pt-BR/exemplos/repositorios/README.md",
+        "docs/pt-BR/exemplos/repositorios/01-servico-de-api.md",
+        "docs/pt-BR/exemplos/repositorios/02-aplicacao-web-de-produto.md",
+        "docs/pt-BR/exemplos/repositorios/03-monorepo-de-produto.md",
     }
 
-    english_files = {path.name for path in (ROOT / "docs/en").glob("*.md")}
-    portuguese_files = {path.name for path in (ROOT / "docs/pt-BR").glob("*.md")}
-
-    missing_en = english - english_files
-    missing_pt = portuguese - portuguese_files
+    missing_en = {
+        rel_path for rel_path in english if not (ROOT / rel_path).is_file()
+    }
+    missing_pt = {
+        rel_path for rel_path in portuguese if not (ROOT / rel_path).is_file()
+    }
 
     if missing_en:
         fail("Missing English docs: " + ", ".join(sorted(missing_en)))

@@ -48,7 +48,7 @@ Keep the repository overview short here.
 
 Put the canonical ownership-tree layout, naming rules, and shortcuts in [docs/en/rules/ownership-tree-grammar.md](./docs/en/rules/ownership-tree-grammar.md).
 
-Put worked scenarios in [docs/en/examples/README.md](./docs/en/examples/README.md) and full repository archetypes in [docs/en/example-repositories/README.md](./docs/en/example-repositories/README.md).
+Put worked scenarios and repository archetypes in [docs/en/examples/README.md](./docs/en/examples/README.md).
 
 ## Why This Exists
 

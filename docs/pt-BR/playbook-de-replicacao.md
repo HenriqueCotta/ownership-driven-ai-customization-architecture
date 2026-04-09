@@ -86,7 +86,7 @@ Quando isso acontecer, revisite:
 
 - [Regras de Decisão](./regras/regras-de-decisao.md)
 - [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md)
-- [Exemplos e Fluxos](./exemplos-e-fluxos.md)
+- [Exemplos](./exemplos/README.md)
 
 ## Estado Final Saudável
 
@@ -103,4 +103,4 @@ O modelo está saudável quando:
 - [Modelo Operacional](./modelo/modelo-operacional.md)
 - [Regras de Decisão](./regras/regras-de-decisao.md)
 - [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md)
-- [Exemplos e Fluxos](./exemplos-e-fluxos.md)
+- [Exemplos](./exemplos/README.md)

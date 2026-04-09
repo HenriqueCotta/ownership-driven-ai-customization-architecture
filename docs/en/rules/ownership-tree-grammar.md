@@ -132,4 +132,4 @@ It does not create a new structural layer.
 - [Follow-Through Triggers](../model/follow-through-triggers.md)
 - [Decision Rules](./decision-rules.md)
 - [Examples](../examples/README.md)
-- [Example Repositories](../example-repositories/README.md)
+- [Repository Archetypes](../examples/repositories/README.md)

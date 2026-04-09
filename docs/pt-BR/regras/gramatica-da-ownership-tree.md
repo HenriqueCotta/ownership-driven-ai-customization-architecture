@@ -131,5 +131,5 @@ Ela não cria uma nova camada estrutural.
 - [Modelo Operacional](../modelo/modelo-operacional.md)
 - [Follow-Through Triggers](../modelo/follow-through-triggers.md)
 - [Regras de Decisão](./regras-de-decisao.md)
-- [Exemplos e Fluxos](../exemplos-e-fluxos.md)
-- [Repositórios-Exemplo](../repositorios-exemplo/README.md)
+- [Exemplos](../exemplos/README.md)
+- [Repositórios-Exemplo](../exemplos/repositorios/README.md)

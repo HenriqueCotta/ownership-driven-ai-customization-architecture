@@ -76,4 +76,4 @@ Trate estes pontos como erros de modelagem:
 - [Modelo Operacional](./modelo-operacional.md)
 - [Follow-Through Triggers](./follow-through-triggers.md)
 - [Regras de Decisão](../regras/regras-de-decisao.md)
-- [Exemplos e Fluxos](../exemplos-e-fluxos.md)
+- [Exemplos](../exemplos/README.md)
