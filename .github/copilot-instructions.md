@@ -12,3 +12,7 @@ description: "Repository-wide baseline for the public Ownership-Driven AI Custom
 - When changing shared terminology or structure, update the mirrored English and Portuguese docs or explain the intentional mismatch.
 - Prefer GitHub-native versioning through tags and releases over repo-local version files.
 - Prefer small, copyable examples over exhaustive or highly repo-specific examples.
+
+## Follow-Through Triggers
+
+- If published architecture guidance, starter-kit behavior, reusable templates, or contributor-facing workflow changes meaningfully, review the PR checklist and whether the next tag or release should be updated.

@@ -74,7 +74,11 @@ When in doubt, use these rules:
 2. Put local specialization in the narrowest owner that truly needs it.
 3. Put cross-cutting quality guidance in overlays.
 4. Put downstream review and update rules in `Follow-Through Triggers`.
-5. If two instructions seem to fight, fix the ownership map instead of hoping precedence will save you.
+5. Anchor a follow-through trigger in the instruction that can observe the originating change.
+6. Reuse a small outcome-based skill set rather than creating one skill per trigger.
+7. Keep exact repeatable procedures in scripts, CI, or runbooks.
+8. Keep discoverability hints inside existing docs or instructions rather than inventing a hint layer.
+9. If two instructions seem to fight, fix the ownership map instead of hoping precedence will save you.
 
 In other words:
 
@@ -90,6 +94,9 @@ Treat these as signs that the instruction map needs redesign:
 - an overlay is named by crossed paths instead of by one coherent concern
 - a docs path is treated as an overlay when it should be its own owner
 - a new instruction is proposed only because a change has downstream consequences
+- a new skill is proposed for every trigger or ownership node
+- exact procedural steps are being copied into generic instructions or skills
+- a separate hint layer is being proposed just to connect triggers and skills
 
 ## How To Fix A Conflict
 
@@ -100,6 +107,10 @@ When conflict appears, start with the map itself:
 3. Rewrite child guidance as refinement instead of reversal.
 4. Move truly cross-cutting concerns into overlays.
 5. Keep downstream review and update behavior inside `Follow-Through Triggers` rather than inventing a new layer.
+6. Move any misplaced follow-through rule to the instruction scope that can actually observe its triggering change.
+7. Consolidate overlapping workflow variants into a small set of outcome-based skills instead of one skill per trigger.
+8. Move exact procedural steps into scripts, CI, or runbooks when natural-language guidance becomes brittle.
+9. Keep any discoverability text as a small cue inside existing docs or instructions rather than a new hint layer.
 
 If the map is clean, the need for hard conflict resolution usually drops sharply.
 

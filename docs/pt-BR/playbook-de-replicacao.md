@@ -72,6 +72,55 @@ Um primeiro passo saudável costuma ser:
 
 Isso mantém o mapa ensinável enquanto o time ainda está aprendendo como os boundaries se comportam.
 
+## Mantenha o Conjunto de Skills Pequeno e Orientado a Outcome
+
+Comece com poucas skills nomeadas pelo outcome do workflow, e não pela mudança que as disparou ou pelo path.
+
+Bons exemplos:
+
+- `review-change`
+- `sync-docs`
+- `debug-behavior`
+
+Isso normalmente escala melhor do que criar variantes como `review-contract-change`, `review-config-change` ou `review-api-drift`.
+
+Triggers diferentes de follow-through normalmente devem reutilizar o mesmo pequeno conjunto de skills, enquanto o contexto local continua vindo da ownership tree e dos overlays.
+
+Adicione uma skill mais específica apenas quando o workflow em si mudar materialmente em evidências, etapas ou saída esperada.
+
+## Ensine o Modelo de Runtime Explicitamente
+
+Ao documentar ou ensinar esta arquitetura, explique não só o layout de arquivos, mas também o comportamento em runtime que esse layout foi desenhado para suportar.
+
+Na prática, adotantes devem entender que:
+
+- instructions de repositório inteiro fornecem o contexto default
+- instructions path-specific podem se tornar relevantes conforme o agente toca novos paths
+- follow-through pode expandir o escopo para novas superfícies
+- skills genéricas podem ser escolhidas just-in-time quando o tipo de trabalho muda
+- checks exatos e repetíveis podem viver em scripts, CI ou runbooks em vez de apenas em prosa
+
+Isso ajuda os times a evitarem dois erros comuns:
+
+- esperar que a arquitetura se comporte como um despachante rígido
+- esperar uma skill separada para cada trigger ou owner
+
+A documentação do GitHub sustenta esse modelo mental:
+
+- instructions gerais e path-specific compatíveis podem se aplicar juntas
+- custom instructions ficam disponíveis automaticamente quando são salvas
+- skills são selecionadas com base na prompt e na descrição da skill e entram no contexto quando escolhidas
+
+## Use Automação para Procedimentos Exatos
+
+Se um repositório precisar de comandos exatos, checks determinísticos ou uma sequência rígida de atualização, prefira:
+
+- scripts
+- checks de CI
+- runbooks
+
+Deixe instructions e skills apontarem para essa automação quando ajudar, mas evite reescrever procedimentos frágeis em instructions gerais ou skills genéricas.
+
 ## Revise a Estrutura Regularmente
 
 Revise a estrutura sempre que uma destas coisas acontecer:
@@ -80,6 +129,9 @@ Revise a estrutura sempre que uma destas coisas acontecer:
 - uma instruction deixar de mapear para um boundary estável
 - uma instruction for majoritariamente workflow e deveria ser uma skill
 - uma nova instruction estiver sendo proposta para uma consequência downstream em vez de um boundary de ownership
+- uma nova skill estiver sendo proposta para cada trigger ou owner
+- checklists operacionais exatos estiverem escorrendo para instructions ou skills genéricas
+- uma camada separada de hints estiver sendo proposta apenas para conectar triggers e skills
 - mantenedores não conseguirem mais prever quais instructions se aplicam a um arquivo
 
 Quando isso acontecer, revisite:
@@ -96,6 +148,8 @@ O modelo está saudável quando:
 - a gramática de pastas pode ser explicada sem introduzir casos especiais
 - o conjunto de instructions é pequeno o bastante para ser raciocinável
 - consequências downstream são tratadas por `Follow-Through Triggers` em vez de duplicação ad hoc
+- o catálogo de skills permanece pequeno e orientado a outcome, em vez de espelhar cada trigger
+- procedimentos exatos vivem em automação ou runbooks, e não em prosa frágil
 - a mesma estrutura pode ser reutilizada em outro repositório com um mapa de ownership diferente
 
 ## Material Relacionado
@@ -104,3 +158,7 @@ O modelo está saudável quando:
 - [Regras de Decisão](./regras/regras-de-decisao.md)
 - [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md)
 - [Exemplos](./exemplos/README.md)
+- GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
+  <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
+- GitHub Docs, Creating agent skills for GitHub Copilot  
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>

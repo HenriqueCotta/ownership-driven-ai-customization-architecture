@@ -54,6 +54,12 @@ Put guidance in a skill when it is:
 - deeper than always-on policy
 - not naturally tied to one path
 
+Put guidance in automation or a runbook when it is:
+
+- an exact repeatable procedure
+- clearer as a script, CI check, or operational checklist than as open-ended prose
+- expected to execute deterministically
+
 ## Quick Classification Checks
 
 Use these checks when the choice feels unclear:
@@ -61,7 +67,11 @@ Use these checks when the choice feels unclear:
 - if the path is the owner of a kind of logic, it is probably ownership
 - if one extra concern spans several owners, it is probably an overlay
 - if the main question is "what else may now need review?", it is probably follow-through
+- if a follow-through rule depends on changes outside the instruction's own scope, move it to the instruction that actually observes the originating change, whether that is another owner, a broader owner, an overlay, or the baseline
+- if many downstream cases would reuse the same workflow, prefer one outcome-based skill rather than one skill per trigger
 - if the content mostly describes a reusable task flow, it is probably a skill
+- if the content mainly prescribes exact commands, files, or step order, it probably belongs in automation or a runbook
+- if the only goal is to help readers discover existing guidance, keep that as a small cue inside existing docs or instructions rather than introducing a hint layer
 
 For the conceptual distinction, read [Ownership vs Overlay](../model/ownership-vs-overlay.md).
 
@@ -76,6 +86,9 @@ Treat these as signs that the map needs redesign:
 - an overlay is named by crossed paths instead of by one coherent concern
 - a docs path is treated as an overlay when it should be its own owner
 - a new instruction is proposed only because a change has downstream consequences
+- a new skill is being proposed for every trigger or ownership node
+- exact procedural checklists are living in generic instructions or generic skills
+- a new hint layer is being proposed only to connect triggers and skills
 - maintainers cannot predict which instructions apply to a given file
 
 ## Related Docs

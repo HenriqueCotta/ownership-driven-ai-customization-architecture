@@ -71,3 +71,6 @@ Depois de uma mudança relevante, pergunte:
 3. Há aqui uma preocupação transversal real, ou estou rotulando ownership como overlay por engano?
 4. Uma seção existente de `Follow-Through Triggers` já descreve o que mais pode ter ficado desatualizado?
 5. Se não, essa guidance deveria ser adicionada a uma instruction existente em vez de criar um novo arquivo?
+6. O trabalho downstream é pequeno o bastante para ser feito diretamente, ou ele justifica uma skill existente orientada a outcome?
+7. Algum check exato e repetível ficaria mais claro como automação ou runbook?
+8. Estou inventando uma nova camada de hints ou uma skill por trigger quando o mapa existente já é suficiente?

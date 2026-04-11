@@ -71,3 +71,6 @@ After a meaningful change, ask:
 3. Is there a real cross-cutting concern here, or am I mislabeling ownership as an overlay?
 4. Does an existing `Follow-Through Triggers` section describe what else may now be stale?
 5. If not, should that guidance be added to an existing instruction rather than a new file?
+6. Is the downstream work small enough to do directly, or does it warrant an existing outcome-based skill?
+7. Would any exact repeatable check be clearer as automation or a runbook?
+8. Am I inventing a new hint layer or one skill per trigger where the existing map is already enough?

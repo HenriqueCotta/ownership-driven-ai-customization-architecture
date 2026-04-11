@@ -8,4 +8,4 @@ applyTo: "<replace-with-real-paths>"
 
 ## Follow-Through Triggers
 
-- <optional downstream consequences owned by this instruction>
+- <optional downstream consequences triggered by changes in this node's own scope; point to likely stale surfaces, not a step-by-step workflow>

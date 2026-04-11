@@ -34,6 +34,7 @@ A `Follow-Through Triggers` section may say:
 Expected flow:
 
 1. reassess what changed,
-2. decide whether the task is now stale,
-3. update it if the workflow supports that,
-4. otherwise explain exactly what needs updating.
+2. use the trigger to inspect the affected task or board state,
+3. if the update is straightforward, make it directly,
+4. if the repository uses a broader planning or review workflow, reuse that generic skill instead of creating a task-specific skill for this trigger,
+5. if the repository has exact board automation, keep it in scripts or platform workflow rules; use skills for the broader review or planning workflow around it.

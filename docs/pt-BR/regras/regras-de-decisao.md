@@ -54,6 +54,12 @@ Coloque guidance em uma skill quando ela for:
 - mais profunda do que política always-on
 - não naturalmente presa a um único path
 
+Coloque guidance em automação ou em um runbook quando ela for:
+
+- um procedimento exato e repetível
+- mais clara como script, check de CI ou checklist operacional do que como prosa aberta
+- esperada para executar de forma determinística
+
 ## Checks Rápidos de Classificação
 
 Use estes checks quando a escolha parecer nebulosa:
@@ -61,7 +67,11 @@ Use estes checks quando a escolha parecer nebulosa:
 - se o path é dono de um tipo de lógica, provavelmente é ownership
 - se uma concern extra atravessa vários owners, provavelmente é overlay
 - se a pergunta principal é "o que mais pode agora precisar de revisão?", provavelmente é follow-through
+- se uma regra de follow-through depende de mudanças fora do escopo da própria instruction, mova-a para a instruction que realmente observa a mudança de origem, seja ela outro owner, um owner mais amplo, um overlay ou o baseline
+- se muitos casos downstream reutilizariam o mesmo workflow, prefira uma skill orientada a outcome em vez de uma skill por trigger
 - se o conteúdo descreve principalmente um fluxo reutilizável de trabalho, provavelmente é skill
+- se o conteúdo prescreve principalmente comandos, arquivos ou ordem exata de etapas, provavelmente pertence à automação ou a um runbook
+- se o único objetivo é ajudar leitores a descobrir guidance existente, mantenha isso como uma pequena dica dentro de docs ou instructions já existentes, em vez de introduzir uma camada de hints
 
 Para a distinção conceitual, leia [Ownership vs Overlay](../modelo/ownership-vs-overlay.md).
 
@@ -76,6 +86,9 @@ Trate estes pontos como sinais de que o mapa precisa de redesign:
 - um overlay é nomeado pelos paths cruzados em vez de por uma concern coerente
 - um path de docs é tratado como overlay quando deveria ser seu próprio owner
 - uma nova instruction é proposta apenas porque uma mudança tem consequências downstream
+- uma nova skill está sendo proposta para cada trigger ou owner
+- checklists procedurais exatos estão vivendo em instructions genéricas ou skills genéricas
+- uma nova camada de hints está sendo proposta apenas para conectar triggers e skills
 - mantenedores não conseguem prever quais instructions se aplicam a um arquivo
 
 ## Documentos Relacionados

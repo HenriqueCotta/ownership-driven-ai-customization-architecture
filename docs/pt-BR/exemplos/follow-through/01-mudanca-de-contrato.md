@@ -35,7 +35,7 @@ Uma seção `Follow-Through Triggers` na instruction de contrato pode dizer:
 Fluxo esperado:
 
 1. mudar o contrato,
-2. inspecionar implementações,
-3. inspecionar testes,
-4. inspecionar docs,
-5. atualizar ou justificar explicitamente que não houve mudança downstream.
+2. usar o trigger para inspecionar implementações, testes e docs,
+3. se o trabalho downstream for pequeno, atualizar essas superfícies diretamente,
+4. se a mudança revelar um drift mais amplo de documentação, reutilizar uma skill genérica de sync de docs ou de review,
+5. se o repositório tiver scans de compatibilidade ou comandos de validação exatos, mantenha-os em automação ou runbooks; use skills para o workflow mais amplo de review em volta disso.

@@ -33,3 +33,7 @@ If filenames such as `general.instructions.md` repeat across the tree, set the f
 These templates do not prescribe an internal writing format.
 
 The architecture standardizes the structural role of the instruction and `Follow-Through Triggers`, not the prose or Markdown shape inside the file.
+
+When you add skills around those templates, keep the skill set small and outcome-based rather than creating one skill per trigger.
+
+If a process needs exact repeatable commands or checks, prefer scripts, CI, or runbooks over stretching generic instructions or skills.

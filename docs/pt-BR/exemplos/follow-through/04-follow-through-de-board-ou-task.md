@@ -34,6 +34,7 @@ Uma seção `Follow-Through Triggers` pode dizer:
 Fluxo esperado:
 
 1. reavaliar o que mudou,
-2. decidir se a task agora está desatualizada,
-3. atualizá-la se o workflow suportar isso,
-4. caso contrário, explicar exatamente o que precisa ser atualizado.
+2. usar o trigger para inspecionar o estado da task ou do board afetado,
+3. se a atualização for direta, fazê-la ali mesmo,
+4. se o repositório usar um workflow mais amplo de planejamento ou review, reutilizar essa skill genérica em vez de criar uma skill específica para este trigger,
+5. se o repositório tiver automações exatas de board, mantenha-as em scripts ou regras da própria plataforma; use skills para o workflow mais amplo de review ou planejamento em volta disso.

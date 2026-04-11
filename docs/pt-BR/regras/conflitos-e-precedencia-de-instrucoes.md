@@ -74,7 +74,11 @@ Quando houver dúvida, use estas regras:
 2. Coloque a especialização local no owner mais estreito que realmente precisar dela.
 3. Coloque guidance de qualidade transversal em overlays.
 4. Coloque regras downstream de revisão e atualização em `Follow-Through Triggers`.
-5. Se duas instructions parecerem estar brigando, corrija o mapa de ownership em vez de esperar que a precedência resolva.
+5. Ancore um trigger de follow-through na instruction que consegue observar a mudança de origem.
+6. Reutilize um pequeno conjunto de skills orientadas a outcome em vez de criar uma skill por trigger.
+7. Mantenha procedimentos exatos e repetíveis em scripts, CI ou runbooks.
+8. Mantenha hints de descobribilidade dentro de docs ou instructions existentes em vez de inventar uma camada de hints.
+9. Se duas instructions parecerem estar brigando, corrija o mapa de ownership em vez de esperar que a precedência resolva.
 
 Em outras palavras:
 
@@ -90,6 +94,9 @@ Trate estes pontos como sinais de que o mapa de instructions precisa de redesign
 - um overlay é nomeado pelos caminhos cruzados em vez de por uma concern coerente
 - um caminho de docs é tratado como overlay quando deveria ser seu próprio owner
 - uma nova instruction está sendo proposta apenas porque uma mudança tem consequências downstream
+- uma nova skill é proposta para cada trigger ou owner
+- passos procedurais exatos estão sendo copiados para instructions ou skills genéricas
+- uma camada separada de hints está sendo proposta apenas para conectar triggers e skills
 
 ## Como Corrigir um Conflito
 
@@ -100,6 +107,10 @@ Quando houver conflito, comece pelo mapa:
 3. Reescreva guidance filha como refinamento, e não como reversão.
 4. Mova concerns realmente transversais para overlays.
 5. Mantenha comportamento downstream de revisão e atualização dentro de `Follow-Through Triggers`, em vez de inventar uma nova camada.
+6. Mova qualquer regra de follow-through mal posicionada para o escopo de instruction que realmente consegue observar a mudança que a dispara.
+7. Consolide variantes de workflow sobrepostas em um pequeno conjunto de skills orientadas a outcome, em vez de uma skill por trigger.
+8. Mova passos procedurais exatos para scripts, CI ou runbooks quando a guidance em linguagem natural ficar frágil.
+9. Mantenha qualquer texto de descobribilidade como uma pequena dica dentro de docs ou instructions já existentes, em vez de criar uma camada de hints.
 
 Se o mapa estiver limpo, a necessidade de resolução dura de conflito normalmente cai bastante.
 

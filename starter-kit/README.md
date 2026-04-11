@@ -9,7 +9,7 @@ It is meant to give you:
 - a clear starting structure
 - a minimal ownership tree
 - a minimal overlay set
-- two example skills
+- two example outcome-based skills
 - one canonical way to represent ownership nodes on disk
 
 ## Included Structure
@@ -79,6 +79,8 @@ Optional shortcut:
 4. Add narrower ownership nodes only when a subtree truly needs different guidance.
 5. Split one node into several instruction files only when that node truly needs several distinct guidance lenses.
 6. Add overlays only when one concern spans multiple owners.
+7. Keep the skill set small and outcome-based instead of creating one skill per follow-through trigger.
+8. Prefer scripts, CI checks, or runbooks when a process needs exact repeatable steps.
 
 ## Important
 
@@ -87,4 +89,7 @@ Optional shortcut:
 - repeated filenames such as `general.instructions.md` are fine; use frontmatter `name` for clearer UI labels
 - `testing-quality.instructions.md` and `observability.instructions.md` are overlays.
 - `Follow-Through Triggers` live inside those files. They are not a separate file type.
+- The trigger condition should be anchored in the instruction that can observe the originating change.
+- Many different follow-through triggers should usually reuse the same few skills, such as docs sync, review, or debugging.
+- Exact procedures belong better in scripts, CI, or runbooks than in generic trigger or skill prose.
 - The internal writing format of each instruction is repository-owned. The example files here show one possible shape, not a required one.

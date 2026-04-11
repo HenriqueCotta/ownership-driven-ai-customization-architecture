@@ -8,8 +8,12 @@ Goal: explain what `Follow-Through Triggers` is, why it exists, and where it sho
 - [What Follow-Through Triggers Is](#what-follow-through-triggers-is)
 - [Why It Exists](#why-it-exists)
 - [Where It Lives](#where-it-lives)
+- [Source-Anchored Triggers](#source-anchored-triggers)
+- [Relationship To Skills And Automation](#relationship-to-skills-and-automation)
+- [How Follow-Through Expands Scope](#how-follow-through-expands-scope)
 - [Typical Triggers](#typical-triggers)
 - [What It Is Not](#what-it-is-not)
+- [Official References](#official-references)
 - [Related Docs](#related-docs)
 
 ## What Follow-Through Triggers Is
@@ -44,6 +48,77 @@ Default placement:
 - overlay
   - only when the downstream rule is truly owned by that cross-cutting concern
 
+## Source-Anchored Triggers
+
+The condition that fires a trigger should come from inside the instruction's own scope.
+
+A follow-through rule may point to paths or surfaces outside the instruction's `applyTo`.
+
+But if the trigger depends on changes that the instruction would not see on its own, the rule is misplaced.
+
+Move it to the instruction scope that can actually observe the originating change.
+
+That may mean moving it upward, sideways, or into a different source-side owner entirely.
+
+For example:
+
+- if a change in `X` should trigger review in `Y`, the trigger belongs with the instruction that sees changes in `X`, not with the instruction for `Y`
+
+Common destinations are:
+
+- the baseline
+  - when the originating change may happen anywhere in the repository
+- another ownership node
+  - when a different source-side owner is the one that actually observes the change
+- a broader ownership node
+  - when a wider source-side owner better understands the blast radius
+- an overlay
+  - only when that cross-cutting concern truly owns the downstream rule across matching paths
+
+## Relationship To Skills And Automation
+
+A trigger says what downstream surfaces may need review.
+
+It does not, by itself, define the workflow for reconciling them.
+
+That distinction matters because many different triggers can reuse the same small set of skills.
+
+For example:
+
+- a contract trigger, a config trigger, and a public-behavior trigger may all reuse the same generic change-review or docs-sync skill
+- if the downstream work is small, no skill is needed; inspect the affected surfaces and update them directly
+- if the downstream work requires an exact repeatable sequence, prefer scripts, CI checks, or runbooks over embedding that procedure in the trigger
+
+Do not treat follow-through as a dispatch table from trigger types to matching skills.
+
+If a team wants discoverability help, keep it as a small hint inside existing docs or instructions rather than introducing a separate hint layer.
+
+## How Follow-Through Expands Scope
+
+Follow-through often begins in one owner and ends up touching several others.
+
+A typical flow looks like this:
+
+1. the agent starts in the source-side owner where the change originated
+2. the matching ownership instructions and overlays shape the first pass
+3. a `Follow-Through Triggers` section points to downstream surfaces that may now be stale
+4. when the agent opens those new surfaces, path-specific instructions for those paths may now become relevant too
+5. if the work turns into a broader review, docs reconciliation, or debugging task, the agent may choose a generic skill just-in-time
+
+This is why follow-through should stay lightweight:
+
+- it expands scope
+- it does not replace the ownership tree
+- it does not need a one-to-one skill for each trigger
+
+GitHub's documented model supports this reading:
+
+- repository-wide and matching path-specific instructions can both apply
+- skills are selected at task time based on the prompt and skill description
+- when a skill is selected, its instructions are injected into the agent's context
+
+In other words, follow-through can reveal newly relevant instructions and skills during the work, but it should not be modeled as a rigid dispatch chain.
+
 ## Typical Triggers
 
 Typical examples:
@@ -61,9 +136,25 @@ Typical examples:
 
 - a second ownership tree
 - a reason to create new instruction files by itself
+- a dispatch table from trigger categories to matching skills
+- a procedural checklist for exact commands or file-by-file updates
+- a separate architectural hint layer
 - a replacement for CI, review, or testing
 
 It is a structured reminder of likely downstream work.
+
+## Official References
+
+- GitHub Docs, Adding repository custom instructions for GitHub Copilot  
+  <https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions>
+- GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
+  <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
+- GitHub Docs, Creating agent skills for GitHub Copilot  
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+- GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
+  <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
+- GitHub Docs, Support for different types of custom instructions  
+  <https://docs.github.com/en/copilot/reference/custom-instructions-support>
 
 ## Related Docs
 

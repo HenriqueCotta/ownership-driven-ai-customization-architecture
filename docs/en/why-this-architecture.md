@@ -129,6 +129,12 @@ This is also grounded in official guidance:
 
 That is why skills appear here as workflow extensions rather than as the foundation of the model.
 
+A healthy skill catalog stays outcome-based rather than trigger-based.
+
+Many different follow-through cases can reuse the same small set of skills, such as change review, docs synchronization, or debugging, with local context still coming from the ownership tree and overlays.
+
+When a procedure needs exact commands or deterministic checks, scripts, CI, or runbooks are usually a better fit than a more specific skill.
+
 ## Expected Gains
 
 ### Lower Prompt Friction
@@ -220,6 +226,7 @@ This architecture does not:
 - replace code review, CI, testing, or security controls
 - prescribe the internal prose format of each instruction
 - eliminate the need for judgment when mapping ownership or overlays
+- create a trigger-to-skill dispatch table or a separate hint layer
 - turn skills into a deterministic orchestration engine
 
 It is a structure for reducing confusion and improving reuse, not a formal execution engine.

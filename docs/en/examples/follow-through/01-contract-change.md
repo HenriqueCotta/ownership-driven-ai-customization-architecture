@@ -35,7 +35,7 @@ A `Follow-Through Triggers` section in the contract instruction may say:
 Expected flow:
 
 1. change the contract,
-2. inspect implementations,
-3. inspect tests,
-4. inspect docs,
-5. update or explicitly justify no downstream change.
+2. use the trigger to inspect implementations, tests, and docs,
+3. if the downstream work is small, update those surfaces directly,
+4. if the change exposed broader documentation drift, reuse a generic docs-sync or review skill,
+5. if the repository has exact compatibility scans or validation commands, keep them in automation or runbooks; use skills for the broader review workflow around them.

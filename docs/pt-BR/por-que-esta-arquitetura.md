@@ -129,6 +129,12 @@ Isso também é apoiado por guidance oficial:
 
 É por isso que skills aparecem aqui como extensões de workflow, e não como fundação do modelo.
 
+Um catálogo saudável de skills fica orientado a outcome, e não a triggers.
+
+Muitos casos diferentes de follow-through podem reutilizar o mesmo pequeno conjunto de skills, como review de mudança, sincronização de docs ou debugging, enquanto o contexto local continua vindo da ownership tree e dos overlays.
+
+Quando um procedimento precisa de comandos exatos ou checks determinísticos, scripts, CI ou runbooks costumam ser um encaixe melhor do que uma skill mais específica.
+
 ## Ganhos Esperados
 
 ### Menor Atrito de Prompt
@@ -220,6 +226,7 @@ Esta arquitetura não:
 - substitui code review, CI, testes ou controles de segurança
 - prescreve o formato interno de escrita de cada instruction
 - elimina a necessidade de julgamento ao mapear ownership ou overlays
+- cria uma tabela de despacho de trigger para skill nem uma camada separada de hints
 - transforma skills em um motor determinístico de orquestração
 
 Ela é uma estrutura para reduzir confusão e melhorar reuso, não um motor formal de execução.

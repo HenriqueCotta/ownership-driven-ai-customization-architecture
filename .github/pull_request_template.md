@@ -7,6 +7,7 @@ Describe what changed and why.
 - [ ] Docs were updated if terminology or structure changed
 - [ ] Starter kit and templates remain aligned
 - [ ] English and Portuguese navigation still works
+- [ ] Versioning impact was reviewed; if needed, the next tag/release update is planned
 - [ ] `python scripts/check_repo.py` passes
 
 ## Notes

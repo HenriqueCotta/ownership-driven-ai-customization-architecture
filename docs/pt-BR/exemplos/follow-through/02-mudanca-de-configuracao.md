@@ -38,7 +38,7 @@ Uma seção `Follow-Through Triggers` pode dizer:
 Fluxo esperado:
 
 1. mudar o comportamento de config,
-2. inspecionar configs de exemplo,
-3. inspecionar testes,
-4. inspecionar docs,
-5. atualizar ou justificar no-op.
+2. usar o trigger para inspecionar configs de exemplo, testes e docs,
+3. se o trabalho downstream for pequeno, atualizar essas superfícies diretamente,
+4. se a mudança revelar um drift mais amplo de docs ou operação, reutilizar uma skill genérica de sync de docs ou de review,
+5. se o repositório tiver comandos exatos de validação ou checks de rollout, mantenha-os em automação ou runbooks; use skills para o workflow mais amplo de review em volta disso.
