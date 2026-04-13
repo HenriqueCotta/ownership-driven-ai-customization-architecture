@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/assets/branding/oda_lockup.svg" alt="ODA lockup" height="200">
+  <img src="./docs/assets/branding/oda_lockup.svg?v=20260413" alt="ODA lockup" height="200">
 </p>
 
 <p align="center">
