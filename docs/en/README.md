@@ -1,4 +1,4 @@
-# Ownership-Driven AI Customization Architecture
+# Ownership-Driven Architecture (ODA)
 
 Audience: maintainers designing a scalable Copilot customization model for one or many repositories.  
 Goal: provide a documentation portal that makes the architecture easy to learn, inspect, and reuse.
@@ -15,7 +15,7 @@ It documents a reusable architecture for organizing:
 
 Formal name:
 
-- `Ownership-Driven AI Customization Architecture`
+- `Ownership-Driven Architecture`
 
 Operational shorthand:
 
@@ -25,11 +25,18 @@ This folder is repository-agnostic.
 
 ## On This Page
 
-- [What This Folder Documents](#what-this-folder-documents)
-- [Documentation Structure](#documentation-structure)
-- [Documentation Map](#documentation-map)
-- [Suggested Reading Paths](#suggested-reading-paths)
-- [Core Design Rules](#core-design-rules)
+- [Ownership-Driven Architecture (ODA)](#ownership-driven-architecture-oda)
+  - [What This Folder Documents](#what-this-folder-documents)
+  - [On This Page](#on-this-page)
+  - [Documentation Structure](#documentation-structure)
+  - [Documentation Map](#documentation-map)
+    - [Explanation](#explanation)
+    - [Model](#model)
+    - [Rules](#rules)
+    - [How-To](#how-to)
+    - [Worked Examples](#worked-examples)
+  - [Suggested Reading Paths](#suggested-reading-paths)
+  - [Core Design Rules](#core-design-rules)
 
 ## Documentation Structure
 

@@ -1,10 +1,10 @@
 ---
-description: "Repository-wide baseline for the public Ownership-Driven AI Customization repository."
+description: "Repository-wide baseline for the public Ownership-Driven Architecture repository."
 ---
 
 # Repository Baseline
 
-- This repository documents and distributes the Ownership-Driven AI Customization Architecture.
+- This repository documents and distributes the Ownership-Driven Architecture.
 - Keep the repository public-facing, repository-agnostic, and easy to adopt.
 - Keep the architecture docs, starter kit, templates, repo automation, and community files coherent.
 - This repository should self-host the published Ownership-Driven pattern inside its own `.github/instructions`.

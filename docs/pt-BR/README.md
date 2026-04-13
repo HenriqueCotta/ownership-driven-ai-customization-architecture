@@ -1,4 +1,4 @@
-# Arquitetura de Personalização de IA Orientada a Ownership
+# Ownership-Driven Architecture (ODA)
 
 Público: mantenedores que estão desenhando um modelo escalável de personalização do Copilot para um ou vários repositórios.  
 Objetivo: fornecer um portal de documentação que deixe a arquitetura fácil de aprender, consultar e reutilizar.
@@ -17,7 +17,7 @@ Ela documenta uma arquitetura reutilizável para organizar:
 
 Nome formal:
 
-- `Arquitetura de Personalização de IA Orientada a Ownership`
+- `Ownership-Driven Architecture`
 
 Atalho operacional:
 

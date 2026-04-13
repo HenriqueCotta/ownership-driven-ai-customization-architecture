@@ -3,7 +3,7 @@ description: "Cross-cutting overlay for <concern>."
 applyTo: "<replace-with-real-paths>"
 ---
 
-<add repository-owned guidance here>
+<add cross-cutting overlay guidance here>
 
 ## Follow-Through Triggers
 

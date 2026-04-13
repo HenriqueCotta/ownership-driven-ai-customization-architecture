@@ -1,4 +1,29 @@
-# Ownership-Driven AI Customization
+<p align="center">
+  <img src="./docs/assets/branding/oda_lockup.svg" alt="ODA lockup" height="88">
+</p>
+
+<p align="center">
+  <a href="./docs/en/README.md">
+    <img alt="Docs EN" src="https://img.shields.io/badge/docs-EN-2563eb?style=for-the-badge">
+  </a>
+  <a href="./docs/pt-BR/README.md">
+    <img alt="Docs PT-BR" src="https://img.shields.io/badge/docs-PT--BR-16a34a?style=for-the-badge">
+  </a>
+  <a href="./starter-kit/README.md">
+    <img alt="Starter Kit" src="https://img.shields.io/badge/starter--kit-ready-f59e0b?style=for-the-badge">
+  </a>
+  <a href="./templates/README.md">
+    <img alt="Templates" src="https://img.shields.io/badge/templates-copyable-7c3aed?style=for-the-badge">
+  </a>
+  <a href="./LICENSE">
+    <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge">
+  </a>
+  <a href="https://github.com/HenriqueCotta/ownership-driven-ai-customization-architecture/releases">
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/HenriqueCotta/ownership-driven-ai-customization-architecture?style=for-the-badge">
+  </a>
+</p>
+
+# Ownership-Driven Architecture (ODA)
 
 A scalable architecture for GitHub Copilot custom instructions, path-specific instructions, skills, and AGENTS.md across large repositories and monorepos.
 
@@ -6,7 +31,7 @@ It helps teams organize `baseline`, `ownership tree`, `cross-cutting overlays`, 
 
 Formal architecture name:
 
-- `Ownership-Driven AI Customization Architecture`
+- `Ownership-Driven Architecture`
 
 Portuguese version:
 
@@ -14,15 +39,17 @@ Portuguese version:
 
 ## On This Page
 
-- [Who This Is For](#who-this-is-for)
-- [Architecture Snapshot](#architecture-snapshot)
-- [Why This Exists](#why-this-exists)
-- [What You Get](#what-you-get)
-- [Quick Start](#quick-start)
-- [Repository Map](#repository-map)
-- [Principles](#principles)
-- [Open Source Intent](#open-source-intent)
-- [License](#license)
+- [Ownership-Driven Architecture (ODA)](#ownership-driven-architecture-oda)
+  - [On This Page](#on-this-page)
+  - [Who This Is For](#who-this-is-for)
+  - [Architecture Snapshot](#architecture-snapshot)
+  - [Why This Exists](#why-this-exists)
+  - [What You Get](#what-you-get)
+  - [Quick Start](#quick-start)
+  - [Repository Map](#repository-map)
+  - [Principles](#principles)
+  - [Open Source Intent](#open-source-intent)
+  - [License](#license)
 
 ## Who This Is For
 

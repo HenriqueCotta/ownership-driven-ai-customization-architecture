@@ -1,6 +1,6 @@
 # Starter Kit
 
-This starter kit is a small, copyable example of the Ownership-Driven AI Customization Architecture.
+This starter kit is a small, copyable example of the Ownership-Driven Architecture.
 
 It is not meant to be a universal default.
 

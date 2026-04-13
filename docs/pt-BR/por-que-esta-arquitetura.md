@@ -22,7 +22,7 @@ Objetivo: explicar o caso de negócio, a justificativa técnica, os ganhos esper
 
 ## Resumo Executivo
 
-`Ownership-Driven AI Customization Architecture` existe para resolver um problema prático:
+`Ownership-Driven Architecture` existe para resolver um problema prático:
 
 - instruções customizadas de repositório normalmente começam pequenas
 - depois colapsam em um único arquivo geral muito grande ou em várias regras sobrepostas

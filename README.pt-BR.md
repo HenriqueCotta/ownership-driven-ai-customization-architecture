@@ -1,4 +1,29 @@
-# Ownership-Driven AI Customization
+<p align="center">
+  <img src="./docs/assets/branding/oda_lockup.svg" alt="Lockup ODA" height="88">
+</p>
+
+<p align="center">
+  <a href="./docs/en/README.md">
+    <img alt="Docs EN" src="https://img.shields.io/badge/docs-EN-2563eb?style=for-the-badge">
+  </a>
+  <a href="./docs/pt-BR/README.md">
+    <img alt="Docs PT-BR" src="https://img.shields.io/badge/docs-PT--BR-16a34a?style=for-the-badge">
+  </a>
+  <a href="./starter-kit/README.md">
+    <img alt="Starter Kit" src="https://img.shields.io/badge/starter--kit-ready-f59e0b?style=for-the-badge">
+  </a>
+  <a href="./templates/README.md">
+    <img alt="Templates" src="https://img.shields.io/badge/templates-copyable-7c3aed?style=for-the-badge">
+  </a>
+  <a href="./LICENSE">
+    <img alt="Licença MIT" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge">
+  </a>
+  <a href="https://github.com/HenriqueCotta/ownership-driven-ai-customization-architecture/releases">
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/HenriqueCotta/ownership-driven-ai-customization-architecture?style=for-the-badge">
+  </a>
+</p>
+
+# Ownership-Driven Architecture (ODA)
 
 Uma arquitetura escalável para GitHub Copilot custom instructions, path-specific instructions, skills e AGENTS.md em repositórios grandes e monorepos.
 
@@ -6,7 +31,7 @@ Ela ajuda times a organizar `baseline`, `ownership tree`, `cross-cutting overlay
 
 Nome formal da arquitetura:
 
-- `Ownership-Driven AI Customization Architecture`
+- `Ownership-Driven Architecture`
 
 Versão em inglês:
 

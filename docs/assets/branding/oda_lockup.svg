@@ -1,0 +1,9 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#3b82f6" stroke-width="2.28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 16h12M20 16l9-9M20 16l9 9" />
+    <circle cx="8" cy="16" r="2.5" fill="#3b82f6" stroke="none" />
+  </g>
+  <text x="36" y="19.4" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#3b82f6" dominant-baseline="middle"
+    alignment-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="900"
+    style="letter-spacing: -1.5px;">ODA</text>
+</svg>

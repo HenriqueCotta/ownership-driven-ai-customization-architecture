@@ -22,7 +22,7 @@ Goal: explain the business case, technical rationale, expected gains, limits, an
 
 ## Executive Summary
 
-`Ownership-Driven AI Customization Architecture` exists to solve a practical problem:
+`Ownership-Driven Architecture` exists to solve a practical problem:
 
 - repository custom instructions often start small
 - then collapse into one large baseline file or a pile of overlapping rules
