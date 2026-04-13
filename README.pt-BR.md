@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/assets/branding/oda_lockup.svg" alt="Lockup ODA" height="88">
+  <img src="./docs/assets/branding/oda_lockup.svg" alt="Lockup ODA" height="200">
 </p>
 
 <p align="center">
@@ -39,15 +39,17 @@ Versão em inglês:
 
 ## Nesta Página
 
-- [Para Quem É](#para-quem-é)
-- [Visão Rápida da Arquitetura](#visão-rápida-da-arquitetura)
-- [Por Que Este Repositório Existe](#por-que-este-repositório-existe)
-- [O Que Você Encontra Aqui](#o-que-você-encontra-aqui)
-- [Começo Rápido](#começo-rápido)
-- [Mapa do Repositório](#mapa-do-repositório)
-- [Princípios](#princípios)
-- [Intenção Open Source](#intenção-open-source)
-- [Licença](#licença)
+- [Ownership-Driven Architecture (ODA)](#ownership-driven-architecture-oda)
+  - [Nesta Página](#nesta-página)
+  - [Para Quem É](#para-quem-é)
+  - [Visão Rápida da Arquitetura](#visão-rápida-da-arquitetura)
+  - [Por Que Este Repositório Existe](#por-que-este-repositório-existe)
+  - [O Que Você Encontra Aqui](#o-que-você-encontra-aqui)
+  - [Começo Rápido](#começo-rápido)
+  - [Mapa do Repositório](#mapa-do-repositório)
+  - [Princípios](#princípios)
+  - [Intenção Open Source](#intenção-open-source)
+  - [Licença](#licença)
 
 ## Para Quem É
 
