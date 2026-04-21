@@ -1,6 +1,6 @@
 # Follow-Through Triggers
 
-Público: mantenedores que precisam modelar guidance downstream de revisão e atualização sem inventar camadas extras.  
+Público: mantenedores que precisam modelar follow-through downstream sem inventar camadas extras.
 Objetivo: explicar o que `Follow-Through Triggers` é, por que existe e onde deve morar.
 
 ## Nesta Página
@@ -8,8 +8,10 @@ Objetivo: explicar o que `Follow-Through Triggers` é, por que existe e onde dev
 - [O Que Follow-Through Triggers É](#o-que-follow-through-triggers-é)
 - [Por Que Existe](#por-que-existe)
 - [Onde Mora](#onde-mora)
+- [Triggers São Opcionais](#triggers-são-opcionais)
 - [Triggers Ancorados na Origem](#triggers-ancorados-na-origem)
 - [Relação com Skills e Automação](#relação-com-skills-e-automação)
+- [Relação com Policy e Tracking](#relação-com-policy-e-tracking)
 - [Como o Follow-Through Expande o Escopo](#como-o-follow-through-expande-o-escopo)
 - [Triggers Típicos](#triggers-típicos)
 - [O Que Não É](#o-que-não-é)
@@ -18,7 +20,7 @@ Objetivo: explicar o que `Follow-Through Triggers` é, por que existe e onde dev
 
 ## O Que Follow-Through Triggers É
 
-`Follow-Through Triggers` descreve o que mais pode agora precisar de revisão depois de uma mudança relevante.
+`Follow-Through Triggers` descreve que outras superfícies downstream podem agora precisar de atenção depois de uma mudança relevante.
 
 É uma seção comportamental dentro de uma instruction.
 
@@ -30,7 +32,7 @@ Muitas mudanças importantes têm consequências secundárias:
 
 - docs podem ter ficado desatualizadas
 - testes podem precisar de atualização
-- configs podem precisar de revisão
+- configs podem precisar de reconciliação
 - runbooks, dashboards ou workflows podem precisar de ajuste
 
 O modelo torna essas consequências explícitas para que elas não dependam só do jeito como a prompt foi escrita ou da memória do time.
@@ -48,6 +50,18 @@ Posicionamento default:
 - overlay
   - apenas quando a regra downstream realmente é owned por aquela concern transversal
 
+## Triggers São Opcionais
+
+Uma instruction não precisa ter uma seção `Follow-Through Triggers` só porque ela existe.
+
+Adicione essa seção apenas quando aquela instruction conseguir dizer algo distinto e útil sobre follow-through downstream a partir do seu próprio escopo.
+
+Se um owner mais amplo já disser bem a regra downstream, não a copie para filhos mais estreitos.
+
+Se vários nós irmãos carregariam quase o mesmo trigger, mudando só a escrita ou pequenos itens de enumeração, mova a parte compartilhada para cima e deixe abaixo apenas deltas realmente locais.
+
+Uma instruction sem trigger é normal quando ela não tem nenhuma consequência downstream única que valha a pena explicitar.
+
 ## Triggers Ancorados na Origem
 
 A condição que dispara o trigger deve nascer de dentro do domínio onde aquela instruction é carregada.
@@ -62,7 +76,7 @@ Isso pode significar mover a regra para cima, para o lado, ou até para outro ow
 
 Por exemplo:
 
-- se uma mudança em `X` deve disparar revisão em `Y`, o trigger pertence à instruction que enxerga mudanças em `X`, e não à instruction de `Y`
+- se uma mudança em `X` deve disparar follow-through em `Y`, o trigger pertence à instruction que enxerga mudanças em `X`, e não à instruction de `Y`
 
 Destinos comuns são:
 
@@ -77,7 +91,7 @@ Destinos comuns são:
 
 ## Relação com Skills e Automação
 
-Um trigger diz quais superfícies downstream podem precisar de revisão.
+Um trigger diz quais superfícies downstream podem precisar de atenção, verificação, reconciliação ou atualização.
 
 Ele não define, por si só, o workflow para reconciliá-las.
 
@@ -85,13 +99,39 @@ Essa distinção importa porque muitos triggers diferentes podem reutilizar o me
 
 Por exemplo:
 
-- um trigger de contrato, um trigger de configuração e um trigger de comportamento público podem reutilizar a mesma skill genérica de review de mudança ou sync de docs
+- um trigger de contrato, um trigger de configuração e um trigger de comportamento público podem reutilizar a mesma skill genérica de impact-review
 - se o trabalho downstream for pequeno, nenhuma skill é necessária; inspecione as superfícies afetadas e atualize-as diretamente
 - se o trabalho downstream exigir uma sequência exata e repetível, prefira scripts, checks de CI ou runbooks em vez de embutir esse procedimento no trigger
 
 Não trate follow-through como uma tabela de despacho de tipos de trigger para skills correspondentes.
 
 Se o time quiser ajuda de descobribilidade, mantenha isso como uma dica curta dentro de docs ou instructions existentes, em vez de introduzir uma camada separada de hints.
+
+## Relação com Policy e Tracking
+
+Triggers são apenas uma parte de um follow-through saudável.
+
+Repositórios ainda precisam de uma forma de responder:
+
+- quando trabalho downstream normalmente deve ser reconciliado agora
+- quando ele deve virar follow-up explícito
+- se um follow-through relevante adiado deve viver só na memória da conversa ou também em uma superfície explícita de carry-forward
+
+É por isso que repositórios saudáveis frequentemente combinam triggers com:
+
+- uma closure policy curta no baseline
+- skills reutilizáveis para fluxo de decisão mais amplo
+- automação para checks exatos e repetíveis
+- quando fizer sentido, task tracking ou outra superfície explícita de carry-forward
+
+Nem todo repositório precisa de um mecanismo dedicado de carry-forward.
+Mas, quando um follow-through relevante é adiado intencionalmente, preservá-lo em uma superfície explícita fora da memória da conversa pode melhorar continuidade, recuperabilidade e colaboração de longo prazo.
+Essa superfície ainda pode evoluir com o tempo; o objetivo é preservar continuidade, e não congelar o trabalho.
+
+Esses elementos ainda não formam uma nova camada arquitetural.
+Eles são apenas as outras superfícies do repositório que podem manter o follow-through explícito, governável e recuperável na prática.
+
+Use [Modelo Operacional](./modelo-operacional.md), [Regras de Decisão](../regras/regras-de-decisao.md) e [Playbook de Replicação](../playbook-de-replicacao.md) em conjunto quando precisar desenhar essa composição em um repositório real.
 
 ## Como o Follow-Through Expande o Escopo
 
@@ -136,6 +176,7 @@ Exemplos típicos:
 
 - uma segunda ownership tree
 - um motivo para criar novos arquivos de instruction por si só
+- uma seção que toda instruction precisa conter
 - uma tabela de despacho de categorias de trigger para skills correspondentes
 - um checklist procedural de comandos exatos ou atualizações arquivo por arquivo
 - uma camada arquitetural separada de hints
@@ -161,4 +202,5 @@ Exemplos típicos:
 - [Modelo Operacional](./modelo-operacional.md)
 - [Ownership vs Overlay](./ownership-vs-overlay.md)
 - [Regras de Decisão](../regras/regras-de-decisao.md)
+- [Playbook de Replicação](../playbook-de-replicacao.md)
 - [Exemplos](../exemplos/README.md)

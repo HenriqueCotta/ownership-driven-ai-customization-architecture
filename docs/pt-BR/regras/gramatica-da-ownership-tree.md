@@ -5,14 +5,17 @@ Objetivo: definir a gramática canônica da ownership tree para que o mapa seja 
 
 ## Nesta Página
 
-- [Regra Canônica](#regra-canônica)
-- [Gramática Canônica](#gramática-canônica)
-- [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
-- [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
-- [Guidance de Nomes](#guidance-de-nomes)
-- [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
-- [Relação com Follow-Through](#relação-com-follow-through)
-- [Material Relacionado](#material-relacionado)
+- [Gramática da Ownership Tree](#gramática-da-ownership-tree)
+  - [Nesta Página](#nesta-página)
+  - [Regra Canônica](#regra-canônica)
+  - [Gramática Canônica](#gramática-canônica)
+  - [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
+  - [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
+  - [Guidance de Nomes](#guidance-de-nomes)
+  - [Quando Adicionar Um Nó Mais Estreito](#quando-adicionar-um-nó-mais-estreito)
+  - [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
+  - [Relação com Follow-Through](#relação-com-follow-through)
+  - [Material Relacionado](#material-relacionado)
 
 ## Regra Canônica
 
@@ -102,6 +105,25 @@ Bons exemplos:
 
 Como nomes como `general.instructions.md` podem se repetir pela árvore, prefira definir um `name` claro na frontmatter para melhorar os rótulos nas ferramentas e UIs.
 
+## Quando Adicionar Um Nó Mais Estreito
+
+Cresça a tree de forma incremental.
+
+Não adicione instructions especializadas sem necessidade.
+
+Adicione um nó mais estreito quando:
+
+- o owner mais amplo deixa de oferecer uma guidance honesta o bastante para aquele subtree
+- o subtree tem comportamento local, restrições ou terminologia estáveis que merecem guidance própria
+- o nó mais estreito reduz ambiguidade em vez de apenas aumentar detalhe
+
+Não adicione um nó mais estreito apenas porque:
+
+- existe mais uma pasta naquele ponto do repositório
+- talvez você precise de uma regra ali algum dia
+- você quer que todo path tenha sua própria instruction
+- você está tentando codificar enumeração de follow-through localmente em vez de reutilizar uma regra mais ampla
+
 ## Quando Dividir Um Nó em Vários Arquivos de Instruction
 
 Divida apenas quando o mesmo boundary owned realmente precisar de lentes de guidance diferentes.
@@ -121,6 +143,10 @@ Maus motivos para dividir:
 ## Relação com Follow-Through
 
 `Follow-Through Triggers` continua morando dentro do arquivo de instruction mais relevante.
+
+Ele também é opcional.
+
+Se um nó não tiver nenhuma regra downstream distinta que valha a pena dizer, omita a seção de trigger em vez de copiar prosa genérica de follow-through para baixo.
 
 Esta convenção muda como a tree é organizada no disco.
 

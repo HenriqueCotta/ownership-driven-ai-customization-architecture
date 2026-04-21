@@ -34,4 +34,4 @@ Isto é hierarquia por ownership, e não uma preocupação transversal.
 
 ## Follow-Through
 
-Nenhuma revisão downstream é necessária, a menos que a mudança afete comportamento, contratos, config ou documentação.
+Nenhum follow-through downstream é necessário, a menos que a mudança afete comportamento, contratos, config ou documentação.

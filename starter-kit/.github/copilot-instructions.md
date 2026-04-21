@@ -8,6 +8,7 @@ description: "Starter-kit baseline for an Ownership-Driven Copilot setup."
 - Use ownership nodes for path-owned logic and overlays for truly cross-cutting concerns.
 - Keep downstream review/update behavior inside `Follow-Through Triggers`.
 - Put a follow-through rule here only when the triggering change may originate anywhere in the repository.
+- State the repository's closure policy here in one short rule when follow-through should usually be reconciled now versus carried forward explicitly.
 - Use skills only for reusable workflows that would bloat always-on instructions.
 - Keep skills outcome-based and reusable rather than creating one skill per trigger.
 - Prefer scripts, CI checks, or runbooks for exact repeatable procedures.

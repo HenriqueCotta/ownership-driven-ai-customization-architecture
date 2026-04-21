@@ -5,6 +5,8 @@ applyTo: "<replace-with-real-paths>"
 
 <add cross-cutting overlay guidance here>
 
+<delete the section below if this overlay has no distinct downstream rule, or if a broader shared rule already covers it>
+
 ## Follow-Through Triggers
 
 - <optional downstream consequences triggered by changes in this overlay's own scope; point to likely stale surfaces, not a step-by-step workflow>

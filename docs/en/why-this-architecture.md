@@ -33,7 +33,7 @@ This architecture answers that problem with a small set of stable structural dec
 - keep repository-wide guidance short
 - route most behavior through stable ownership paths
 - add overlays only for concerns that truly span multiple owners
-- keep downstream review and update behavior explicit through `Follow-Through Triggers`
+- keep downstream follow-through behavior explicit through `Follow-Through Triggers`
 - use skills only for deeper workflows that should not stay always-on
 
 ## Why The Model Makes Sense
@@ -131,7 +131,7 @@ That is why skills appear here as workflow extensions rather than as the foundat
 
 A healthy skill catalog stays outcome-based rather than trigger-based.
 
-Many different follow-through cases can reuse the same small set of skills, such as change review, docs synchronization, or debugging, with local context still coming from the ownership tree and overlays.
+Many different follow-through cases can reuse the same small set of skills, such as `impact-review`, docs reconciliation, or debugging, with local context still coming from the ownership tree and overlays.
 
 When a procedure needs exact commands or deterministic checks, scripts, CI, or runbooks are usually a better fit than a more specific skill.
 
@@ -159,7 +159,7 @@ The model is reusable because it depends on a small number of structural ideas, 
 
 - docs that may now be stale
 - tests that may need updates
-- configs that may need review
+- configs that may need reconciliation
 - workflow artifacts that may need adjustment
 
 ### Better Cost Discipline
@@ -177,7 +177,7 @@ The model scales because each part has a narrow job:
 - `cross-cutting overlays`
   - one extra lens across several owners
 - `Follow-Through Triggers`
-  - downstream review and update consequences
+  - downstream follow-through consequences
 - `skills`
   - reusable workflows that should not always be loaded
 
@@ -226,6 +226,7 @@ This architecture does not:
 - replace code review, CI, testing, or security controls
 - prescribe the internal prose format of each instruction
 - eliminate the need for judgment when mapping ownership or overlays
+- prescribe one universal closure policy for every repository
 - create a trigger-to-skill dispatch table or a separate hint layer
 - turn skills into a deterministic orchestration engine
 
@@ -260,7 +261,7 @@ This documentation set is organized so each document has one primary job:
 - `Ownership vs Overlay`
   - the main conceptual distinction in the model
 - `Follow-Through Triggers`
-  - downstream review and update behavior
+  - downstream follow-through behavior, including how repositories combine policy, triggers, skills, automation, and tracking without inventing a new layer
 - `Decision Rules`
   - guidance classification and follow-through placement
 - `Ownership Tree Grammar`

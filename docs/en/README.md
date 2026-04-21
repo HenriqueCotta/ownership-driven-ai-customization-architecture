@@ -11,7 +11,7 @@ It documents a reusable architecture for organizing:
 - path-based ownership instructions
 - cross-cutting overlays
 - reusable skills
-- downstream review and update behavior
+- downstream follow-through behavior
 
 Formal name:
 
@@ -34,6 +34,7 @@ This folder is repository-agnostic.
     - [Model](#model)
     - [Rules](#rules)
     - [How-To](#how-to)
+    - [Recommended Skill](#recommended-skill)
     - [Worked Examples](#worked-examples)
   - [Suggested Reading Paths](#suggested-reading-paths)
   - [Core Design Rules](#core-design-rules)
@@ -71,7 +72,7 @@ If a page starts repeating another page, it should usually link instead of resta
 - [Ownership vs Overlay](./model/ownership-vs-overlay.md)
   - the core conceptual distinction in the model
 - [Follow-Through Triggers](./model/follow-through-triggers.md)
-  - what downstream review and update guidance is for
+  - what downstream follow-through guidance is for
 
 ### Rules
 
@@ -86,6 +87,11 @@ If a page starts repeating another page, it should usually link instead of resta
 
 - [Replication Playbook](./replication-playbook.md)
   - how to reproduce the architecture in another repository
+
+### Recommended Skill
+
+- [oda-copilot-customization](../../.github/skills/oda-copilot-customization/SKILL.md)
+  - optional repository-maintenance skill for shaping, reviewing, or auditing Copilot customization itself against upstream ODA and current official GitHub Copilot guidance
 
 ### Worked Examples
 
@@ -109,10 +115,11 @@ If you are designing a new repository:
 1. Read this file.
 2. Read [Why This Architecture](./why-this-architecture.md).
 3. Read [Operating Model](./model/operating-model.md).
-4. Read [Decision Rules](./rules/decision-rules.md).
-5. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
-6. Read [Replication Playbook](./replication-playbook.md).
-7. Read [Examples](./examples/README.md).
+4. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
+5. Read [Decision Rules](./rules/decision-rules.md).
+6. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+7. Read [Replication Playbook](./replication-playbook.md).
+8. Read [Examples](./examples/README.md).
 
 If you are debugging ambiguity or instruction conflicts:
 
@@ -120,13 +127,22 @@ If you are debugging ambiguity or instruction conflicts:
 2. Read [Instruction Conflicts And Precedence](./rules/instruction-conflicts-and-precedence.md).
 3. Read [Ownership vs Overlay](./model/ownership-vs-overlay.md).
 4. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
-5. Read [Examples](./examples/README.md).
+5. Read [Decision Rules](./rules/decision-rules.md).
+6. Read [Examples](./examples/README.md).
+
+If you are shaping or auditing Copilot customization itself:
+
+1. Read this file.
+2. Read [Replication Playbook](./replication-playbook.md).
+3. Read [Decision Rules](./rules/decision-rules.md).
+4. Use the optional [oda-copilot-customization skill](../../.github/skills/oda-copilot-customization/SKILL.md).
 
 ## Core Design Rules
 
 - Start with stable ownership boundaries, not abstract themes.
 - Represent ownership boundaries with a tree that is easy to read before it is easy to optimize.
 - Use overlays only for concerns that truly span multiple owners.
-- Keep downstream review and update logic in `Follow-Through Triggers`, not in extra file types.
+- Keep downstream follow-through logic in `Follow-Through Triggers`, not in extra file types.
+- Compose follow-through from repository policy, source-anchored triggers, reusable skills, automation, and, when needed, an explicit carry-forward surface rather than searching for one universal trigger or one universal skill.
 - Treat narrower instructions as refinements of broader ones, not as arbitrary reversals.
 - Keep overview pages short and move detail into focused model and rules documents.

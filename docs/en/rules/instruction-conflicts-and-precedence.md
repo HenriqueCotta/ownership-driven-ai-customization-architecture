@@ -73,7 +73,7 @@ When in doubt, use these rules:
 1. Put the broad default in the broadest owner that truly owns it.
 2. Put local specialization in the narrowest owner that truly needs it.
 3. Put cross-cutting quality guidance in overlays.
-4. Put downstream review and update rules in `Follow-Through Triggers`.
+4. Put downstream follow-through rules in `Follow-Through Triggers`.
 5. Anchor a follow-through trigger in the instruction that can observe the originating change.
 6. Reuse a small outcome-based skill set rather than creating one skill per trigger.
 7. Keep exact repeatable procedures in scripts, CI, or runbooks.
@@ -106,7 +106,7 @@ When conflict appears, start with the map itself:
 2. Move local specialization downward into the narrowest real owner.
 3. Rewrite child guidance as refinement instead of reversal.
 4. Move truly cross-cutting concerns into overlays.
-5. Keep downstream review and update behavior inside `Follow-Through Triggers` rather than inventing a new layer.
+5. Keep downstream follow-through behavior inside `Follow-Through Triggers` rather than inventing a new layer.
 6. Move any misplaced follow-through rule to the instruction scope that can actually observe its triggering change.
 7. Consolidate overlapping workflow variants into a small set of outcome-based skills instead of one skill per trigger.
 8. Move exact procedural steps into scripts, CI, or runbooks when natural-language guidance becomes brittle.

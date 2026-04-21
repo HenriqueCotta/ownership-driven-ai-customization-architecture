@@ -34,4 +34,4 @@ That is hierarchy by ownership, not a cross-cutting concern.
 
 ## Follow-Through
 
-No downstream review is required unless the change affects behavior, contracts, config, or documentation.
+No downstream follow-through is required unless the change affects behavior, contracts, config, or documentation.
