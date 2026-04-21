@@ -73,7 +73,7 @@ Quando houver dúvida, use estas regras:
 1. Coloque o default amplo no owner mais amplo que realmente for dono dele.
 2. Coloque a especialização local no owner mais estreito que realmente precisar dela.
 3. Coloque guidance de qualidade transversal em overlays.
-4. Coloque regras downstream de revisão e atualização em `Follow-Through Triggers`.
+4. Coloque regras downstream de follow-through em `Follow-Through Triggers`.
 5. Ancore um trigger de follow-through na instruction que consegue observar a mudança de origem.
 6. Reutilize um pequeno conjunto de skills orientadas a outcome em vez de criar uma skill por trigger.
 7. Mantenha procedimentos exatos e repetíveis em scripts, CI ou runbooks.
@@ -106,7 +106,7 @@ Quando houver conflito, comece pelo mapa:
 2. Mova especialização local para o owner estreito real.
 3. Reescreva guidance filha como refinamento, e não como reversão.
 4. Mova concerns realmente transversais para overlays.
-5. Mantenha comportamento downstream de revisão e atualização dentro de `Follow-Through Triggers`, em vez de inventar uma nova camada.
+5. Mantenha comportamento downstream de follow-through dentro de `Follow-Through Triggers`, em vez de inventar uma nova camada.
 6. Mova qualquer regra de follow-through mal posicionada para o escopo de instruction que realmente consegue observar a mudança que a dispara.
 7. Consolide variantes de workflow sobrepostas em um pequeno conjunto de skills orientadas a outcome, em vez de uma skill por trigger.
 8. Mova passos procedurais exatos para scripts, CI ou runbooks quando a guidance em linguagem natural ficar frágil.

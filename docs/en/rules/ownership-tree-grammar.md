@@ -10,6 +10,7 @@ Goal: define the canonical grammar of the ownership tree so the map is easy to t
 - [What A Node Folder Can Contain](#what-a-node-folder-can-contain)
 - [Optional Shortcut For A Simple File Node](#optional-shortcut-for-a-simple-file-node)
 - [Naming Guidance](#naming-guidance)
+- [When To Add A Narrower Node](#when-to-add-a-narrower-node)
 - [When To Split A Node Into Multiple Instruction Files](#when-to-split-a-node-into-multiple-instruction-files)
 - [Relationship To Follow-Through](#relationship-to-follow-through)
 - [Related Material](#related-material)
@@ -102,6 +103,25 @@ Good examples:
 
 Because names such as `general.instructions.md` may repeat across the tree, prefer setting a clear frontmatter `name` for better labels in tools and UIs.
 
+## When To Add A Narrower Node
+
+Grow the tree incrementally.
+
+Do not mirror the whole repository structure up front.
+
+Add a narrower node when:
+
+- the broader owner no longer gives guidance that is honest enough for that subtree
+- the subtree has stable local behavior, constraints, or terminology that deserve their own guidance
+- the narrower node reduces ambiguity rather than merely increasing detail
+
+Do not add a narrower node only because:
+
+- the repository has another folder there
+- you might need a rule there someday
+- you want every path to have its own instruction
+- you are trying to encode follow-through enumeration locally instead of reusing a broader rule
+
 ## When To Split A Node Into Multiple Instruction Files
 
 Split only when the same owned boundary genuinely needs different guidance lenses.
@@ -121,6 +141,10 @@ Bad reasons to split:
 ## Relationship To Follow-Through
 
 `Follow-Through Triggers` still lives inside the most relevant instruction file.
+
+It is also optional.
+
+If a node has no distinct downstream rule worth stating, omit the trigger section instead of copying generic follow-through prose downward.
 
 This convention changes how the tree is laid out on disk.
 

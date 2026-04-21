@@ -33,7 +33,7 @@ Esta arquitetura responde a isso com um conjunto pequeno de decisões estruturai
 - manter a guidance geral do repositório curta
 - rotear a maior parte do comportamento por caminhos de ownership estáveis
 - adicionar overlays apenas para concerns que realmente atravessam vários owners
-- manter o comportamento downstream de revisão e atualização explícito com `Follow-Through Triggers`
+- manter o comportamento downstream de follow-through explícito com `Follow-Through Triggers`
 - usar skills apenas para workflows mais profundos que não devem ficar sempre ativos
 
 ## Por Que o Modelo Faz Sentido
@@ -131,7 +131,7 @@ Isso também é apoiado por guidance oficial:
 
 Um catálogo saudável de skills fica orientado a outcome, e não a triggers.
 
-Muitos casos diferentes de follow-through podem reutilizar o mesmo pequeno conjunto de skills, como review de mudança, sincronização de docs ou debugging, enquanto o contexto local continua vindo da ownership tree e dos overlays.
+Muitos casos diferentes de follow-through podem reutilizar o mesmo pequeno conjunto de skills, como `impact-review`, reconciliação de docs ou debugging, enquanto o contexto local continua vindo da ownership tree e dos overlays.
 
 Quando um procedimento precisa de comandos exatos ou checks determinísticos, scripts, CI ou runbooks costumam ser um encaixe melhor do que uma skill mais específica.
 
@@ -159,7 +159,7 @@ O modelo é reutilizável porque depende de poucas ideias estruturais, e não da
 
 - docs que podem ter ficado desatualizadas
 - testes que podem precisar de atualização
-- configs que podem precisar de revisão
+- configs que podem precisar de reconciliação
 - artefatos de workflow que podem precisar de ajuste
 
 ### Melhor Disciplina de Custo
@@ -177,7 +177,7 @@ O modelo escala porque cada parte tem um trabalho estreito:
 - `cross-cutting overlays`
   - uma lente extra atravessando vários owners
 - `Follow-Through Triggers`
-  - consequências downstream de revisão e atualização
+  - consequências downstream de follow-through
 - `skills`
   - workflows reutilizáveis que não devem ficar sempre carregados
 
@@ -226,6 +226,7 @@ Esta arquitetura não:
 - substitui code review, CI, testes ou controles de segurança
 - prescreve o formato interno de escrita de cada instruction
 - elimina a necessidade de julgamento ao mapear ownership ou overlays
+- prescreve uma única closure policy universal para todos os repositórios
 - cria uma tabela de despacho de trigger para skill nem uma camada separada de hints
 - transforma skills em um motor determinístico de orquestração
 
@@ -260,7 +261,7 @@ Este conjunto de docs foi organizado para que cada documento tenha um trabalho p
 - `Ownership vs Overlay`
   - a principal distinção conceitual do modelo
 - `Follow-Through Triggers`
-  - comportamento downstream de revisão e atualização
+  - comportamento downstream de follow-through, incluindo como repositórios combinam policy, triggers, skills, automação e tracking sem inventar uma nova camada
 - `Regras de Decisão`
   - classificação da guidance e posicionamento de follow-through
 - `Gramática da Ownership Tree`

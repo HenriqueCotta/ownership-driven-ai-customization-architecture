@@ -44,7 +44,7 @@ Then, when Copilot opens test files, the testing overlay helps it apply testing-
 
 That means the flow is usually:
 
-1. a source-side owner says behavior changed, so tests may need review,
+1. a source-side owner says behavior changed, so tests may need updates or other follow-through,
 2. Copilot opens the relevant test files,
 3. the testing overlay helps shape how those tests should be written or revised.
 

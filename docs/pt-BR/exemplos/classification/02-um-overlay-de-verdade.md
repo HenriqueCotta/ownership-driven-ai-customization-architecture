@@ -44,7 +44,7 @@ Depois, quando o Copilot abrir arquivos de teste, o overlay de testing ajuda a a
 
 Isto significa que o fluxo normalmente é:
 
-1. um owner do lado de `src` diz que o comportamento mudou, então os testes podem precisar de revisão,
+1. um owner do lado de `src` diz que o comportamento mudou, então os testes podem precisar de atualização ou outro follow-through,
 2. o Copilot abre os arquivos de teste relevantes,
 3. o overlay de testing ajuda a moldar como esses testes devem ser escritos ou revisados.
 

@@ -19,7 +19,7 @@ Leia os exemplos por tema:
 - `classification/`
   - como distinguir ownership de overlays
 - `follow-through/`
-  - como a lógica downstream de revisão e atualização deve funcionar
+  - como a lógica downstream de follow-through deve funcionar
 - `ownership-tree/`
   - como a ownership tree deve aparecer no disco
 - `repositorios/`
@@ -32,8 +32,9 @@ Se esta for sua primeira leitura, siga esta ordem:
 3. [Owner Mais Estreito vs Overlay](./classification/03-owner-mais-estreito-vs-overlay.md)
 4. [Mudança de Contrato](./follow-through/01-mudanca-de-contrato.md)
 5. [Mudança de Configuração](./follow-through/02-mudanca-de-configuracao.md)
-6. [Um Nó de Arquivo com Dois Arquivos de Instruction](./ownership-tree/01-um-no-de-arquivo-com-dois-arquivos-de-instruction.md)
-7. [Filhos Mistos sob um Mesmo Pai](./ownership-tree/02-filhos-mistos-sob-um-mesmo-pai.md)
+6. [Um Trigger Compartilhado Supera Cópias Locais Repetidas](./follow-through/06-um-trigger-compartilhado-supera-copias-locais-repetidas.md)
+7. [Um Nó de Arquivo com Dois Arquivos de Instruction](./ownership-tree/01-um-no-de-arquivo-com-dois-arquivos-de-instruction.md)
+8. [Cresça a Tree Só Quando o Owner Amplo Deixar de Ser Suficiente](./ownership-tree/04-cresca-a-tree-so-quando-o-owner-amplo-deixar-de-ser-suficiente.md)
 
 ## Classificação
 
@@ -48,12 +49,14 @@ Se esta for sua primeira leitura, siga esta ordem:
 - [Documentação como Seu Próprio Owner](./follow-through/03-documentacao-como-seu-proprio-owner.md)
 - [Follow-Through de Board ou Task](./follow-through/04-follow-through-de-board-ou-task.md)
 - [Nenhum Follow-Through Necessário](./follow-through/05-nenhum-follow-through-necessario.md)
+- [Um Trigger Compartilhado Supera Cópias Locais Repetidas](./follow-through/06-um-trigger-compartilhado-supera-copias-locais-repetidas.md)
 
 ## Ownership Tree
 
 - [Um Nó de Arquivo com Dois Arquivos de Instruction](./ownership-tree/01-um-no-de-arquivo-com-dois-arquivos-de-instruction.md)
 - [Filhos Mistos sob um Mesmo Pai](./ownership-tree/02-filhos-mistos-sob-um-mesmo-pai.md)
 - [Por Que uma Gramática de Pastas é Mais Fácil de Ensinar](./ownership-tree/03-por-que-uma-gramatica-de-pastas-e-mais-facil-de-ensinar.md)
+- [Cresça a Tree Só Quando o Owner Amplo Deixar de Ser Suficiente](./ownership-tree/04-cresca-a-tree-so-quando-o-owner-amplo-deixar-de-ser-suficiente.md)
 
 ## Arquétipos de Repositório
 
@@ -70,7 +73,9 @@ Depois de uma mudança relevante, pergunte:
 2. Quais nós mais amplos ou mais estreitos da ownership tree também se aplicam?
 3. Há aqui uma preocupação transversal real, ou estou rotulando ownership como overlay por engano?
 4. Uma seção existente de `Follow-Through Triggers` já descreve o que mais pode ter ficado desatualizado?
-5. Se não, essa guidance deveria ser adicionada a uma instruction existente em vez de criar um novo arquivo?
-6. O trabalho downstream é pequeno o bastante para ser feito diretamente, ou ele justifica uma skill existente orientada a outcome?
-7. Algum check exato e repetível ficaria mais claro como automação ou runbook?
-8. Estou inventando uma nova camada de hints ou uma skill por trigger quando o mapa existente já é suficiente?
+5. Se não, essa guidance deveria ser adicionada a uma instruction mais ampla já existente em vez de ser copiada em vários lugares?
+6. Esta instruction realmente precisa de um trigger, ou estou adicionando um por reflexo?
+7. O trabalho downstream é pequeno o bastante para ser feito diretamente, ou ele justifica uma skill existente orientada a outcome?
+8. Algum check exato e repetível ficaria mais claro como automação ou runbook?
+9. Estou inventando uma nova camada de hints ou uma skill por trigger quando o mapa existente já é suficiente?
+10. Estou aprofundando a tree antes de o owner mais amplo realmente provar que não basta?

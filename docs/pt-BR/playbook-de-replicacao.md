@@ -32,15 +32,18 @@ Isso é mais fácil de ensinar e mais fácil de reter do que começar apenas pel
 ## Ordem Recomendada de Montagem
 
 1. Defina o baseline curto do repositório.
-2. Identifique os maiores boundaries estáveis de ownership.
-3. Adicione apenas as instructions da ownership tree que correspondem a esses boundaries.
-4. Adicione cross-cutting overlays reais.
-5. Adicione um pequeno conjunto de skills reutilizáveis.
-6. Adicione checks que previnam drift, camadas mortas e estruturas legadas.
+2. Declare a closure policy do repositório em uma regra curta no baseline.
+3. Identifique os maiores boundaries estáveis de ownership.
+4. Adicione apenas as instructions da ownership tree que correspondem a esses boundaries.
+5. Adicione cross-cutting overlays reais.
+6. Adicione um pequeno conjunto de skills reutilizáveis.
+7. Adicione checks que previnam drift, camadas mortas e estruturas legadas.
 
 Use [Regras de Decisão](./regras/regras-de-decisao.md) para classificar a guidance antes de escrevê-la.
 
 Use [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md) para decidir como o mapa de ownership deve parecer no disco.
+
+Use [Modelo Operacional](./modelo/modelo-operacional.md), [Follow-Through Triggers](./modelo/follow-through-triggers.md) e [Regras de Decisão](./regras/regras-de-decisao.md) em conjunto para desenhar como policy, triggers, skills, automação e qualquer superfície explícita opcional de carry-forward devem trabalhar juntos no repositório de destino.
 
 ## Organize Overlays por Família de Concern
 
@@ -72,21 +75,97 @@ Um primeiro passo saudável costuma ser:
 
 Isso mantém o mapa ensinável enquanto o time ainda está aprendendo como os boundaries se comportam.
 
+## Comece Amplo e Cresça Só Quando Houver Necessidade
+
+O ODA foi feito para poder ser adotado em estágios.
+
+Não tente terminar o repositório inteiro em um único pass.
+
+É saudável parar em um owner mais amplo enquanto ele ainda oferece guidance honesta e útil.
+
+Aprofunde apenas quando:
+
+- um subtree realmente precisa de guidance local diferente
+- um nó mais estreito remove ambiguidade que o nó amplo não consegue remover
+- o detalhe extra produz ganho operacional real, em vez de apenas simetria
+
+Tentar alcançar cada leaf cedo demais costuma criar um mapa grande com pouco valor local.
+
 ## Mantenha o Conjunto de Skills Pequeno e Orientado a Outcome
 
 Comece com poucas skills nomeadas pelo outcome do workflow, e não pela mudança que as disparou ou pelo path.
 
 Bons exemplos:
 
+- `impact-review`
 - `review-change`
-- `sync-docs`
 - `debug-behavior`
 
-Isso normalmente escala melhor do que criar variantes como `review-contract-change`, `review-config-change` ou `review-api-drift`.
+Isso normalmente escala melhor do que criar variantes como `review-contract-change`, `review-config-change`, `review-api-drift` ou uma skill de docs por trigger.
 
 Triggers diferentes de follow-through normalmente devem reutilizar o mesmo pequeno conjunto de skills, enquanto o contexto local continua vindo da ownership tree e dos overlays.
 
 Adicione uma skill mais específica apenas quando o workflow em si mudar materialmente em evidências, etapas ou saída esperada.
+
+## Não Escreva Triggers em Todo Lugar
+
+Nem toda instruction precisa de uma seção `Follow-Through Triggers`.
+
+Se um nó não tiver nenhuma regra downstream distinta que valha a pena dizer, omita a seção por completo.
+
+Se vários nós irmãos ou próximos repetirem quase o mesmo trigger, mova a parte compartilhada para o owner mais amplo ou para o baseline e deixe abaixo apenas deltas realmente locais.
+
+Enumeração local de triggers é uma fonte comum de duplicação, omissão e drift.
+
+Prefira uma regra compartilhada honesta a várias cópias levemente diferentes.
+
+## Skill Recomendada de Manutenção da Customização do Copilot
+
+Se um repositório mantém ativamente um mapa não trivial de customização do Copilot, considere também carregar uma skill de manutenção do próprio sistema de customização:
+
+- [oda-copilot-customization](../../.github/skills/oda-copilot-customization/SKILL.md)
+
+Ela é opcional, mas recomendada quando mantenedores querem um workflow reutilizável para:
+
+- desenhar ou auditar o próprio mapa de customização
+- checar o repositório contra o ODA upstream, e não contra memória local ou cópias stale
+- consultar a guidance oficial atual do GitHub Copilot antes de decidir mudanças estruturais
+- revisar juntos arquivos de governança, bridges de compatibilidade, mirrors e safeguards de higiene
+
+Use-a como uma meta-skill para a saúde da customização.
+Não a transforme em outra camada always-on e não a use como substituto para skills de workflow específicas do repositório, como `impact-review` ou `debug-behavior`.
+
+Se adotantes quiserem usar essa skill em vários repositórios, em vez de deixá-la apenas dentro de um repositório, instale-a em um diretório pessoal de skills suportado ou use o suporte documentado do Copilot CLI para um diretório alternativo de skills.
+
+## Escolha a Closure Policy Deliberadamente
+
+Não deixe o estilo de fechamento do follow-through implícito.
+
+No mínimo, decida se o repositório tende a:
+
+- `integrated`
+  - impacto downstream claro costuma ser reconciliado no pass atual
+- `split`
+  - impacto downstream costuma ser carregado como follow-up explícito
+- `hybrid`
+  - follow-through pequeno e certo é tratado agora, enquanto trabalho mais amplo ou mais arriscado é carregado explicitamente para depois
+
+Mantenha essa policy curta e coloque-a no baseline.
+
+A policy deve definir o envelope aceitável do repositório.
+Ela não deve reescrever o workflow inteiro de follow-through.
+
+## Use Carry-Forward Explícito Só Quando Isso Ajudar
+
+Nem todo repositório precisa de uma superfície dedicada de carry-forward.
+
+A memória da conversa pode bastar quando o follow-through costuma ser integrado e o trabalho é curto.
+
+Mas, se o repositório adia com frequência follow-through relevante, lida com trabalho longo ou de maior cuidado, ou espera que conversas parem e recomecem, considere preservar esse follow-through em uma superfície explícita que o time já usa.
+
+Essa superfície pode ser um item de board, uma issue, um finding de review, uma nota de handoff ou outro mecanismo equivalente.
+
+O objetivo é ter continuidade fora da memória do agente, e não criar mais uma camada obrigatória.
 
 ## Ensine o Modelo de Runtime Explicitamente
 
@@ -99,6 +178,7 @@ Na prática, adotantes devem entender que:
 - follow-through pode expandir o escopo para novas superfícies
 - skills genéricas podem ser escolhidas just-in-time quando o tipo de trabalho muda
 - checks exatos e repetíveis podem viver em scripts, CI ou runbooks em vez de apenas em prosa
+- quando o repositório escolher adiar um follow-through relevante, um item de board, uma issue, um finding de review, uma nota de handoff ou outra superfície explícita de carry-forward pode preservá-lo fora da memória da conversa
 
 Isso ajuda os times a evitarem dois erros comuns:
 
@@ -130,6 +210,8 @@ Revise a estrutura sempre que uma destas coisas acontecer:
 - uma instruction for majoritariamente workflow e deveria ser uma skill
 - uma nova instruction estiver sendo proposta para uma consequência downstream em vez de um boundary de ownership
 - uma nova skill estiver sendo proposta para cada trigger ou owner
+- listas de triggers quase idênticas continuarem aparecendo em nós irmãos ou próximos
+- a tree estiver se expandindo até nós leaf antes de owners mais amplos terem provado que são insuficientes
 - checklists operacionais exatos estiverem escorrendo para instructions ou skills genéricas
 - uma camada separada de hints estiver sendo proposta apenas para conectar triggers e skills
 - mantenedores não conseguirem mais prever quais instructions se aplicam a um arquivo
@@ -155,6 +237,7 @@ O modelo está saudável quando:
 ## Material Relacionado
 
 - [Modelo Operacional](./modelo/modelo-operacional.md)
+- [Follow-Through Triggers](./modelo/follow-through-triggers.md)
 - [Regras de Decisão](./regras/regras-de-decisao.md)
 - [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md)
 - [Exemplos](./exemplos/README.md)

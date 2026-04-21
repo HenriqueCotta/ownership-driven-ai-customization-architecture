@@ -6,6 +6,8 @@ applyTo: "<replace-with-real-paths>"
 
 <add repository-owned guidance here>
 
+<delete the section below if this node has no distinct downstream rule, or if a broader owner already carries the shared follow-through guidance>
+
 ## Follow-Through Triggers
 
 - <optional downstream consequences triggered by changes in this node's own scope; point to likely stale surfaces, not a step-by-step workflow>

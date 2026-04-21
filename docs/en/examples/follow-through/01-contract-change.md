@@ -37,5 +37,5 @@ Expected flow:
 1. change the contract,
 2. use the trigger to inspect implementations, tests, and docs,
 3. if the downstream work is small, update those surfaces directly,
-4. if the change exposed broader documentation drift, reuse a generic docs-sync or review skill,
+4. if the change exposed broader documentation drift or less obvious downstream impact, reuse a generic impact-review skill or a narrower repository-owned docs-reconciliation skill,
 5. if the repository has exact compatibility scans or validation commands, keep them in automation or runbooks; use skills for the broader review workflow around them.

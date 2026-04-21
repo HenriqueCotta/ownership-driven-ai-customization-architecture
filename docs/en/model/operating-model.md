@@ -8,6 +8,7 @@ Goal: define the structural parts of the model clearly, without mixing in disk-l
 - [The Operating Formula](#the-operating-formula)
 - [What The Architecture Standardizes](#what-the-architecture-standardizes)
 - [The Structural Parts](#the-structural-parts)
+- [How Follow-Through Fits](#how-follow-through-fits)
 - [Runtime Behavior In Practice](#runtime-behavior-in-practice)
 - [Relationship Map](#relationship-map)
 - [Official References](#official-references)
@@ -32,11 +33,15 @@ The architecture standardizes:
 - the structural roles in the instruction map
 - the path-first routing backbone
 - the distinction between ownership and cross-cutting concerns
-- where downstream review and update behavior belongs
+- where downstream follow-through behavior belongs
 
 It does not standardize the internal prose format of each instruction.
 
 The headings, writing style, and exact Markdown organization inside an instruction still belong to the adopting repository or team.
+
+It also does not standardize one universal closure policy for every repository.
+
+Repositories may choose different follow-through styles as long as they stay structurally clear about where policy, triggers, skills, automation, and any optional explicit carry-forward surface belong.
 
 ## The Structural Parts
 
@@ -79,11 +84,11 @@ Use them for task-shaped guidance that is deeper than always-on instructions and
 
 Keep the skill set small and outcome-based.
 
-Different follow-through cases should often reuse the same few skills, such as change review, docs synchronization, or debugging, rather than creating one skill per trigger.
+Different follow-through cases should often reuse the same few skills, such as `impact-review`, change review, or debugging, rather than creating one skill per trigger.
 
 ### Follow-Through Triggers
 
-`Follow-Through Triggers` captures what else may now need review after a meaningful change.
+`Follow-Through Triggers` captures what other downstream surfaces may now need attention after a meaningful change.
 
 It is not another file type.
 
@@ -94,6 +99,31 @@ The trigger condition should be anchored in the instruction that can observe the
 A trigger may surface work that later uses a generic skill, but the trigger itself is not a skill-dispatch layer.
 
 Exact repeatable procedures belong better in scripts, CI, or runbooks than in general trigger prose.
+
+## How Follow-Through Fits
+
+Healthy follow-through usually needs more than triggers alone.
+
+In practice, repositories often need to compose:
+
+- repository closure policy
+- source-anchored triggers
+- reusable skills
+- automation and validation
+- when needed, an explicit carry-forward surface for meaningful deferred follow-through
+
+That still is not another structural layer.
+
+It is simply the practical way repositories combine the existing parts above.
+
+The repository-wide policy usually belongs in the baseline.
+Triggers stay source-anchored in baseline, ownership, or overlays.
+Reusable task flow belongs in skills.
+Exact repeatable checks belong in automation.
+When a repository intentionally carries meaningful work forward, it is often healthier to preserve it in an explicit surface rather than in agent memory alone.
+That is optional, and it does not require a dedicated task tracker.
+
+Use [Follow-Through Triggers](./follow-through-triggers.md) for trigger design, [Decision Rules](../rules/decision-rules.md) for placement questions, and [Replication Playbook](../replication-playbook.md) when rolling this out in a real repository.
 
 ## Runtime Behavior In Practice
 
@@ -135,9 +165,10 @@ Think of the model like this:
 - `skills`
   - reusable workflows that should not always be loaded
 - `Follow-Through Triggers`
-  - downstream review and update consequences
+  - downstream follow-through consequences
 
 The architecture stays scalable because each part has a narrow job.
+Repositories then compose closure policy, triggers, skills, automation, and tracking around those parts instead of inventing a new layer.
 
 ## Official References
 
@@ -157,4 +188,5 @@ The architecture stays scalable because each part has a narrow job.
 - [Ownership vs Overlay](./ownership-vs-overlay.md)
 - [Follow-Through Triggers](./follow-through-triggers.md)
 - [Decision Rules](../rules/decision-rules.md)
+- [Replication Playbook](../replication-playbook.md)
 - [Ownership Tree Grammar](../rules/ownership-tree-grammar.md)

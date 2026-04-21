@@ -101,6 +101,8 @@ This project proposes a simpler operating model:
 - a clear rationale for why this model exists and where it fits
 - a starter kit you can copy into a repository
 - templates for baseline, ownership nodes, and overlays
+- a recommended repository-maintenance skill for shaping and auditing Copilot customization itself
+- a helper script for installing repository skills into supported personal skill directories
 - community files for running this as an open source project
 
 ## Quick Start
@@ -111,6 +113,15 @@ This project proposes a simpler operating model:
 4. Adapt the ownership map to your own paths.
 5. Add only the overlays that truly span multiple owners.
 6. Keep workflows in skills, not in always-on instructions.
+7. If you need to shape or audit the customization map itself, reuse the optional [oda-copilot-customization skill](./.github/skills/oda-copilot-customization/SKILL.md).
+
+## Install The Recommended Skill
+
+Current GitHub Copilot docs describe repository skills in `.github/skills` and personal skills in `~/.copilot/skills`, `~/.claude/skills`, or `~/.agents/skills`.
+
+This repository keeps the canonical source in [`.github/skills/oda-copilot-customization`](./.github/skills/oda-copilot-customization/SKILL.md).
+
+If you are using Copilot CLI and want to use this repository itself as a skill source without copying files, GitHub also documents adding an alternative skills location with `/skills add`. In that model, point Copilot at this repository's `.github/skills` directory and reload skills.
 
 ## Repository Map
 

@@ -37,5 +37,5 @@ Fluxo esperado:
 1. mudar o contrato,
 2. usar o trigger para inspecionar implementações, testes e docs,
 3. se o trabalho downstream for pequeno, atualizar essas superfícies diretamente,
-4. se a mudança revelar um drift mais amplo de documentação, reutilizar uma skill genérica de sync de docs ou de review,
+4. se a mudança revelar um drift mais amplo de documentação ou um impacto downstream menos óbvio, reutilizar uma skill genérica de impact-review ou uma skill mais estreita de reconciliação de docs owned pelo repositório,
 5. se o repositório tiver scans de compatibilidade ou comandos de validação exatos, mantenha-os em automação ou runbooks; use skills para o workflow mais amplo de review em volta disso.

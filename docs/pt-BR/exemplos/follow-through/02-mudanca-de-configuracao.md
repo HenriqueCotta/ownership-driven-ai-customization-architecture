@@ -40,5 +40,5 @@ Fluxo esperado:
 1. mudar o comportamento de config,
 2. usar o trigger para inspecionar configs de exemplo, testes e docs,
 3. se o trabalho downstream for pequeno, atualizar essas superfícies diretamente,
-4. se a mudança revelar um drift mais amplo de docs ou operação, reutilizar uma skill genérica de sync de docs ou de review,
+4. se a mudança revelar um drift mais amplo de docs ou operação, reutilizar uma skill genérica de impact-review ou uma skill mais estreita de reconciliação de docs owned pelo repositório,
 5. se o repositório tiver comandos exatos de validação ou checks de rollout, mantenha-os em automação ou runbooks; use skills para o workflow mais amplo de review em volta disso.
