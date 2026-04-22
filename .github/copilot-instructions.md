@@ -4,15 +4,16 @@ description: "Repository-wide baseline for the public Ownership-Driven Architect
 
 # Repository Baseline
 
-- This repository documents and distributes the Ownership-Driven Architecture.
-- Keep the repository public-facing, repository-agnostic, and easy to adopt.
-- Keep the architecture docs, starter kit, templates, repo automation, and community files coherent.
-- This repository should self-host the published Ownership-Driven pattern inside its own `.github/instructions`.
-- When the same maintenance rule keeps coming back in review, prefer encoding it in ownership nodes or overlays instead of leaving it only in conversation.
-- When changing shared terminology or structure, update the mirrored English and Portuguese docs or explain the intentional mismatch.
-- Prefer GitHub-native versioning through tags and releases over repo-local version files.
-- Prefer small, copyable examples over exhaustive or highly repo-specific examples.
+This repository documents and distributes the Ownership-Driven Architecture.
+Keep it public-facing, repository-agnostic, easy to adopt, and self-hosted through its own `.github/instructions`.
+
+Keep the architecture docs, starter kit, templates, repository skills, and support surfaces coherent, but let narrower owners and overlays carry their own detailed rules.
+When the same maintenance rule keeps coming back in review, encode it in the right owner or overlay instead of leaving it only in conversation.
+Prefer GitHub-native versioning through tags and releases over repo-local version files.
+
+Default closure policy: reconcile small and certain downstream maintenance in the current pass.
+Carry broader, riskier, or less certain follow-through forward explicitly.
 
 ## Follow-Through Triggers
 
-- If published architecture guidance, starter-kit behavior, reusable templates, or contributor-facing workflow changes meaningfully, review the PR checklist and whether the next tag or release should be updated.
+If published architecture guidance, starter-kit behavior, reusable templates, repository skills, or contributor-facing workflow changes meaningfully, review the affected teaching surfaces, the PR checklist, and whether the next tag or release should be updated.

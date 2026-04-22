@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a problem in the docs, starter kit, templates, or repo workflow
+description: Report a problem in the docs, starter kit, templates, skills, or repo workflow
 title: "[Bug]: "
 labels:
   - bug
@@ -15,7 +15,7 @@ body:
     id: location
     attributes:
       label: Affected path or page
-      description: Which file, folder, or doc page is affected?
+      description: Which file, folder, doc page, or skill is affected?
   - type: textarea
     id: impact
     attributes:
