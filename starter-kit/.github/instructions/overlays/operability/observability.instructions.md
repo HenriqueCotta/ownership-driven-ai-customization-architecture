@@ -1,5 +1,4 @@
 ---
-description: "Cross-cutting overlay for observability and diagnostics."
 applyTo: "src/**, docs/operations/**, docs/reference/observability/**"
 ---
 

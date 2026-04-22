@@ -1,6 +1,4 @@
 ---
-name: "ownership: src api orders framework"
-description: "Framework guidance for the orders API file."
 applyTo: "src/api/orders.ts"
 ---
 

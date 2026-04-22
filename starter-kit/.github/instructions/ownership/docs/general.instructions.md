@@ -1,6 +1,4 @@
 ---
-name: "ownership: docs general"
-description: "Ownership guidance for repository documentation."
 applyTo: "docs/**"
 ---
 

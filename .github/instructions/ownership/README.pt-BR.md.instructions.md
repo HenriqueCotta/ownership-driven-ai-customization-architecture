@@ -1,6 +1,4 @@
 ---
-name: "ownership: root README (PT-BR)"
-description: "Ownership node for the Portuguese root README."
 applyTo: "README.pt-BR.md"
 ---
 

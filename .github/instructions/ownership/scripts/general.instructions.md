@@ -1,6 +1,4 @@
 ---
-name: "ownership: scripts"
-description: "Ownership node for repository automation and validation scripts."
 applyTo: "scripts/**"
 ---
 

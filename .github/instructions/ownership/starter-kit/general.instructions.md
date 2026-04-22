@@ -1,6 +1,4 @@
 ---
-name: "ownership: starter kit"
-description: "Ownership node for the public starter kit."
 applyTo: "starter-kit/**"
 ---
 

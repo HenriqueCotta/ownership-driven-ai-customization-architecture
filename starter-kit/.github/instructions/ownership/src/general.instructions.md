@@ -1,6 +1,4 @@
 ---
-name: "ownership: src general"
-description: "Broad ownership guidance for source code."
 applyTo: "src/**"
 ---
 

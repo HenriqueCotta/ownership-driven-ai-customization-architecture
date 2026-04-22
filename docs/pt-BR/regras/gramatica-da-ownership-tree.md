@@ -103,7 +103,7 @@ Bons exemplos:
 - `authorization.instructions.md`
 - `diagnostics.instructions.md`
 
-Como nomes como `general.instructions.md` podem se repetir pela árvore, prefira definir um `name` claro na frontmatter para melhorar os rótulos nas ferramentas e UIs.
+Como nomes como `general.instructions.md` podem se repetir pela árvore, trate o caminho do nó mais o nome do arquivo como a identidade canônica. Mantenha a frontmatter de `.instructions.md` mínima e portável; qualquer metadado extra de UI deve ser opcional e específico de cada surface.
 
 ## Quando Adicionar Um Nó Mais Estreito
 

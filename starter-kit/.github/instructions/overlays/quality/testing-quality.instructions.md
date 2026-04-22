@@ -1,5 +1,4 @@
 ---
-description: "Cross-cutting overlay for testing quality."
 applyTo: "src/**, tests/**"
 ---
 

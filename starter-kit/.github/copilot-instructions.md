@@ -1,7 +1,3 @@
----
-description: "Starter-kit baseline for an Ownership-Driven Copilot setup."
----
-
 # Repository Baseline
 
 Prefer explicit behavior and readable boundaries, and keep the repository coherent as those behaviors evolve.

@@ -1,5 +1,4 @@
 ---
-description: "Cross-cutting overlay for REPLACE_WITH_CONCERN."
 applyTo: "REPLACE_WITH_REAL_PATHS"
 ---
 

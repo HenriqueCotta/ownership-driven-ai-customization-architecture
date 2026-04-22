@@ -1,6 +1,4 @@
 ---
-name: "ownership: templates"
-description: "Ownership node for reusable templates distributed by this repository."
 applyTo: "templates/**"
 ---
 

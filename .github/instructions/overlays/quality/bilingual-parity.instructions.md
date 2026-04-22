@@ -1,6 +1,4 @@
 ---
-name: "overlay: bilingual parity"
-description: "Cross-cutting overlay for keeping English and Portuguese documentation structurally mirrored."
 applyTo: "README.md, README.pt-BR.md, docs/en/**, docs/pt-BR/**"
 ---
 

@@ -35,7 +35,7 @@ In the canonical tree convention, the folder identifies the owned path and the f
 
 If you use the shortcut, the file path itself identifies the owned file and the single instruction file carries the whole node.
 
-If filenames such as `general.instructions.md` repeat across the tree, set the frontmatter `name` field explicitly for clearer UI labels.
+If filenames such as `general.instructions.md` repeat across the tree, treat the node path plus filename as the canonical identity. Keep frontmatter minimal and portable, and treat extra UI metadata as optional and surface-specific.
 
 These templates do not prescribe an internal writing format.
 

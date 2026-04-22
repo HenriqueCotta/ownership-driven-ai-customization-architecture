@@ -1,6 +1,4 @@
 ---
-name: "REPLACE_WITH_CLEAR_UI_LABEL"
-description: "Ownership node for REPLACE_WITH_PATH_FAMILY."
 applyTo: "REPLACE_WITH_REAL_PATHS"
 ---
 

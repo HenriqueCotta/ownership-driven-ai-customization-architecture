@@ -1,6 +1,4 @@
 ---
-name: "overlay: repo hygiene"
-description: "Cross-cutting overlay for avoiding stale links, stale validation rules, and architecture drift across docs and support surfaces."
 applyTo: ".github/**, docs/**, starter-kit/**, templates/**, scripts/**, README.md, README.pt-BR.md"
 ---
 

@@ -1,6 +1,4 @@
 ---
-name: "ownership: docs"
-description: "Ownership node for the public architecture documentation under docs/."
 applyTo: "docs/**"
 ---
 

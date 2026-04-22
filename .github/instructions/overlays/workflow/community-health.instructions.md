@@ -1,5 +1,4 @@
 ---
-description: "Cross-cutting overlay for contributor workflow and community health files."
 applyTo: ".github/ISSUE_TEMPLATE/**, .github/pull_request_template.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, SUPPORT.md"
 ---
 

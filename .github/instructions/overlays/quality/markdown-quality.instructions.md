@@ -1,5 +1,4 @@
 ---
-description: "Cross-cutting overlay for Markdown clarity and navigability across docs, templates, and community files."
 applyTo: "**/*.md"
 ---
 

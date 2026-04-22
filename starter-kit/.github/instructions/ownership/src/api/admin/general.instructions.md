@@ -1,6 +1,4 @@
 ---
-name: "ownership: src api admin general"
-description: "Ownership guidance for admin API paths."
 applyTo: "src/api/admin/**"
 ---
 

@@ -1,6 +1,4 @@
 ---
-name: "ownership: repo automation"
-description: "Broad ownership node for this repository's .github surfaces, internal instructions, and contributor workflow wiring."
 applyTo: ".github/**"
 ---
 

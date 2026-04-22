@@ -1,6 +1,4 @@
 ---
-name: "ownership: src api orders contract"
-description: "Contract guidance for the orders API file."
 applyTo: "src/api/orders.ts"
 ---
 

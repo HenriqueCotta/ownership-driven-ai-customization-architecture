@@ -104,7 +104,7 @@ Optional shortcut:
 
 - the folder is the ownership node
 - `general.instructions.md`, `contract.instructions.md`, and `framework.instructions.md` are instruction files that live inside a node
-- repeated filenames such as `general.instructions.md` are fine; use frontmatter `name` for clearer UI labels
+- repeated filenames such as `general.instructions.md` are fine; the node path plus filename is the canonical identity, and extra UI metadata should stay optional and surface-specific
 - `testing-quality.instructions.md` and `observability.instructions.md` are overlays.
 - `Follow-Through Triggers` live inside those files. They are not a separate file type.
 - Not every instruction needs a trigger section.

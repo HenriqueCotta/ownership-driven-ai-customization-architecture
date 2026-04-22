@@ -101,7 +101,7 @@ Good examples:
 - `authorization.instructions.md`
 - `diagnostics.instructions.md`
 
-Because names such as `general.instructions.md` may repeat across the tree, prefer setting a clear frontmatter `name` for better labels in tools and UIs.
+Because names such as `general.instructions.md` may repeat across the tree, rely on the node path plus filename as the canonical identity. Keep `.instructions.md` frontmatter minimal and portable; treat any extra UI metadata as surface-specific and optional.
 
 ## When To Add A Narrower Node
 

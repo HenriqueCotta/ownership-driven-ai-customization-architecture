@@ -1,6 +1,4 @@
 ---
-name: "ownership: root README (EN)"
-description: "Ownership node for the English root README."
 applyTo: "README.md"
 ---
 

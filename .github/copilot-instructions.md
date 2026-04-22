@@ -1,7 +1,3 @@
----
-description: "Repository-wide baseline for the public Ownership-Driven Architecture repository."
----
-
 # Repository Baseline
 
 This repository documents and distributes the Ownership-Driven Architecture.
