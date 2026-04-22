@@ -4,6 +4,9 @@ These templates are meant to reduce blank-page friction.
 
 Use them as starting points, not as fixed doctrine.
 
+Start with the [starter kit](../starter-kit/README.md) by default if you want a copyable minimal implementation.
+Use these templates when you are authoring your own map from scratch and want a scaffold you will adapt before live use.
+
 Included templates:
 
 - [copilot-instructions.md.template](./copilot-instructions.md.template)
@@ -11,6 +14,10 @@ Included templates:
 - [cross-cutting-overlay.instructions.md.template](./cross-cutting-overlay.instructions.md.template)
 
 Adapt the wording to your repository's ownership map and operating model.
+
+These scaffolds are intentionally incomplete.
+
+Replace placeholder markers such as `REPLACE_WITH_REAL_PATHS` and `REPLACE_WITH_REPOSITORY_GUIDANCE` before using a template as a live instruction file.
 
 For ownership instructions, place the template inside the node folder that represents the owned boundary.
 

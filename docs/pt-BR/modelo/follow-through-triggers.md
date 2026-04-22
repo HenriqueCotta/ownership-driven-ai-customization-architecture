@@ -145,6 +145,12 @@ Um fluxo típico se parece com isto:
 4. quando o agente abre essas novas superfícies, instructions path-specific desses paths também podem se tornar relevantes
 5. se o trabalho virar um review mais amplo, uma reconciliação de docs ou um debugging mais profundo, o agente pode escolher uma skill genérica just-in-time
 
+Um trigger pode revelar mais escopo.
+Ele não decide, por si só, que toda superfície revelada precisa ser reconciliada no pass atual; essa decisão pertence à closure policy do repositório.
+
+Essa separação funciona melhor quando guidance local, `Follow-Through Triggers`, closure policy e workflow reutilizável continuam distintos.
+Use [Regras de Decisão](../regras/regras-de-decisao.md) para a heurística canônica de classificação por trás dessa separação.
+
 É por isso que follow-through deve continuar leve:
 
 - ele expande o escopo
@@ -191,7 +197,7 @@ Exemplos típicos:
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
 - GitHub Docs, Support for different types of custom instructions  

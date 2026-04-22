@@ -1,13 +1,13 @@
 ---
-name: "<set-a-clear-ui-label>"
-description: "Ownership node for <path family>."
-applyTo: "<replace-with-real-paths>"
+name: "REPLACE_WITH_CLEAR_UI_LABEL"
+description: "Ownership node for REPLACE_WITH_PATH_FAMILY."
+applyTo: "REPLACE_WITH_REAL_PATHS"
 ---
 
-<add repository-owned guidance here>
+REPLACE_WITH_REPOSITORY_GUIDANCE
 
-<delete the section below if this node has no distinct downstream rule, or if a broader owner already carries the shared follow-through guidance>
+DELETE_THIS_SECTION_IF_THIS_NODE_HAS_NO_DISTINCT_DOWNSTREAM_RULE
 
 ## Follow-Through Triggers
 
-- <optional downstream consequences triggered by changes in this node's own scope; point to likely stale surfaces, not a step-by-step workflow>
+- REPLACE_WITH_OPTIONAL_DOWNSTREAM_TRIGGER

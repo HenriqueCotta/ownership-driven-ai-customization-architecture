@@ -13,7 +13,7 @@
     <img alt="Starter Kit" src="https://img.shields.io/badge/starter--kit-ready-f59e0b?style=for-the-badge">
   </a>
   <a href="./templates/README.md">
-    <img alt="Templates" src="https://img.shields.io/badge/templates-copyable-7c3aed?style=for-the-badge">
+    <img alt="Templates" src="https://img.shields.io/badge/templates-scaffold-7c3aed?style=for-the-badge">
   </a>
   <a href="./LICENSE">
     <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-111827?style=for-the-badge">
@@ -100,7 +100,7 @@ This project proposes a simpler operating model:
 - architecture documentation in English and Brazilian Portuguese
 - a clear rationale for why this model exists and where it fits
 - a starter kit you can copy into a repository
-- templates for baseline, ownership nodes, and overlays
+- adaptable scaffolds for baseline, ownership nodes, and overlays
 - a recommended repository-maintenance skill for shaping and auditing Copilot customization itself
 - a helper script for installing repository skills into supported personal skill directories
 - community files for running this as an open source project
@@ -130,9 +130,11 @@ If you are using Copilot CLI and want to use this repository itself as a skill s
 - [docs/pt-BR](./docs/pt-BR/README.md)
   - documentation in Brazilian Portuguese
 - [starter-kit](./starter-kit/README.md)
-  - a copyable `.github` example
+  - a copyable minimal `.github` implementation
 - [templates](./templates/README.md)
-  - reusable file templates
+  - scaffolds to adapt before using as live instructions
+- [docs/en/examples](./docs/en/examples/README.md)
+  - teaching examples and repository archetypes, not copyable implementations
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
   - contribution rules
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)

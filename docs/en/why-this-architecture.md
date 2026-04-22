@@ -206,7 +206,10 @@ That matters because GitHub explicitly notes that Copilot may not follow custom 
 
 Different Copilot surfaces do not support the same customization features in the same way.
 
-GitHub's support matrix shows that repository-wide instructions, path-specific instructions, skills, organization instructions, and agent-related files do not all have identical support across GitHub.com, VS Code, Visual Studio, JetBrains, and CLI surfaces.
+GitHub's custom-instructions support matrix shows that repository-wide instructions, path-specific instructions, organization instructions, and agent-related instruction files do not all have identical support across GitHub.com, VS Code, Visual Studio, JetBrains, and CLI surfaces.
+
+Skills should be treated separately here.
+They have their own documentation and support boundaries, and they should not be assumed to ride on the same support matrix as repository custom instructions.
 
 That matters for architecture.
 
@@ -216,7 +219,7 @@ That is one reason this architecture puts the main weight on:
 
 - repository-wide instructions
 - path-specific instructions
-- careful use of skills
+- careful use of skills as an optional extension rather than as the same support surface
 
 ## Limits And Non-Goals
 

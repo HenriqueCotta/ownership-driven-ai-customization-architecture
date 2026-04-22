@@ -116,6 +116,10 @@ That still is not another structural layer.
 
 It is simply the practical way repositories combine the existing parts above.
 
+Repositories often keep local guidance, `Follow-Through Triggers`, closure policy, and reusable workflow distinct.
+Treat that as a classification heuristic, not as another structural layer and not as a required heading template.
+Use [Decision Rules](../rules/decision-rules.md) for the canonical version of that heuristic.
+
 The repository-wide policy usually belongs in the baseline.
 Triggers stay source-anchored in baseline, ownership, or overlays.
 Reusable task flow belongs in skills.
@@ -177,7 +181,7 @@ Repositories then compose closure policy, triggers, skills, automation, and trac
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
 - GitHub Docs, Comparing GitHub Copilot CLI customization features  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/copilot-cli/comparing-cli-features>
 - GitHub Docs, Support for different types of custom instructions  

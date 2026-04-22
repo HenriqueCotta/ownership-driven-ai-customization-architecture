@@ -145,6 +145,12 @@ A typical flow looks like this:
 4. when the agent opens those new surfaces, path-specific instructions for those paths may now become relevant too
 5. if the work turns into a broader review, docs reconciliation, or debugging task, the agent may choose a generic skill just-in-time
 
+A trigger can reveal more scope.
+It does not, by itself, decide that every revealed surface must be reconciled in the current pass; that decision belongs to the repository's closure policy.
+
+This split works best when local guidance, `Follow-Through Triggers`, closure policy, and reusable workflow stay distinct.
+Use [Decision Rules](../rules/decision-rules.md) for the canonical classification heuristic behind that split.
+
 This is why follow-through should stay lightweight:
 
 - it expands scope
@@ -191,7 +197,7 @@ It is a structured reminder of likely downstream work.
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
 - GitHub Docs, Support for different types of custom instructions  

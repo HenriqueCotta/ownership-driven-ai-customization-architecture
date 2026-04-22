@@ -43,6 +43,19 @@ starter-kit/
         SKILL.md
 ```
 
+## Support Note
+
+This starter kit assumes a Copilot surface that can load repository-wide instructions, path-specific instructions, and, when relevant, skills.
+
+Not every surface supports that full combination in the same way.
+
+If you test in a surface that only reads `.github/copilot-instructions.md`, you will not see the full ownership-tree behavior from `.github/instructions/**`, and you may not see repository skills at all.
+
+Check GitHub's current support docs before treating a partial result as an ODA problem:
+
+- [Support for different types of custom instructions](https://docs.github.com/en/copilot/reference/custom-instructions-support)
+- [Creating agent skills for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
+
 ## How To Read This Tree
 
 Use this simple grammar:
@@ -82,9 +95,10 @@ Optional shortcut:
 7. Add a `Follow-Through Triggers` section only when that instruction has a real, source-anchored downstream rule worth stating.
 8. If several sibling nodes would repeat almost the same trigger, move the shared part upward instead of copying it downward.
 9. Keep the skill set small and outcome-based instead of creating one skill per follow-through trigger.
-10. Prefer scripts, CI checks, or runbooks when a process needs exact repeatable steps.
-11. If the repository will actively maintain its Copilot customization over time, consider also copying the optional [oda-copilot-customization skill](../.github/skills/oda-copilot-customization/SKILL.md) from this repository.
-12. If you want to reuse that skill across repositories, point Copilot CLI at this repository's `.github/skills` directory with `/skills add`, or copy the skill into the personal skills location your tooling supports.
+10. Keep the included baseline if its short hybrid closure policy fits your repository, or replace that policy with your own short default.
+11. Prefer scripts, CI checks, or runbooks when a process needs exact repeatable steps.
+12. If the repository will actively maintain its Copilot customization over time, consider also copying the optional [oda-copilot-customization skill](../.github/skills/oda-copilot-customization/SKILL.md) from this repository.
+13. If you want to reuse that skill across repositories, point Copilot CLI at this repository's `.github/skills` directory with `/skills add`, or copy the skill into the personal skills location your tooling supports.
 
 ## Important
 
@@ -94,9 +108,10 @@ Optional shortcut:
 - `testing-quality.instructions.md` and `observability.instructions.md` are overlays.
 - `Follow-Through Triggers` live inside those files. They are not a separate file type.
 - Not every instruction needs a trigger section.
+- Some included examples intentionally omit `Follow-Through Triggers`. The admin API owner relies on broader source/API follow-through, and the testing overlay is shown as a pure cross-cutting guidance overlay.
 - The trigger condition should be anchored in the instruction that can observe the originating change.
 - If many local triggers would say almost the same thing, that is usually a sign to move the shared rule upward.
-- A short repository closure policy should usually live in the baseline, not in a separate trigger layer or in a generic skill.
+- The included baseline already demonstrates a short hybrid closure policy. Keep it if it fits, or replace it with your repository's own short default.
 - Many different follow-through triggers should usually reuse the same few skills, such as `impact-review`, docs reconciliation, or debugging.
 - If the repository needs a reusable workflow for shaping or auditing the customization map itself, `oda-copilot-customization` is a good optional repository-maintenance skill.
 - Exact procedures belong better in scripts, CI, or runbooks than in generic trigger or skill prose.

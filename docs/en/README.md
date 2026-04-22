@@ -36,6 +36,7 @@ This folder is repository-agnostic.
     - [How-To](#how-to)
     - [Recommended Skill](#recommended-skill)
     - [Worked Examples](#worked-examples)
+  - [Companion Assets](#companion-assets)
   - [Suggested Reading Paths](#suggested-reading-paths)
   - [Core Design Rules](#core-design-rules)
 
@@ -98,6 +99,18 @@ If a page starts repeating another page, it should usually link instead of resta
 - [Examples](./examples/README.md)
   - short scenario-based examples plus repository archetypes inside the same folder
 
+## Companion Assets
+
+These docs explain the architecture.
+The repository also includes hands-on materials with different jobs:
+
+- [starter-kit](../../starter-kit/README.md)
+  - a copyable minimal implementation
+- [templates](../../templates/README.md)
+  - scaffolds you should adapt before using as live instructions
+- [Examples](./examples/README.md)
+  - teaching scenarios and repository archetypes, not copyable implementations
+
 ## Suggested Reading Paths
 
 If this is your first contact with the architecture:
@@ -120,6 +133,19 @@ If you are designing a new repository:
 6. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
 7. Read [Replication Playbook](./replication-playbook.md).
 8. Read [Examples](./examples/README.md).
+
+If you want to try the architecture quickly in a repository:
+
+1. Read this file.
+2. Read [Replication Playbook](./replication-playbook.md).
+3. Copy the [starter-kit](../../starter-kit/README.md).
+
+If you want to author a map from scratch with scaffolds:
+
+1. Read this file.
+2. Read [Decision Rules](./rules/decision-rules.md).
+3. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+4. Use the [templates](../../templates/README.md).
 
 If you are debugging ambiguity or instruction conflicts:
 

@@ -116,6 +116,10 @@ Isso ainda não é outra camada estrutural.
 
 É apenas a forma prática como repositórios combinam as partes existentes acima.
 
+Repositórios normalmente mantêm distintos guidance local, `Follow-Through Triggers`, closure policy e workflow reutilizável.
+Trate isso como uma heurística de classificação, e não como outra camada estrutural nem como um template obrigatório de headings.
+Use [Regras de Decisão](../regras/regras-de-decisao.md) para a versão canônica dessa heurística.
+
 A policy geral do repositório costuma pertencer ao baseline.
 Triggers continuam ancorados na origem em baseline, ownership ou overlays.
 Fluxo reutilizável de tarefa pertence a skills.
@@ -177,7 +181,7 @@ Os repositórios então compõem policy de fechamento, triggers, skills, automa�
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
 - GitHub Docs, Comparing GitHub Copilot CLI customization features  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/copilot-cli/comparing-cli-features>
 - GitHub Docs, Support for different types of custom instructions  

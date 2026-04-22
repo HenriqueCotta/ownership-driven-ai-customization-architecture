@@ -29,6 +29,7 @@ Atalho operacional:
 - [Estrutura da Documentação](#estrutura-da-documentação)
 - [Mapa da Documentação](#mapa-da-documentação)
 - [Skill Recomendada](#skill-recomendada)
+- [Materiais Complementares](#materiais-complementares)
 - [Trilhas Sugeridas de Leitura](#trilhas-sugeridas-de-leitura)
 - [Regras Centrais de Design](#regras-centrais-de-design)
 
@@ -91,6 +92,18 @@ Se uma página começa a repetir outra, normalmente ela deve linkar em vez de re
 - [Exemplos](./exemplos/README.md)
   - exemplos curtos por cenário e arquétipos de repositório na mesma pasta
 
+## Materiais Complementares
+
+Estes docs explicam a arquitetura.
+O repositório também inclui materiais práticos com papéis diferentes:
+
+- [starter-kit](../../starter-kit/README.md)
+  - uma implementação mínima e copiável
+- [templates](../../templates/README.md)
+  - scaffolds que devem ser adaptados antes de virarem instructions reais
+- [Exemplos](./exemplos/README.md)
+  - cenários de ensino e arquétipos de repositório, e não implementações copiáveis
+
 ## Trilhas Sugeridas de Leitura
 
 Se este for seu primeiro contato com a arquitetura:
@@ -113,6 +126,19 @@ Se você estiver desenhando um novo repositório:
 6. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
 7. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
 8. Leia [Exemplos](./exemplos/README.md).
+
+Se você quiser testar a arquitetura rapidamente em um repositório:
+
+1. Leia este arquivo.
+2. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
+3. Copie o [starter-kit](../../starter-kit/README.md).
+
+Se você quiser desenhar um mapa do zero com scaffolds:
+
+1. Leia este arquivo.
+2. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
+3. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
+4. Use os [templates](../../templates/README.md).
 
 Se você estiver investigando ambiguidade ou conflito entre instructions:
 

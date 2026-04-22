@@ -7,6 +7,7 @@ Goal: provide a compact set of decisions for classifying instructions and recogn
 
 - [First-Contact Questions](#first-contact-questions)
 - [Where Guidance Belongs](#where-guidance-belongs)
+- [Recommended Default Split](#recommended-default-split)
 - [Quick Classification Checks](#quick-classification-checks)
 - [Redesign Signals](#redesign-signals)
 - [Related Docs](#related-docs)
@@ -67,12 +68,26 @@ Put guidance in automation or a runbook when it is:
 - clearer as a script, CI check, or operational checklist than as open-ended prose
 - expected to execute deterministically
 
+## Recommended Default Split
+
+When maintainers are unsure whether a rule is local guidance, follow-through, policy, or workflow, use this recommended default interpretation.
+
+It is not a new architectural layer and not a required file template.
+It is just a practical way to classify guidance inside the existing model.
+
+- if ignoring the rule would make the change wrong inside the current scope, it is usually local guidance in the active baseline, ownership node, or overlay
+- if the current change can still be correct on its own but may leave other surfaces stale, it is usually `Follow-Through Triggers`
+- if the real question is whether that revealed downstream work should usually be reconciled now or carried forward explicitly, it is usually baseline closure policy
+- if the content mainly describes a reusable workflow or an exact procedure for handling that work, it is usually a skill, automation, or runbook
+
 ## Quick Classification Checks
 
 Use these checks when the choice feels unclear:
 
 - if the path is the owner of a kind of logic, it is probably ownership
 - if one extra concern spans several owners, it is probably an overlay
+- if ignoring a rule would make the current change wrong inside its own scope, it is probably local guidance in the active baseline, owner, or overlay rather than follow-through
+- if the current change can still be correct on its own but may leave other surfaces stale, it is probably follow-through
 - if the main question is "what else may now need downstream follow-through?", it is probably follow-through
 - if a node has no distinct downstream consequence worth stating, omit the trigger section instead of filling it with generic repetition
 - if a follow-through rule depends on changes outside the instruction's own scope, move it to the instruction that actually observes the originating change, whether that is another owner, a broader owner, an overlay, or the baseline

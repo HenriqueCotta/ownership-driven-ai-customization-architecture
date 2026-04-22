@@ -5,13 +5,12 @@ Objetivo: fornecer um conjunto compacto de decisões para classificar instructio
 
 ## Nesta Página
 
-- [Regras de Decisão](#regras-de-decisão)
-  - [Nesta Página](#nesta-página)
-  - [Perguntas de Primeiro Contato](#perguntas-de-primeiro-contato)
-  - [Onde Cada Guidance Deve Morar](#onde-cada-guidance-deve-morar)
-  - [Checks Rápidos de Classificação](#checks-rápidos-de-classificação)
-  - [Sinais de Redesign](#sinais-de-redesign)
-  - [Documentos Relacionados](#documentos-relacionados)
+- [Perguntas de Primeiro Contato](#perguntas-de-primeiro-contato)
+- [Onde Cada Guidance Deve Morar](#onde-cada-guidance-deve-morar)
+- [Separação Default Recomendada](#separação-default-recomendada)
+- [Checks Rápidos de Classificação](#checks-rápidos-de-classificação)
+- [Sinais de Redesign](#sinais-de-redesign)
+- [Documentos Relacionados](#documentos-relacionados)
 
 ## Perguntas de Primeiro Contato
 
@@ -69,12 +68,26 @@ Coloque guidance em automação ou em um runbook quando ela for:
 - mais clara como script, check de CI ou checklist operacional do que como prosa aberta
 - esperada para executar de forma determinística
 
+## Separação Default Recomendada
+
+Quando mantenedores não souberem se uma regra é guidance local, follow-through, policy ou workflow, use esta interpretação default recomendada.
+
+Ela não é uma nova camada arquitetural nem um template obrigatório de arquivo.
+É apenas uma forma prática de classificar guidance dentro do modelo existente.
+
+- se ignorar a regra deixaria a mudança errada dentro do escopo atual, ela normalmente é guidance local no baseline, no nó de ownership ou no overlay ativo
+- se a mudança atual ainda pode estar correta por si só, mas pode deixar outras superfícies stale, isso normalmente é `Follow-Through Triggers`
+- se a pergunta real for se esse trabalho downstream revelado normalmente deve ser reconciliado agora ou carregado adiante explicitamente, isso normalmente é closure policy de baseline
+- se o conteúdo descreve principalmente um workflow reutilizável ou um procedimento exato para tratar esse trabalho, isso normalmente pertence a uma skill, automação ou runbook
+
 ## Checks Rápidos de Classificação
 
 Use estes checks quando a escolha parecer nebulosa:
 
 - se o path é dono de um tipo de lógica, provavelmente é ownership
 - se uma concern extra atravessa vários owners, provavelmente é overlay
+- se ignorar uma regra deixaria a mudança errada dentro do próprio escopo, ela provavelmente é guidance local no baseline, owner ou overlay ativo, e não follow-through
+- se a mudança atual ainda pode estar correta por si só, mas pode deixar outras superfícies stale, provavelmente é follow-through
 - se a pergunta principal é "o que mais pode agora precisar de follow-through downstream?", provavelmente é follow-through
 - se um nó não tem nenhuma consequência downstream distinta que valha a pena explicar, omita a seção de trigger em vez de preenchê-la com repetição genérica
 - se uma regra de follow-through depende de mudanças fora do escopo da própria instruction, mova-a para a instruction que realmente observa a mudança de origem, seja ela outro owner, um owner mais amplo, um overlay ou o baseline

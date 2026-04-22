@@ -32,7 +32,7 @@ Isso é mais fácil de ensinar e mais fácil de reter do que começar apenas pel
 ## Ordem Recomendada de Montagem
 
 1. Defina o baseline curto do repositório.
-2. Declare a closure policy do repositório em uma regra curta no baseline.
+2. Declare a closure policy do repositório no baseline, mantendo-a curta e normalmente limitada a uma regra ou a um conjunto bem pequeno de regras.
 3. Identifique os maiores boundaries estáveis de ownership.
 4. Adicione apenas as instructions da ownership tree que correspondem a esses boundaries.
 5. Adicione cross-cutting overlays reais.
@@ -44,6 +44,12 @@ Use [Regras de Decisão](./regras/regras-de-decisao.md) para classificar a guida
 Use [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md) para decidir como o mapa de ownership deve parecer no disco.
 
 Use [Modelo Operacional](./modelo/modelo-operacional.md), [Follow-Through Triggers](./modelo/follow-through-triggers.md) e [Regras de Decisão](./regras/regras-de-decisao.md) em conjunto para desenhar como policy, triggers, skills, automação e qualquer superfície explícita opcional de carry-forward devem trabalhar juntos no repositório de destino.
+
+## Use uma Separação Default de Redação
+
+Quando você começar a escrever instructions, use a separação default definida em [Regras de Decisão](./regras/regras-de-decisao.md), a menos que o repositório tenha um motivo para desviar.
+
+Na prática, isso significa manter guidance local, `Follow-Through Triggers`, closure policy e workflow reutilizável claramente separados, sem transformá-los em uma nova camada nem em um template obrigatório de headings.
 
 ## Organize Overlays por Família de Concern
 
@@ -141,6 +147,9 @@ Se adotantes quiserem usar essa skill em vários repositórios, em vez de deixá
 
 Não deixe o estilo de fechamento do follow-through implícito.
 
+Triggers podem revelar trabalho downstream possível.
+Eles não devem, por si só, decidir se o pass atual precisa ampliar escopo agora ou se esse trabalho vira follow-up explícito; isso pertence à closure policy.
+
 No mínimo, decida se o repositório tende a:
 
 - `integrated`
@@ -150,7 +159,7 @@ No mínimo, decida se o repositório tende a:
 - `hybrid`
   - follow-through pequeno e certo é tratado agora, enquanto trabalho mais amplo ou mais arriscado é carregado explicitamente para depois
 
-Mantenha essa policy curta e coloque-a no baseline.
+Mantenha essa policy curta e coloque-a no baseline, normalmente como uma regra ou um conjunto bem pequeno de regras.
 
 A policy deve definir o envelope aceitável do repositório.
 Ela não deve reescrever o workflow inteiro de follow-through.
@@ -244,4 +253,4 @@ O modelo está saudável quando:
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>

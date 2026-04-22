@@ -32,7 +32,7 @@ This is easier to teach and easier to retain than starting with taxonomy alone.
 ## Recommended Build Order
 
 1. Define the short repository-wide baseline.
-2. State the repository's closure policy in one short baseline rule.
+2. State the repository's closure policy in the baseline, keeping it short and usually limited to one rule or a very small set of rules.
 3. Identify the largest stable ownership boundaries.
 4. Add only the ownership-tree instructions that match those boundaries.
 5. Add true cross-cutting overlays.
@@ -44,6 +44,12 @@ Use [Decision Rules](./rules/decision-rules.md) to classify guidance before you 
 Use [Ownership Tree Grammar](./rules/ownership-tree-grammar.md) to decide how the ownership map should look on disk.
 
 Use [Operating Model](./model/operating-model.md), [Follow-Through Triggers](./model/follow-through-triggers.md), and [Decision Rules](./rules/decision-rules.md) together to design how policy, triggers, skills, automation, and any optional explicit carry-forward surface should work together in the target repository.
+
+## Use A Default Authoring Split
+
+When you start writing instructions, use the default split from [Decision Rules](./rules/decision-rules.md) unless the repository has a reason to deviate.
+
+In practice, that means keeping local guidance, `Follow-Through Triggers`, closure policy, and reusable workflow clearly separated without turning them into a new layer or a required heading template.
 
 ## Organize Overlays By Concern Family
 
@@ -141,6 +147,9 @@ If adopters want to use that skill across repositories instead of only inside on
 
 Do not leave follow-through closure style implicit.
 
+Triggers can reveal possible downstream work.
+They should not, by themselves, decide whether the current pass must widen now or whether that work becomes explicit follow-up; that belongs to the closure policy.
+
 At minimum, decide whether the repository leans:
 
 - `integrated`
@@ -150,7 +159,7 @@ At minimum, decide whether the repository leans:
 - `hybrid`
   - small and certain follow-through is handled now, broader or riskier work is carried forward explicitly
 
-Keep that policy short and put it in the baseline.
+Keep that policy short and put it in the baseline, usually as one rule or a very small set of rules.
 
 The policy should define the repository's acceptable envelope.
 It should not restate the whole follow-through workflow.
@@ -244,4 +253,4 @@ The model is healthy when:
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
 - GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-skills>
+  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
