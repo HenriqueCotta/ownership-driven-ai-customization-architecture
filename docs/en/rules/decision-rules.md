@@ -68,6 +68,10 @@ Put guidance in automation or a runbook when it is:
 - clearer as a script, CI check, or operational checklist than as open-ended prose
 - expected to execute deterministically
 
+Put source handling metadata in supporting-source guidance when it helps the agent find and handle deeper or live evidence without becoming the active repository behavior rule. This is especially useful when access, freshness, private-system details, or source authority matter and "check the docs" would be too vague or unreliable.
+
+Put source-specific interpretation guidance in a separate repository-root instruction only when it is repo-owned interpretation policy that lighter source guidance cannot carry safely, and important enough to justify always-on context when `applyTo: "**"` is required.
+
 ## Recommended Default Split
 
 When maintainers are unsure whether a rule is local guidance, follow-through, policy, or workflow, use this recommended default interpretation.
@@ -78,6 +82,7 @@ It is just a practical way to classify guidance inside the existing model.
 - if ignoring the rule would make the change wrong inside the current scope, it is usually local guidance in the active baseline, ownership node, or overlay
 - if the current change can still be correct on its own but may leave other surfaces stale, it is usually `Follow-Through Triggers`
 - if the real question is whether that revealed downstream work should usually be reconciled now or carried forward explicitly, it is usually baseline closure policy
+- if the content mainly says where a source is, when to use it, what it can answer, freshness, fallback, or conflict handling, it is usually supporting-source guidance
 - if the content mainly describes a reusable workflow or an exact procedure for handling that work, it is usually a skill, automation, or runbook
 
 ## Quick Classification Checks
@@ -98,13 +103,21 @@ Use these checks when the choice feels unclear:
 - if the content mostly describes a reusable task flow, it is probably a skill
 - if the content mainly prescribes exact commands, files, or step order, it probably belongs in automation or a runbook
 - if the content mainly defines tools, permissions, or execution profile for a specialized agent, it probably belongs in agent configuration or settings rather than in follow-through prose
+- if an instruction needs deeper or live evidence, keep the active contract in the instruction and put source location, access, fallback, and conflict handling in supporting-source guidance
+- if source-specific interpretation would be useful but not essential, keep it in the lightest existing surface that can carry it safely instead of adding another always-on instruction
+- if source-specific interpretation is essential beyond one narrow owner, place it under the repository root owner and make its activation condition explicit in the instruction body
+- if a source cannot be located or verified and the missing fact could change the decision, treat that part as verification-blocked instead of guessing
+- if implementation, docs, checks, user intent, and external sources disagree, classify the claim and authority by claim type before choosing a path
+- if a local instruction duplicates an external source detail, keep it short, stable, and defensive; use it to preserve safety when access fails, not to justify new source-dependent behavior
 - if the only goal is to help readers discover existing guidance, keep that as a small cue inside existing docs or instructions rather than introducing a hint layer
 
 For the conceptual distinction, read [Ownership vs Overlay](../model/ownership-vs-overlay.md).
 
 For downstream consequences, read [Follow-Through Triggers](../model/follow-through-triggers.md).
 
-For how repository policy, reusable skills, automation, and tracking fit around those triggers, use [Operating Model](../model/operating-model.md) and [Replication Playbook](../replication-playbook.md).
+For source location, access, fallback, and conflict handling, read [Supporting Sources](../model/supporting-sources.md).
+
+For how repository policy, reusable skills, supporting sources, automation, and tracking fit around those triggers, use [Operating Model](../model/operating-model.md) and [Replication Playbook](../replication-playbook.md).
 
 ## Redesign Signals
 
@@ -120,6 +133,11 @@ Treat these as signs that the map needs redesign:
 - a trigger is being added to almost every instruction whether or not it says anything locally distinct
 - a new skill is being proposed for every trigger or ownership node
 - exact procedural checklists are living in generic instructions or generic skills
+- a required private source is named without a stable locator, access method, or fallback
+- supporting-source guidance is becoming a second ownership tree or a giant document registry
+- source-specific interpretation instructions are being created by default instead of only when lighter source guidance is not enough
+- one source is being treated as the full truth for a claim that needs product intent, implementation, tests, external facts, or policy evidence together
+- long volatile source details are copied into local instructions as stale mirrors instead of short defensive summaries
 - a new hint layer is being proposed only to connect triggers and skills
 - maintainers cannot predict which instructions apply to a given file
 
@@ -128,5 +146,6 @@ Treat these as signs that the map needs redesign:
 - [Operating Model](../model/operating-model.md)
 - [Ownership vs Overlay](../model/ownership-vs-overlay.md)
 - [Follow-Through Triggers](../model/follow-through-triggers.md)
+- [Supporting Sources](../model/supporting-sources.md)
 - [Replication Playbook](../replication-playbook.md)
 - [Ownership Tree Grammar](./ownership-tree-grammar.md)

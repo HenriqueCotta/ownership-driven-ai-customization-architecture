@@ -14,6 +14,7 @@ A parte estável é a estrutura:
 - a gramática da ownership tree no disco
 - cross-cutting overlays
 - skills
+- guidance opcional de fontes de apoio
 - checks de higiene que impedem o mapa de derivar
 
 A parte variável é o mapa de ownership do repositório de destino.
@@ -36,20 +37,51 @@ Isso é mais fácil de ensinar e mais fácil de reter do que começar apenas pel
 3. Identifique os maiores boundaries estáveis de ownership.
 4. Adicione apenas as instructions da ownership tree que correspondem a esses boundaries.
 5. Adicione cross-cutting overlays reais.
-6. Adicione um pequeno conjunto de skills reutilizáveis.
-7. Adicione checks que previnam drift, camadas mortas e estruturas legadas.
+6. Adicione guidance de fontes de apoio apenas quando a consulta de fontes seria vaga ou arriscada sem ela.
+7. Adicione um pequeno conjunto de skills reutilizáveis.
+8. Adicione checks que previnam drift, camadas mortas e estruturas legadas.
 
 Use [Regras de Decisão](./regras/regras-de-decisao.md) para classificar a guidance antes de escrevê-la.
 
 Use [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md) para decidir como o mapa de ownership deve parecer no disco.
 
-Use [Modelo Operacional](./modelo/modelo-operacional.md), [Follow-Through Triggers](./modelo/follow-through-triggers.md) e [Regras de Decisão](./regras/regras-de-decisao.md) em conjunto para desenhar como policy, triggers, skills, automação e qualquer superfície explícita opcional de carry-forward devem trabalhar juntos no repositório de destino.
+Use [Modelo Operacional](./modelo/modelo-operacional.md), [Follow-Through Triggers](./modelo/follow-through-triggers.md), [Fontes de Apoio](./modelo/fontes-de-apoio.md) e [Regras de Decisão](./regras/regras-de-decisao.md) em conjunto para desenhar como policy, triggers, fontes, skills, automação e qualquer superfície explícita opcional de carry-forward devem trabalhar juntos no repositório de destino.
 
 ## Use uma Separação Default de Redação
 
 Quando você começar a escrever instructions, use a separação default definida em [Regras de Decisão](./regras/regras-de-decisao.md), a menos que o repositório tenha um motivo para desviar.
 
 Na prática, isso significa manter guidance local, `Follow-Through Triggers`, closure policy e workflow reutilizável claramente separados, sem transformá-los em uma nova camada nem em um template obrigatório de headings.
+
+Se o repositório precisar de guidance de fontes, mantenha isso separado também: instructions locais carregam o contrato ativo, enquanto guidance de fontes de apoio carrega localização, acesso, autoridade, fallback e tratamento de conflito.
+
+## Adicione Fontes de Apoio Só Quando Elas Importarem
+
+Não adicione um mapa de fontes só porque o repositório tem documentação.
+
+Adicione guidance de fontes de apoio quando "verifique os docs" seria vago, arriscado ou inacessível demais.
+
+Bons sinais:
+
+- uma fonte externa ou privada precisa ser acessada por connector, servidor MCP, runbook ou checkout local
+- fatos atuais de provider ou plataforma poderiam mudar o caminho de implementação
+- várias fontes possuem tipos diferentes de claim e podem conflitar
+- indisponibilidade da fonte deve bloquear ou estreitar uma mudança em vez de convidar adivinhação
+- um resumo local curto é necessário para preservar um invariante crítico quando o acesso falha
+
+O padrão local comum em repositórios é `.github/instructions/ownership/repository/supporting-sources.instructions.md` com `applyTo: "**"` e uma ponte curta no baseline.
+
+Esse é um padrão útil, não um nome de arquivo obrigatório.
+
+O nó `ownership/repository/` representa o owner raiz do repositório. Use-o para policy de fontes owned pelo repo sem transformar `ownership/` em uma gaveta para qualquer regra global.
+
+Mantenha entradas de fonte compactas e IDs de fonte estáveis, como `product-docs`, `payment-provider-docs` ou `finance-policy`.
+
+Se uma fonte precisar de policy mais profunda de interpretação, adicione uma instruction específica no owner raiz apenas quando guidance de fonte mais leve não bastar.
+
+Tenha cuidado: se essa guidance puder se aplicar em qualquer lugar, ela normalmente precisa de `applyTo: "**"` e pode virar contexto always-on nas surfaces que suportam path-specific instructions.
+
+Use [Exemplos de Fontes de Apoio](./exemplos/fontes-de-apoio/README.md) para ver variações.
 
 ## Organize Overlays por Família de Concern
 
@@ -112,6 +144,8 @@ Isso normalmente escala melhor do que criar variantes como `review-contract-chan
 Triggers diferentes de follow-through normalmente devem reutilizar o mesmo pequeno conjunto de skills, enquanto o contexto local continua vindo da ownership tree e dos overlays.
 
 Adicione uma skill mais específica apenas quando o workflow em si mudar materialmente em evidências, etapas ou saída esperada.
+
+Se o workflow for comparação ou reconciliação de fontes, a skill deve ler a guidance de fontes de apoio e inspecionar apenas as fontes que poderiam possuir a claim em disputa.
 
 ## Não Escreva Triggers em Todo Lugar
 
@@ -185,6 +219,7 @@ Na prática, adotantes devem entender que:
 - instructions de repositório inteiro fornecem o contexto default
 - instructions path-specific podem se tornar relevantes conforme o agente toca novos paths
 - follow-through pode expandir o escopo para novas superfícies
+- fontes de apoio podem fornecer evidência mais profunda ou viva sem virar outra camada estrutural
 - skills genéricas podem ser escolhidas just-in-time quando o tipo de trabalho muda
 - checks exatos e repetíveis podem viver em scripts, CI ou runbooks em vez de apenas em prosa
 - quando o repositório escolher adiar um follow-through relevante, um item de board, uma issue, um finding de review, uma nota de handoff ou outra superfície explícita de carry-forward pode preservá-lo fora da memória da conversa
@@ -192,7 +227,7 @@ Na prática, adotantes devem entender que:
 Isso ajuda os times a evitarem dois erros comuns:
 
 - esperar que a arquitetura se comporte como um despachante rígido
-- esperar uma skill separada para cada trigger ou owner
+- esperar uma skill separada para cada trigger, fonte ou owner
 
 A documentação do GitHub sustenta esse modelo mental:
 
@@ -220,6 +255,8 @@ Revise a estrutura sempre que uma destas coisas acontecer:
 - uma nova instruction estiver sendo proposta para uma consequência downstream em vez de um boundary de ownership
 - uma nova skill estiver sendo proposta para cada trigger ou owner
 - listas de triggers quase idênticas continuarem aparecendo em nós irmãos ou próximos
+- guidance de fontes estiver virando um registro gigante ou outra ownership tree
+- instructions locais estiverem copiando detalhes longos e voláteis de fontes externas
 - a tree estiver se expandindo até nós leaf antes de owners mais amplos terem provado que são insuficientes
 - checklists operacionais exatos estiverem escorrendo para instructions ou skills genéricas
 - uma camada separada de hints estiver sendo proposta apenas para conectar triggers e skills
@@ -239,6 +276,7 @@ O modelo está saudável quando:
 - a gramática de pastas pode ser explicada sem introduzir casos especiais
 - o conjunto de instructions é pequeno o bastante para ser raciocinável
 - consequências downstream são tratadas por `Follow-Through Triggers` em vez de duplicação ad hoc
+- fontes de apoio são localizáveis e governadas sem inflar o baseline nem substituir instructions locais
 - o catálogo de skills permanece pequeno e orientado a outcome, em vez de espelhar cada trigger
 - procedimentos exatos vivem em automação ou runbooks, e não em prosa frágil
 - a mesma estrutura pode ser reutilizada em outro repositório com um mapa de ownership diferente
@@ -247,10 +285,11 @@ O modelo está saudável quando:
 
 - [Modelo Operacional](./modelo/modelo-operacional.md)
 - [Follow-Through Triggers](./modelo/follow-through-triggers.md)
+- [Fontes de Apoio](./modelo/fontes-de-apoio.md)
 - [Regras de Decisão](./regras/regras-de-decisao.md)
 - [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md)
 - [Exemplos](./exemplos/README.md)
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>

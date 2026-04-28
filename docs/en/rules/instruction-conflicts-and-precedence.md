@@ -39,6 +39,7 @@ The safest mental model is:
 - narrower instructions refine those defaults
 - overlays add another lens
 - `Follow-Through Triggers` describe downstream consequences
+- supporting sources provide auxiliary evidence when evidence could change the decision
 
 If two matching instructions truly contradict each other, the outcome is less predictable than normal code inheritance.
 
@@ -77,8 +78,10 @@ When in doubt, use these rules:
 5. Anchor a follow-through trigger in the instruction that can observe the originating change.
 6. Reuse a small outcome-based skill set rather than creating one skill per trigger.
 7. Keep exact repeatable procedures in scripts, CI, or runbooks.
-8. Keep discoverability hints inside existing docs or instructions rather than inventing a hint layer.
-9. If two instructions seem to fight, fix the ownership map instead of hoping precedence will save you.
+8. Put source location, access, fallback, and conflict handling in supporting-source guidance instead of scattering source details through local instructions.
+9. Put source-specific interpretation policy in a repository-root instruction only when lighter source guidance would not carry it safely.
+10. Keep discoverability hints inside existing docs or instructions rather than inventing a hint layer.
+11. If two instructions seem to fight, fix the ownership map instead of hoping precedence will save you.
 
 In other words:
 
@@ -96,6 +99,10 @@ Treat these as signs that the instruction map needs redesign:
 - a new instruction is proposed only because a change has downstream consequences
 - a new skill is proposed for every trigger or ownership node
 - exact procedural steps are being copied into generic instructions or skills
+- required sources are named without locator, access, fallback, or conflict guidance
+- source guidance is being shaped like another ownership tree
+- source-specific interpretation instructions are being created by default rather than as a narrow exception
+- local instructions copy long volatile details from external sources
 - a separate hint layer is being proposed just to connect triggers and skills
 
 ## How To Fix A Conflict
@@ -110,7 +117,9 @@ When conflict appears, start with the map itself:
 6. Move any misplaced follow-through rule to the instruction scope that can actually observe its triggering change.
 7. Consolidate overlapping workflow variants into a small set of outcome-based skills instead of one skill per trigger.
 8. Move exact procedural steps into scripts, CI, or runbooks when natural-language guidance becomes brittle.
-9. Keep any discoverability text as a small cue inside existing docs or instructions rather than a new hint layer.
+9. Move source location, access, freshness, fallback, and conflict handling into supporting-source guidance.
+10. Move source-specific interpretation policy into a repository-root instruction only when lighter source guidance cannot carry it safely and the guidance should remain agent-facing policy rather than an exact procedure.
+11. Keep any discoverability text as a small cue inside existing docs or instructions rather than a new hint layer.
 
 If the map is clean, the need for hard conflict resolution usually drops sharply.
 
@@ -118,6 +127,7 @@ If the map is clean, the need for hard conflict resolution usually drops sharply
 
 - [Ownership vs Overlay](../model/ownership-vs-overlay.md)
 - [Follow-Through Triggers](../model/follow-through-triggers.md)
+- [Supporting Sources](../model/supporting-sources.md)
 - [Decision Rules](./decision-rules.md)
 - [Ownership Tree Grammar](./ownership-tree-grammar.md)
 - [Examples](../examples/README.md)

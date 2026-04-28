@@ -14,6 +14,7 @@ Ela documenta uma arquitetura reutilizável para organizar:
 - overlays transversais
 - skills reutilizáveis
 - comportamento downstream de follow-through
+- fontes de apoio opcionais para evidência mais profunda ou viva
 
 Nome formal:
 
@@ -67,6 +68,8 @@ Se uma página começa a repetir outra, normalmente ela deve linkar em vez de re
   - a distinção conceitual mais importante do modelo
 - [Follow-Through Triggers](./modelo/follow-through-triggers.md)
   - para que serve a guidance downstream de follow-through
+- [Fontes de Apoio](./modelo/fontes-de-apoio.md)
+  - como evidência opcional local, externa, privada ou viva se encaixa sem virar outra camada
 
 ### Regras
 
@@ -113,8 +116,9 @@ Se este for seu primeiro contato com a arquitetura:
 3. Leia [Modelo Operacional](./modelo/modelo-operacional.md).
 4. Leia [Ownership vs Overlay](./modelo/ownership-vs-overlay.md).
 5. Leia [Follow-Through Triggers](./modelo/follow-through-triggers.md).
-6. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
-7. Leia [Exemplos](./exemplos/README.md).
+6. Leia [Fontes de Apoio](./modelo/fontes-de-apoio.md).
+7. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
+8. Leia [Exemplos](./exemplos/README.md).
 
 Se você estiver desenhando um novo repositório:
 
@@ -122,10 +126,11 @@ Se você estiver desenhando um novo repositório:
 2. Leia [Por Que Esta Arquitetura](./por-que-esta-arquitetura.md).
 3. Leia [Modelo Operacional](./modelo/modelo-operacional.md).
 4. Leia [Follow-Through Triggers](./modelo/follow-through-triggers.md).
-5. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
-6. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
-7. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
-8. Leia [Exemplos](./exemplos/README.md).
+5. Leia [Fontes de Apoio](./modelo/fontes-de-apoio.md).
+6. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
+7. Leia [Gramática da Ownership Tree](./regras/gramatica-da-ownership-tree.md).
+8. Leia [Playbook de Replicação](./playbook-de-replicacao.md).
+9. Leia [Exemplos](./exemplos/README.md).
 
 Se você quiser testar a arquitetura rapidamente em um repositório:
 
@@ -146,8 +151,9 @@ Se você estiver investigando ambiguidade ou conflito entre instructions:
 2. Leia [Conflitos e Precedência de Instruções](./regras/conflitos-e-precedencia-de-instrucoes.md).
 3. Leia [Ownership vs Overlay](./modelo/ownership-vs-overlay.md).
 4. Leia [Follow-Through Triggers](./modelo/follow-through-triggers.md).
-5. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
-6. Leia [Exemplos](./exemplos/README.md).
+5. Leia [Fontes de Apoio](./modelo/fontes-de-apoio.md).
+6. Leia [Regras de Decisão](./regras/regras-de-decisao.md).
+7. Leia [Exemplos](./exemplos/README.md).
 
 Se você estiver desenhando ou auditando a própria customização do Copilot:
 
@@ -162,6 +168,7 @@ Se você estiver desenhando ou auditando a própria customização do Copilot:
 - Represente boundaries de ownership com uma tree fácil de ler antes de tentar otimizá-la.
 - Use overlays apenas para concerns que realmente atravessam vários owners.
 - Mantenha a lógica downstream de follow-through em `Follow-Through Triggers`, e não em novos tipos de arquivo.
-- Componha follow-through a partir de policy do repositório, triggers ancorados na origem, skills reutilizáveis, automação e, quando necessário, uma superfície explícita de carry-forward, em vez de procurar um trigger universal ou uma skill universal.
+- Mantenha fontes de apoio como opcionais e auxiliares: instructions carregam o contrato ativo, guidance de fontes localiza e governa evidência mais profunda, e skills tratam workflows repetíveis de fonte apenas quando necessário.
+- Componha follow-through a partir de policy do repositório, triggers ancorados na origem, fontes de apoio opcionais, skills reutilizáveis, automação e, quando necessário, uma superfície explícita de carry-forward, em vez de procurar um trigger universal ou uma skill universal.
 - Trate instructions mais estreitas como refinamentos das mais amplas, e não como reversões arbitrárias.
 - Mantenha páginas de visão geral curtas e mova o detalhamento para documentos focados de modelo e de regras.

@@ -11,6 +11,7 @@ Objetivo: explicar o caso de negócio, a justificativa técnica, os ganhos esper
 - [Por Que o Modelo É Path-First](#por-que-o-modelo-é-path-first)
 - [Por Que a Ownership Tree Usa Uma Única Gramática de Pastas](#por-que-a-ownership-tree-usa-uma-única-gramática-de-pastas)
 - [Por Que Skills Ficam Opcionais e Seletivas](#por-que-skills-ficam-opcionais-e-seletivas)
+- [Por Que Fontes de Apoio Ficam Auxiliares](#por-que-fontes-de-apoio-ficam-auxiliares)
 - [Ganhos Esperados](#ganhos-esperados)
 - [Por Que Isto Escala](#por-que-isto-escala)
 - [Por Que Isto É Mais Seguro do Que Customização Ad Hoc](#por-que-isto-é-mais-seguro-do-que-customização-ad-hoc)
@@ -34,6 +35,7 @@ Esta arquitetura responde a isso com um conjunto pequeno de decisões estruturai
 - rotear a maior parte do comportamento por caminhos de ownership estáveis
 - adicionar overlays apenas para concerns que realmente atravessam vários owners
 - manter o comportamento downstream de follow-through explícito com `Follow-Through Triggers`
+- usar fontes de apoio opcionais para evidência mais profunda ou viva sem transformar evidência em outra camada
 - usar skills apenas para workflows mais profundos que não devem ficar sempre ativos
 
 ## Por Que o Modelo Faz Sentido
@@ -107,8 +109,9 @@ Uma gramática única de pastas evita esses problemas.
 Ela é mais ensinável porque a explicação vira:
 
 1. encontre o caminho no repositório
-2. caminhe pelo mesmo caminho dentro de `ownership/`
-3. leia os arquivos de instruction nas pastas de nó correspondentes
+2. entre no owner raiz explícito em `ownership/repository/`
+3. caminhe pelo mesmo caminho dentro desse owner raiz
+4. leia os arquivos de instruction nas pastas de nó correspondentes
 
 Ela é mais escalável porque:
 
@@ -134,6 +137,33 @@ Um catálogo saudável de skills fica orientado a outcome, e não a triggers.
 Muitos casos diferentes de follow-through podem reutilizar o mesmo pequeno conjunto de skills, como `impact-review`, reconciliação de docs ou debugging, enquanto o contexto local continua vindo da ownership tree e dos overlays.
 
 Quando um procedimento precisa de comandos exatos ou checks determinísticos, scripts, CI ou runbooks costumam ser um encaixe melhor do que uma skill mais específica.
+
+## Por Que Fontes de Apoio Ficam Auxiliares
+
+Muitos repositórios precisam de evidência que não deve viver em instructions always-on.
+
+Essa evidência pode ser docs locais de produto, documentação de provider, um workspace privado de policy, um design system, um board de trabalho, um runbook ou outro repositório.
+
+Nem todo repositório precisa de um mapa de fontes.
+
+Fontes de apoio são opcionais e devem aparecer apenas quando guidance vaga como "verifique os docs" seria fraca, arriscada ou inacessível demais.
+
+A arquitetura suporta essas fontes, mas não as transforma em outra camada estrutural.
+
+Instructions ainda carregam o contrato ativo.
+
+Guidance de fontes de apoio torna a evidência localizável e governada quando "verifique os docs" seria vago demais. Ela pode descrever IDs de fonte, expectativas de acesso, frescor, fallback e tratamento de conflito.
+
+O padrão recomendado de instruction no owner raiz do repositório é a forma agent-facing mais clara que encontramos para esse trabalho, não um formato obrigatório de fontes. Outras superfícies mantidas de fonte podem funcionar quando guidance ativa aponta para elas e explica quando consultá-las.
+
+Isso mantém o uso de fontes prático:
+
+- um repositório simples que precisa de guidance de fontes pode usar uma pequena instruction de fontes de apoio
+- uma superfície local mantida pode agir como mapa de fontes quando uma guidance ativa aponta para ela
+- um workflow repetível de reconciliação de fontes pode virar skill
+- um servidor MCP pode fornecer acesso sem virar, por si só, a fonte de autoridade
+
+Isso protege o baseline contra inchaço e ainda dá aos agentes um caminho seguro para evidência mais profunda.
 
 ## Ganhos Esperados
 
@@ -162,6 +192,12 @@ O modelo é reutilizável porque depende de poucas ideias estruturais, e não da
 - configs que podem precisar de reconciliação
 - artefatos de workflow que podem precisar de ajuste
 
+### Melhor Disciplina de Evidência
+
+Fontes de apoio tornam evidência mais profunda explícita sem fingir que ela já está carregada.
+
+Elas ajudam agentes a distinguir intenção de produto, comportamento de implementação, fatos de provider, restrições de policy, trabalho planejado e resumos locais antes de escolher um caminho.
+
 ### Melhor Disciplina de Custo
 
 A arquitetura mantém o contexto always-on pequeno de propósito e empurra workflows mais profundos para skills opcionais.
@@ -178,6 +214,8 @@ O modelo escala porque cada parte tem um trabalho estreito:
   - uma lente extra atravessando vários owners
 - `Follow-Through Triggers`
   - consequências downstream de follow-through
+- `fontes de apoio` opcionais
+  - evidência auxiliar que deve ser localizada e tratada apenas quando puder mudar a decisão
 - `skills`
   - workflows reutilizáveis que não devem ficar sempre carregados
 
@@ -185,6 +223,7 @@ Essa separação facilita controlar o crescimento:
 
 - novos owners são adicionados por path
 - novos overlays só aparecem quando uma concern realmente atravessa vários owners
+- novas entradas de fonte são adicionadas apenas quando a consulta de fontes seria vaga ou arriscada sem elas
 - novos workflows viram skills apenas quando instructions always-on seriam a ferramenta errada
 
 A gramática de pastas da ownership tree reforça essa escalabilidade:
@@ -230,7 +269,9 @@ Esta arquitetura não:
 - prescreve o formato interno de escrita de cada instruction
 - elimina a necessidade de julgamento ao mapear ownership ou overlays
 - prescreve uma única closure policy universal para todos os repositórios
+- prescreve um formato, nome de arquivo ou registro obrigatório de fontes
 - cria uma tabela de despacho de trigger para skill nem uma camada separada de hints
+- cria uma tabela de despacho de fontes para todo trigger
 - transforma skills em um motor determinístico de orquestração
 
 Ela é uma estrutura para reduzir confusão e melhorar reuso, não um motor formal de execução.
@@ -243,6 +284,7 @@ Este projeto é intencionalmente alinhado ao modelo oficial de customização do
 - instruções path-specific em `.github/instructions/**/*.instructions.md`
 - roteamento com `applyTo` nas instructions path-specific
 - skills em `.github/skills/<skill-name>/SKILL.md`
+- guidance opcional de fontes de apoio quando evidência mais profunda ou viva puder mudar uma decisão
 - prevenção de conflitos quando múltiplas fontes de instruction se aplicam
 
 Ele também segue guidance comum de documentação:
@@ -265,6 +307,8 @@ Este conjunto de docs foi organizado para que cada documento tenha um trabalho p
   - a principal distinção conceitual do modelo
 - `Follow-Through Triggers`
   - comportamento downstream de follow-through, incluindo como repositórios combinam policy, triggers, skills, automação e tracking sem inventar uma nova camada
+- `Fontes de Apoio`
+  - localização, acesso, frescor, fallback, tratamento de conflito e resumos locais seguros de fontes
 - `Regras de Decisão`
   - classificação da guidance e posicionamento de follow-through
 - `Gramática da Ownership Tree`
@@ -288,10 +332,14 @@ Essa divisão é influenciada pelo Diátaxis, que separa explicação, docs de m
   <https://docs.github.com/en/copilot/reference/custom-instructions-support>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>
 - GitHub Docs, Comparing GitHub Copilot CLI customization features  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/copilot-cli/comparing-cli-features>
+- GitHub Docs, Copilot customization cheat sheet
+  <https://docs.github.com/en/copilot/reference/customization-cheat-sheet>
+- GitHub Docs, About Model Context Protocol
+  <https://docs.github.com/en/copilot/concepts/context/mcp>
 - VS Code Docs, Use custom instructions in VS Code  
   <https://code.visualstudio.com/docs/copilot/customization/custom-instructions>
 - GitHub Docs, Best practices for repositories  

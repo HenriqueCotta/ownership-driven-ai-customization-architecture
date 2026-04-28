@@ -3,7 +3,7 @@
 ## Estrutura do Repositório
 
 ```text
-repo/
+<repository-root>/
   src/
     app/
       routes/
@@ -38,26 +38,29 @@ repo/
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        features/
-          checkout/
-            behavior.instructions.md
-        design-system/
-          tokens/
-            consistency.instructions.md
-        state/
-          auth/
-            security.instructions.md
-      docs/
-        ux/
+      repository/
+        src/
           general.instructions.md
+          features/
+            checkout/
+              behavior.instructions.md
+          design-system/
+            tokens/
+              consistency.instructions.md
+          state/
+            auth/
+              security.instructions.md
+        docs/
+          ux/
+            general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
       consistency/
         code-docs-consistency.instructions.md
 ```
+
+Os nomes de contexto de instructions abaixo, como `src/general`, são atalhos para nós abaixo de `ownership/repository/`.
 
 ## Por Que Este Mapa É Realista
 

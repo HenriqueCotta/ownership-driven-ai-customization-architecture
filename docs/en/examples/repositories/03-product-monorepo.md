@@ -3,7 +3,7 @@
 ## Repository Shape
 
 ```text
-repo/
+<repository-root>/
   apps/
     web/
     admin/
@@ -28,27 +28,30 @@ repo/
 .github/
   instructions/
     ownership/
-      apps/
-        general.instructions.md
-        admin/
-          authorization.instructions.md
-      packages/
-        contracts/
+      repository/
+        apps/
           general.instructions.md
-        auth/
-          security.instructions.md
-      infra/
-        terraform/
-          safety.instructions.md
-      docs/
-        runbooks/
-          general.instructions.md
+          admin/
+            authorization.instructions.md
+        packages/
+          contracts/
+            general.instructions.md
+          auth/
+            security.instructions.md
+        infra/
+          terraform/
+            safety.instructions.md
+        docs/
+          runbooks/
+            general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
       operability/
         observability.instructions.md
 ```
+
+Instruction-context names below, such as `apps/general`, are shorthand for nodes under `ownership/repository/`.
 
 ## Why This Map Is Realistic
 

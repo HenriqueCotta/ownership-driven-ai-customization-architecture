@@ -41,13 +41,14 @@ Only the contents of the node change.
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        api/
+      repository/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
 ```
 
 ## Follow-Through

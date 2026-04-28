@@ -9,6 +9,7 @@ Goal: provide short, linkable examples that teach classification, follow-through
 - [Classification](#classification)
 - [Follow-Through](#follow-through)
 - [Ownership Tree](#ownership-tree)
+- [Supporting Sources](#supporting-sources)
 - [Repository Archetypes](#repository-archetypes)
 - [Quick Review Checklist](#quick-review-checklist)
 
@@ -22,6 +23,8 @@ Read examples by theme:
   - how downstream follow-through logic should work
 - `ownership-tree/`
   - how the ownership tree should look on disk
+- `supporting-sources/`
+  - how source guidance, consumer instructions, conflicts, and source workflows fit together
 - `repositories/`
   - how the architecture looks in realistic repository archetypes and day-to-day prompts
 
@@ -35,6 +38,8 @@ If this is your first pass, read them in this order:
 6. [Shared Trigger Beats Repeated Local Copies](./follow-through/06-shared-trigger-beats-repeated-local-copies.md)
 7. [One File Node With Two Instruction Files](./ownership-tree/01-one-file-node-with-two-instruction-files.md)
 8. [Grow The Tree Only When The Broad Owner Stops Being Enough](./ownership-tree/04-grow-the-tree-only-when-the-broad-owner-stops-being-enough.md)
+9. [Repository-Root Supporting-Source Instruction](./supporting-sources/02-repository-root-supporting-source-instruction.md)
+10. [Consumer Instructions](./supporting-sources/03-consumer-instructions.md)
 
 ## Classification
 
@@ -58,6 +63,16 @@ If this is your first pass, read them in this order:
 - [Why A Folder Grammar Is Easier To Teach](./ownership-tree/03-why-a-folder-grammar-is-easier-to-teach.md)
 - [Grow The Tree Only When The Broad Owner Stops Being Enough](./ownership-tree/04-grow-the-tree-only-when-the-broad-owner-stops-being-enough.md)
 
+## Supporting Sources
+
+- [Supporting Source Examples Index](./supporting-sources/README.md)
+- [One Local Source](./supporting-sources/01-one-local-source.md)
+- [Repository-Root Supporting-Source Instruction](./supporting-sources/02-repository-root-supporting-source-instruction.md)
+- [Consumer Instructions](./supporting-sources/03-consumer-instructions.md)
+- [Multiple Sources And Conflicts](./supporting-sources/04-multiple-sources-and-conflicts.md)
+- [Local Summary As Safety Guard](./supporting-sources/05-local-summary-as-safety-guard.md)
+- [Source-Specific Interpretation Instruction](./supporting-sources/06-source-specific-interpretation-instruction.md)
+
 ## Repository Archetypes
 
 - [Repository Archetypes Index](./repositories/README.md)
@@ -77,5 +92,6 @@ After a meaningful change, ask:
 6. Does this instruction even need a trigger, or am I adding one by reflex?
 7. Is the downstream work small enough to do directly, or does it warrant an existing outcome-based skill?
 8. Would any exact repeatable check be clearer as automation or a runbook?
-9. Am I inventing a new hint layer or one skill per trigger where the existing map is already enough?
-10. Am I growing the tree deeper before the broader owner has actually proved insufficient?
+9. If deeper or live evidence matters, is source location, access, fallback, and conflict handling clear?
+10. Am I inventing a new hint layer, source registry, or one skill per trigger where the existing map is already enough?
+11. Am I growing the tree deeper before the broader owner has actually proved insufficient?

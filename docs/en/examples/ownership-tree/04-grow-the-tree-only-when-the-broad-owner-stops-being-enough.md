@@ -44,10 +44,10 @@ ODA is meant to be growable, not finished all at once.
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-      src/app/
-        general.instructions.md
+      repository/
+        src/
+          app/
+            general.instructions.md
 ```
 
 Later, if checkout truly needs distinct guidance:
@@ -56,12 +56,12 @@ Later, if checkout truly needs distinct guidance:
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-      src/app/
-        general.instructions.md
-        checkout/
-          general.instructions.md
+      repository/
+        src/
+          app/
+            general.instructions.md
+            checkout/
+              general.instructions.md
 ```
 
 ## Follow-Through

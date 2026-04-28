@@ -68,6 +68,10 @@ Coloque guidance em automação ou em um runbook quando ela for:
 - mais clara como script, check de CI ou checklist operacional do que como prosa aberta
 - esperada para executar de forma determinística
 
+Coloque metadados de tratamento de fontes em guidance de fontes de apoio quando isso ajuda o agente a encontrar e tratar evidência mais profunda ou viva sem virar a regra ativa de comportamento do repositório. Isso é especialmente útil quando acesso, frescor, detalhes de sistema privado ou autoridade da fonte importam e "verifique os docs" seria vago ou não confiável demais.
+
+Coloque guidance de interpretação específica por fonte em uma instruction separada do owner raiz apenas quando ela for policy de interpretação owned pelo repo que guidance de fonte mais leve não consegue carregar com segurança, e importante o bastante para justificar contexto always-on quando `applyTo: "**"` for necessário.
+
 ## Separação Default Recomendada
 
 Quando mantenedores não souberem se uma regra é guidance local, follow-through, policy ou workflow, use esta interpretação default recomendada.
@@ -78,6 +82,7 @@ Ela não é uma nova camada arquitetural nem um template obrigatório de arquivo
 - se ignorar a regra deixaria a mudança errada dentro do escopo atual, ela normalmente é guidance local no baseline, no nó de ownership ou no overlay ativo
 - se a mudança atual ainda pode estar correta por si só, mas pode deixar outras superfícies stale, isso normalmente é `Follow-Through Triggers`
 - se a pergunta real for se esse trabalho downstream revelado normalmente deve ser reconciliado agora ou carregado adiante explicitamente, isso normalmente é closure policy de baseline
+- se o conteúdo diz principalmente onde uma fonte está, quando usá-la, o que ela pode responder, frescor, fallback ou tratamento de conflito, isso normalmente é guidance de fontes de apoio
 - se o conteúdo descreve principalmente um workflow reutilizável ou um procedimento exato para tratar esse trabalho, isso normalmente pertence a uma skill, automação ou runbook
 
 ## Checks Rápidos de Classificação
@@ -98,13 +103,21 @@ Use estes checks quando a escolha parecer nebulosa:
 - se o conteúdo descreve principalmente um fluxo reutilizável de trabalho, provavelmente é skill
 - se o conteúdo prescreve principalmente comandos, arquivos ou ordem exata de etapas, provavelmente pertence à automação ou a um runbook
 - se o conteúdo define principalmente tools, permissões ou perfil de execução de um agent especializado, provavelmente pertence à configuração do agent ou a settings, e não à prosa de follow-through
+- se a instruction precisa de evidência mais profunda ou viva, mantenha o contrato ativo na instruction e coloque localização, acesso, fallback e conflito em guidance de fontes de apoio
+- se interpretação específica de fonte seria útil mas não essencial, mantenha isso na superfície existente mais leve que consiga carregá-la com segurança em vez de adicionar outra instruction always-on
+- se interpretação específica de fonte for essencial além de um owner estreito, coloque isso no owner raiz do repositório e deixe a condição de ativação explícita no corpo da instruction
+- se uma fonte não puder ser localizada ou verificada e o fato ausente puder mudar a decisão, trate essa parte como verification-blocked em vez de adivinhar
+- se implementação, docs, checks, intenção do usuário e fontes externas discordarem, classifique a claim e a autoridade por tipo de claim antes de escolher um caminho
+- se uma instruction local duplica detalhe de uma fonte externa, mantenha isso curto, estável e defensivo; use para preservar segurança quando acesso falhar, não para justificar comportamento novo dependente da fonte
 - se o único objetivo é ajudar leitores a descobrir guidance existente, mantenha isso como uma pequena dica dentro de docs ou instructions já existentes, em vez de introduzir uma camada de hints
 
 Para a distinção conceitual, leia [Ownership vs Overlay](../modelo/ownership-vs-overlay.md).
 
 Para consequências downstream, leia [Follow-Through Triggers](../modelo/follow-through-triggers.md).
 
-Para entender como policy do repositório, skills reutilizáveis, automação e tracking se encaixam ao redor desses triggers, use [Modelo Operacional](../modelo/modelo-operacional.md) e [Playbook de Replicação](../playbook-de-replicacao.md).
+Para localização, acesso, fallback e tratamento de conflito de fontes, leia [Fontes de Apoio](../modelo/fontes-de-apoio.md).
+
+Para entender como policy do repositório, skills reutilizáveis, fontes de apoio, automação e tracking se encaixam ao redor desses triggers, use [Modelo Operacional](../modelo/modelo-operacional.md) e [Playbook de Replicação](../playbook-de-replicacao.md).
 
 ## Sinais de Redesign
 
@@ -120,6 +133,11 @@ Trate estes pontos como sinais de que o mapa precisa de redesign:
 - um trigger está sendo adicionado a quase toda instruction mesmo quando ele não diz nada localmente distinto
 - uma nova skill está sendo proposta para cada trigger ou owner
 - checklists procedurais exatos estão vivendo em instructions genéricas ou skills genéricas
+- uma fonte privada obrigatória é nomeada sem locator estável, método de acesso ou fallback
+- guidance de fontes de apoio está virando uma segunda ownership tree ou um registro gigante de documentos
+- instructions de interpretação específica por fonte estão sendo criadas por default em vez de apenas quando guidance de fonte mais leve não basta
+- uma fonte está sendo tratada como a verdade inteira para uma claim que precisa de intenção de produto, implementação, testes, fatos externos ou evidência de policy juntos
+- detalhes longos e voláteis de fonte são copiados para instructions locais como mirrors stale em vez de resumos defensivos curtos
 - uma nova camada de hints está sendo proposta apenas para conectar triggers e skills
 - mantenedores não conseguem prever quais instructions se aplicam a um arquivo
 
@@ -128,5 +146,6 @@ Trate estes pontos como sinais de que o mapa precisa de redesign:
 - [Modelo Operacional](../modelo/modelo-operacional.md)
 - [Ownership vs Overlay](../modelo/ownership-vs-overlay.md)
 - [Follow-Through Triggers](../modelo/follow-through-triggers.md)
+- [Fontes de Apoio](../modelo/fontes-de-apoio.md)
 - [Playbook de Replicação](../playbook-de-replicacao.md)
 - [Gramática da Ownership Tree](./gramatica-da-ownership-tree.md)

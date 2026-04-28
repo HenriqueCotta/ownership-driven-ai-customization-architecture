@@ -8,7 +8,7 @@ The docs tree is the canonical public explanation of the architecture.
 
 - Keep the documentation architecture clear: explanation, model, rules, how-to, and examples.
 - Keep overview pages short and route detail into focused pages instead of repeating it.
-- Keep repository archetypes inside `examples/repositories/`.
+- Keep repository archetypes inside `examples/repositories/` and focused feature examples inside their own example folders when they need several scenarios.
 - Favor realistic, selective examples over exhaustive trees that no real repo would maintain.
 
 ## Follow-Through Triggers

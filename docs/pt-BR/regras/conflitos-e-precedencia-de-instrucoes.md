@@ -39,6 +39,7 @@ O modelo mental mais seguro é:
 - instructions mais estreitas refinam esses defaults
 - overlays adicionam outra lente
 - `Follow-Through Triggers` descrevem consequências downstream
+- fontes de apoio fornecem evidência auxiliar quando essa evidência pode mudar a decisão
 
 Se duas instructions compatíveis realmente se contradizem, o resultado é menos previsível do que herança normal em código.
 
@@ -77,8 +78,10 @@ Quando houver dúvida, use estas regras:
 5. Ancore um trigger de follow-through na instruction que consegue observar a mudança de origem.
 6. Reutilize um pequeno conjunto de skills orientadas a outcome em vez de criar uma skill por trigger.
 7. Mantenha procedimentos exatos e repetíveis em scripts, CI ou runbooks.
-8. Mantenha hints de descobribilidade dentro de docs ou instructions existentes em vez de inventar uma camada de hints.
-9. Se duas instructions parecerem estar brigando, corrija o mapa de ownership em vez de esperar que a precedência resolva.
+8. Coloque localização, acesso, fallback e tratamento de conflito de fontes em guidance de fontes de apoio, em vez de espalhar detalhes de fonte por instructions locais.
+9. Coloque policy de interpretação específica por fonte em uma instruction do owner raiz apenas quando guidance de fonte mais leve não conseguir carregá-la com segurança.
+10. Mantenha hints de descobribilidade dentro de docs ou instructions existentes em vez de inventar uma camada de hints.
+11. Se duas instructions parecerem estar brigando, corrija o mapa de ownership em vez de esperar que a precedência resolva.
 
 Em outras palavras:
 
@@ -96,6 +99,10 @@ Trate estes pontos como sinais de que o mapa de instructions precisa de redesign
 - uma nova instruction está sendo proposta apenas porque uma mudança tem consequências downstream
 - uma nova skill é proposta para cada trigger ou owner
 - passos procedurais exatos estão sendo copiados para instructions ou skills genéricas
+- fontes obrigatórias são nomeadas sem locator, acesso, fallback ou guidance de conflito
+- guidance de fontes está sendo moldada como outra ownership tree
+- instructions de interpretação específica por fonte estão sendo criadas por default, e não como exceção estreita
+- instructions locais copiam detalhes longos e voláteis de fontes externas
 - uma camada separada de hints está sendo proposta apenas para conectar triggers e skills
 
 ## Como Corrigir um Conflito
@@ -110,7 +117,9 @@ Quando houver conflito, comece pelo mapa:
 6. Mova qualquer regra de follow-through mal posicionada para o escopo de instruction que realmente consegue observar a mudança que a dispara.
 7. Consolide variantes de workflow sobrepostas em um pequeno conjunto de skills orientadas a outcome, em vez de uma skill por trigger.
 8. Mova passos procedurais exatos para scripts, CI ou runbooks quando a guidance em linguagem natural ficar frágil.
-9. Mantenha qualquer texto de descobribilidade como uma pequena dica dentro de docs ou instructions já existentes, em vez de criar uma camada de hints.
+9. Mova localização, acesso, frescor, fallback e tratamento de conflito de fontes para guidance de fontes de apoio.
+10. Mova policy de interpretação específica por fonte para uma instruction do owner raiz apenas quando guidance de fonte mais leve não conseguir carregá-la com segurança e a guidance deve continuar como policy agent-facing, não como procedimento exato.
+11. Mantenha qualquer texto de descobribilidade como uma pequena dica dentro de docs ou instructions já existentes, em vez de criar uma camada de hints.
 
 Se o mapa estiver limpo, a necessidade de resolução dura de conflito normalmente cai bastante.
 
@@ -118,6 +127,7 @@ Se o mapa estiver limpo, a necessidade de resolução dura de conflito normalmen
 
 - [Ownership vs Overlay](../modelo/ownership-vs-overlay.md)
 - [Follow-Through Triggers](../modelo/follow-through-triggers.md)
+- [Fontes de Apoio](../modelo/fontes-de-apoio.md)
 - [Regras de Decisão](./regras-de-decisao.md)
 - [Gramática da Ownership Tree](./gramatica-da-ownership-tree.md)
 - [Exemplos](../exemplos/README.md)

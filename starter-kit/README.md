@@ -12,6 +12,10 @@ It is meant to give you:
 - two example outcome-based skills
 - one canonical way to represent ownership nodes on disk
 
+It intentionally does not include supporting sources by default.
+
+Add supporting-source guidance only when source lookup would otherwise be vague, risky, or hard to use safely.
+
 ## Included Structure
 
 ```text
@@ -20,17 +24,18 @@ starter-kit/
     copilot-instructions.md
     instructions/
       ownership/
-        src/
-          general.instructions.md
-          api/
+        repository/
+          src/
             general.instructions.md
-            admin/
+            api/
               general.instructions.md
-            orders.ts/
-              contract.instructions.md
-              framework.instructions.md
-        docs/
-          general.instructions.md
+              admin/
+                general.instructions.md
+              orders.ts/
+                contract.instructions.md
+                framework.instructions.md
+          docs/
+            general.instructions.md
       overlays/
         quality/
           testing-quality.instructions.md
@@ -54,24 +59,28 @@ If you test in a surface that only reads `.github/copilot-instructions.md`, you 
 Check GitHub's current support docs before treating a partial result as an ODA problem:
 
 - [Support for different types of custom instructions](https://docs.github.com/en/copilot/reference/custom-instructions-support)
-- [Creating agent skills for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
+- [Adding agent skills for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
 
 ## How To Read This Tree
 
 Use this simple grammar:
 
 - every owned boundary is represented by a folder node
-- repository directories stay directories in the instruction tree
+- `repository/` is the explicit repository root owner
+- repository directories stay directories under `repository/` in the instruction tree
 - repository files also become folder nodes, such as `orders.ts/`
 - instruction files inside each node are named by concern, such as `general`, `contract`, or `framework`
 - a node folder may contain zero, one, or many instruction files
 
 That means:
 
-- `src/` is a broad ownership node
-- `src/api/` is a narrower ownership node
-- `src/api/admin/` is a narrower subtree node
-- `src/api/orders.ts/` is a file-level ownership node with two distinct instruction files
+- `ownership/repository/` is the explicit repository root owner
+- `ownership/repository/src/` is a broad ownership node
+- `ownership/repository/src/api/` is a narrower ownership node
+- `ownership/repository/src/api/admin/` is a narrower subtree node
+- `ownership/repository/src/api/orders.ts/` is a file-level ownership node with two distinct instruction files
+
+The folder name `repository/` is literal. Do not replace it with the repository's actual name.
 
 There is no required "main" instruction file for a node.
 
@@ -97,8 +106,9 @@ Optional shortcut:
 9. Keep the skill set small and outcome-based instead of creating one skill per follow-through trigger.
 10. Keep the included baseline if its short hybrid closure policy fits your repository, or replace that policy with your own short default.
 11. Prefer scripts, CI checks, or runbooks when a process needs exact repeatable steps.
-12. If the repository will actively maintain its Copilot customization over time, consider also copying the optional [oda-copilot-customization skill](../.github/skills/oda-copilot-customization/SKILL.md) from this repository.
-13. If you want to reuse that skill across repositories, point Copilot CLI at this repository's `.github/skills` directory with `/skills add`, or copy the skill into the personal skills location your tooling supports.
+12. If the repository depends on deeper or live evidence and "check the docs" would be too vague, add a small supporting-source instruction such as `ownership/repository/supporting-sources.instructions.md`. Use another maintained source surface only when active guidance explicitly points to it.
+13. If the repository will actively maintain its Copilot customization over time, consider also copying the optional [oda-copilot-customization skill](../.github/skills/oda-copilot-customization/SKILL.md) from this repository.
+14. If you want to reuse that skill across repositories, point Copilot CLI at this repository's `.github/skills` directory with `/skills add`, or copy the skill into the personal skills location your tooling supports.
 
 ## Important
 
@@ -113,6 +123,7 @@ Optional shortcut:
 - If many local triggers would say almost the same thing, that is usually a sign to move the shared rule upward.
 - The included baseline already demonstrates a short hybrid closure policy. Keep it if it fits, or replace it with your repository's own short default.
 - Many different follow-through triggers should usually reuse the same few skills, such as `impact-review`, docs reconciliation, or debugging.
+- Supporting sources are optional auxiliary evidence. Add them only when source location, access, fallback, or conflict handling would otherwise be unclear.
 - If the repository needs a reusable workflow for shaping or auditing the customization map itself, `oda-copilot-customization` is a good optional repository-maintenance skill.
 - Exact procedures belong better in scripts, CI, or runbooks than in generic trigger or skill prose.
 - The internal writing format of each instruction is repository-owned. The example files here show one possible shape, not a required one.

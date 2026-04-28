@@ -42,18 +42,19 @@ The folder grammar handles this naturally because both repository files and repo
 .github/
   instructions/
     ownership/
-      src/
-        routes/
-          general.instructions.md
-          health.ts/
-            diagnostics.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
-          admin/
-            authorization.instructions.md
-            users.ts/
-              validation.instructions.md
+      repository/
+        src/
+          routes/
+            general.instructions.md
+            health.ts/
+              diagnostics.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
+            admin/
+              authorization.instructions.md
+              users.ts/
+                validation.instructions.md
 ```
 
 ## Follow-Through

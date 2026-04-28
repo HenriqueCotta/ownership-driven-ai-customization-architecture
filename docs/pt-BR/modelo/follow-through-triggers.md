@@ -11,6 +11,7 @@ Objetivo: explicar o que `Follow-Through Triggers` é, por que existe e onde dev
 - [Triggers São Opcionais](#triggers-são-opcionais)
 - [Triggers Ancorados na Origem](#triggers-ancorados-na-origem)
 - [Relação com Skills e Automação](#relação-com-skills-e-automação)
+- [Relação com Fontes de Apoio](#relação-com-fontes-de-apoio)
 - [Relação com Policy e Tracking](#relação-com-policy-e-tracking)
 - [Como o Follow-Through Expande o Escopo](#como-o-follow-through-expande-o-escopo)
 - [Triggers Típicos](#triggers-típicos)
@@ -64,6 +65,8 @@ Uma instruction sem trigger é normal quando ela não tem nenhuma consequência 
 
 ## Triggers Ancorados na Origem
 
+Aqui, "origem" significa a mudança que dispara o trigger, não uma fonte de apoio.
+
 A condição que dispara o trigger deve nascer de dentro do domínio onde aquela instruction é carregada.
 
 Uma regra de follow-through pode apontar para paths ou superfícies fora do `applyTo` da instruction.
@@ -106,6 +109,30 @@ Por exemplo:
 Não trate follow-through como uma tabela de despacho de tipos de trigger para skills correspondentes.
 
 Se o time quiser ajuda de descobribilidade, mantenha isso como uma dica curta dentro de docs ou instructions existentes, em vez de introduzir uma camada separada de hints.
+
+## Relação com Fontes de Apoio
+
+Fontes de apoio respondem a uma pergunta diferente dos triggers.
+
+Um trigger diz que superfícies downstream podem agora precisar de atenção porque uma mudança relevante aconteceu.
+
+Uma fonte de apoio diz onde vive a evidência mais profunda ou viva, que tipo de claim ela pode responder e o que fazer quando ela estiver indisponível ou conflitar com outra evidência.
+
+Se uma fonte é necessária para fazer a mudança atual corretamente, coloque a referência à fonte na guidance ativa de baseline, owner ou overlay:
+
+```md
+Before changing provider-owned fields or error semantics, use supporting source `payment-provider-docs`.
+```
+
+Se uma mudança pode deixar uma superfície downstream stale, coloque essa consequência em `Follow-Through Triggers`:
+
+```md
+If public API behavior changes, review docs, examples, tests, and accepted carry-forward work.
+```
+
+Se várias superfícies disparadas exigirem um workflow repetível de comparação de fontes, use uma skill para esse workflow.
+
+Não transforme triggers em uma tabela rígida de despacho para fontes.
 
 ## Relação com Policy e Tracking
 
@@ -184,6 +211,7 @@ Exemplos típicos:
 - um motivo para criar novos arquivos de instruction por si só
 - uma seção que toda instruction precisa conter
 - uma tabela de despacho de categorias de trigger para skills correspondentes
+- uma tabela de despacho de categorias de trigger para fontes de apoio
 - um checklist procedural de comandos exatos ou atualizações arquivo por arquivo
 - uma camada arquitetural separada de hints
 - um substituto para CI, review ou testes
@@ -196,8 +224,8 @@ Exemplos típicos:
   <https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions>
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
 - GitHub Docs, Support for different types of custom instructions  
@@ -207,6 +235,7 @@ Exemplos típicos:
 
 - [Modelo Operacional](./modelo-operacional.md)
 - [Ownership vs Overlay](./ownership-vs-overlay.md)
+- [Fontes de Apoio](./fontes-de-apoio.md)
 - [Regras de Decisão](../regras/regras-de-decisao.md)
 - [Playbook de Replicação](../playbook-de-replicacao.md)
 - [Exemplos](../exemplos/README.md)
