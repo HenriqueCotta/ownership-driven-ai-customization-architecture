@@ -14,16 +14,20 @@ REQUIRED_FILES = [
     "scripts/check_repo.py",
     ".github/copilot-instructions.md",
     ".github/workflows/docs-hygiene.yml",
+    ".github/skills/oda-copilot-customization/SKILL.md",
+    ".github/skills/oda-task-tracking/SKILL.md",
+    ".github/instructions/ownership/repository/general.instructions.md",
+    ".github/instructions/ownership/repository/oda-board.instructions.md",
+    ".github/instructions/ownership/repository/supporting-sources.instructions.md",
     ".github/instructions/ownership/repository/.github/general.instructions.md",
+    ".github/instructions/ownership/repository/.github/skills/general.instructions.md",
     ".github/instructions/ownership/repository/docs/general.instructions.md",
     ".github/instructions/ownership/repository/starter-kit/general.instructions.md",
     ".github/instructions/ownership/repository/templates/general.instructions.md",
     ".github/instructions/ownership/repository/scripts/general.instructions.md",
     ".github/instructions/ownership/repository/README.md.instructions.md",
     ".github/instructions/ownership/repository/README.pt-BR.md.instructions.md",
-    ".github/instructions/overlays/quality/markdown-quality.instructions.md",
     ".github/instructions/overlays/quality/bilingual-parity.instructions.md",
-    ".github/instructions/overlays/quality/repo-hygiene.instructions.md",
     ".github/instructions/overlays/workflow/community-health.instructions.md",
     "docs/en/README.md",
     "docs/pt-BR/README.md",
@@ -89,6 +93,25 @@ def ensure_instruction_tree_layout() -> None:
             fail(
                 f"Flat instruction files found under {rel_root}: "
                 + ", ".join(path.name for path in flat_files)
+            )
+
+
+def ensure_ownership_roots_are_explicit() -> None:
+    for rel_root in [".github/instructions/ownership", "starter-kit/.github/instructions/ownership"]:
+        root = ROOT / rel_root
+        repository_root = root / "repository"
+        if not repository_root.is_dir():
+            fail(f"Ownership root missing literal repository node: {rel_root}/repository")
+
+        misplaced = [
+            path.relative_to(ROOT)
+            for path in root.rglob("*.instructions.md")
+            if path.relative_to(root).parts[0] != "repository"
+        ]
+        if misplaced:
+            fail(
+                "Owner instruction files must live under the literal repository root node: "
+                + ", ".join(str(path) for path in misplaced)
             )
 
 
@@ -264,6 +287,7 @@ def ensure_language_doc_sets() -> None:
 def main() -> int:
     ensure_required_paths()
     ensure_instruction_tree_layout()
+    ensure_ownership_roots_are_explicit()
     ensure_instruction_sets_have_content()
     ensure_optional_skill_layout()
     ensure_templates_have_content()

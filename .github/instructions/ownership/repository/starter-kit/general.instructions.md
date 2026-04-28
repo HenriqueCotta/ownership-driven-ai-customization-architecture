@@ -4,14 +4,16 @@ applyTo: "starter-kit/**"
 
 # Starter Kit Ownership
 
-Keep the starter kit small, generic, and copyable.
+Keep the starter kit generic and copyable.
 
-- Favor safe defaults over exhaustive coverage.
-- Use generic path examples unless a specific example teaches a real distinction.
-- Keep the starter kit architecture consistent with the documented model: baseline, ownership tree, overlays, and optional skills.
-- Prefer the canonical ownership-node grammar unless a shortcut clearly teaches better.
+It should demonstrate the current ODA shape without becoming a complete product repository.
+
+Use generic path examples unless a specific path teaches a real architectural distinction.
+
+Supporting sources and skills stay optional in the starter kit unless omitting them would make the example misleading.
 
 ## Follow-Through Triggers
 
-- If the starter kit structure changes, update the starter-kit README, architecture docs, templates, and validation script.
-- If an example skill or instruction changes meaningfully, review the docs that teach how adopters should use it.
+If a change under `starter-kit/**` alters starter-kit structure, update the guidance and validation that depend on that structure.
+
+If a change under `starter-kit/**` alters behavior taught by an example skill or instruction, update the adoption guidance that explains when to use it.

@@ -6,10 +6,12 @@ applyTo: "README.md"
 
 `README.md` is the English front door for the repository.
 
-- Keep the first fold concise, discoverable, and easy to scan.
-- Use the README to route readers to deeper docs instead of restating the whole architecture.
-- Keep wording aligned with the public docs, starter kit, and templates.
+Keep the first fold concise and easy to scan.
+
+Use the README to route readers to deeper docs instead of restating the whole architecture.
+
+Its claims should stay aligned with the public guidance it routes to.
 
 ## Follow-Through Triggers
 
-- If the English README changes structure, claims, or navigation, update the Portuguese README and any affected docs links in the same change.
+If `README.md` changes meaning or routing, update the mirrored README and any affected links in the same change.

@@ -6,12 +6,14 @@ applyTo: "docs/**"
 
 The docs tree is the canonical public explanation of the architecture.
 
-- Keep the documentation architecture clear: explanation, model, rules, how-to, and examples.
-- Keep overview pages short and route detail into focused pages instead of repeating it.
-- Keep repository archetypes inside `examples/repositories/` and focused feature examples inside their own example folders when they need several scenarios.
-- Favor realistic, selective examples over exhaustive trees that no real repo would maintain.
+Keep overview material separated from focused guidance and examples.
+
+Prefer selective examples over exhaustive trees that no real repository would maintain.
+
+Keep overview pages short and route detail into focused pages instead of repeating it.
 
 ## Follow-Through Triggers
 
-- If docs structure, page naming, or example layout changes, review both language trees, root READMEs, and `scripts/check_repo.py` for stale references or assumptions.
-- If a public architectural claim changes, review starter-kit files, templates, and examples that teach that claim.
+If a change under `docs/**` alters documentation structure, update the mirrored content and any dependent routing or validation.
+
+If a change under `docs/**` alters a public architectural claim, update the copyable artifacts and live customization that teach or enforce the same claim.

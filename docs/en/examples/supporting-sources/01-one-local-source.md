@@ -22,7 +22,7 @@ The team wants agents to know when `docs/product/` should be used as evidence fo
           supporting-sources.instructions.md
           docs/
             general.instructions.md
-          src/ 
+          src/
             notifications/
               general.instructions.md
   docs/

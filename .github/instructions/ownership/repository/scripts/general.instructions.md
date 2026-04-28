@@ -6,12 +6,12 @@ applyTo: "scripts/**"
 
 Scripts are maintenance surfaces that should encode the current repository contract, not stale historical assumptions.
 
-- Keep validation rules explicit, easy to inspect, and easy to update.
-- Prefer actionable failures over silent drift.
-- Treat broken links, stale structure assumptions, and language-mirror drift as real hygiene defects.
-- Keep script logic aligned with the actual docs, starter-kit, templates, and `.github` tree.
+Validation should fail on real drift that maintainers can act on.
+
+Keep script logic aligned with the repository contract it protects.
+
+Do not encode historical structure just because it used to be true.
 
 ## Follow-Through Triggers
 
-- If docs, examples, starter-kit, templates, or `.github` structure changes, update the relevant validation logic in the same change.
-- If a script changes what the repo considers valid, review the workflow that runs it and the docs that describe the expected structure.
+If a change under `scripts/**` alters what the repo considers valid, update the automation and guidance that depend on that validation contract.
