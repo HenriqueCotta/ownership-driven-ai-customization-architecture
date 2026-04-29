@@ -1,5 +1,13 @@
 # API Service
 
+## On This Page
+
+- [Repository Shape](#repository-shape)
+- [A Realistic Ownership Map](#a-realistic-ownership-map)
+- [Why This Map Is Realistic](#why-this-map-is-realistic)
+- [Prompt-Driven Situations](#prompt-driven-situations)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Repository Shape
 
 ```text

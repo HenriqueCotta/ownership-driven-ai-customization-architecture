@@ -1,5 +1,14 @@
 # Why A Folder Grammar Is Easier To Teach
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [On Disk](#on-disk)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 A new maintainer needs to understand which ownership instructions apply to:

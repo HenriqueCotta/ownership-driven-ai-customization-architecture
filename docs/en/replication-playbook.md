@@ -3,6 +3,27 @@
 Audience: maintainers reproducing this architecture in another repository.
 Goal: provide a practical sequence for rolling the model out without copying accidental details or rebuilding duplication.
 
+## On This Page
+
+- [Principle](#principle)
+- [Teaching Principle](#teaching-principle)
+- [Recommended Build Order](#recommended-build-order)
+- [Use A Default Authoring Split](#use-a-default-authoring-split)
+- [Add Supporting Sources Only When They Matter](#add-supporting-sources-only-when-they-matter)
+- [Organize Overlays By Concern Family](#organize-overlays-by-concern-family)
+- [Roll Out In Small Passes](#roll-out-in-small-passes)
+- [Start Broad And Grow Only When Needed](#start-broad-and-grow-only-when-needed)
+- [Keep The Skill Set Small And Outcome-Based](#keep-the-skill-set-small-and-outcome-based)
+- [Do Not Write Triggers Everywhere](#do-not-write-triggers-everywhere)
+- [Recommended Maintenance Skill For Copilot Customization](#recommended-maintenance-skill-for-copilot-customization)
+- [Choose The Closure Policy Deliberately](#choose-the-closure-policy-deliberately)
+- [Use Explicit Carry-Forward Only When It Helps](#use-explicit-carry-forward-only-when-it-helps)
+- [Teach The Runtime Model Explicitly](#teach-the-runtime-model-explicitly)
+- [Use Automation For Exact Procedures](#use-automation-for-exact-procedures)
+- [Review The Structure Regularly](#review-the-structure-regularly)
+- [Healthy End State](#healthy-end-state)
+- [Related Material](#related-material)
+
 ## Principle
 
 Replicate the model, not the filenames.

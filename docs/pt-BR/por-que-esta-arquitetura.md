@@ -3,7 +3,7 @@
 Público: mantenedores, times de plataforma e lideranças de engenharia avaliando se vale a pena adotar este padrão.  
 Objetivo: explicar o caso de negócio, a justificativa técnica, os ganhos esperados, os limites e o alinhamento com guidance oficial.
 
-## Ir Para
+## Nesta Página
 
 - [Resumo Executivo](#resumo-executivo)
 - [Por Que o Modelo Faz Sentido](#por-que-o-modelo-faz-sentido)

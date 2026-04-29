@@ -1,5 +1,14 @@
 # Multiple Sources And Conflicts
 
+## On This Page
+
+- [Situation](#situation)
+- [Supporting Source Excerpt](#supporting-source-excerpt)
+- [Owner Instruction](#owner-instruction)
+- [Optional Skill](#optional-skill)
+- [Prompt-Driven Flow](#prompt-driven-flow)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Situation
 
 A repository changes subscription billing behavior.

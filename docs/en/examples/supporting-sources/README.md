@@ -4,6 +4,14 @@ These examples show how repositories can use supporting sources without turning 
 
 They are examples of shape and judgment, not required templates.
 
+## On This Page
+
+- [Included Examples](#included-examples)
+- [Reading Cue](#reading-cue)
+- [Naming Cue](#naming-cue)
+
+## Included Examples
+
 Read them as variations:
 
 - [One Local Source](./01-one-local-source.md)

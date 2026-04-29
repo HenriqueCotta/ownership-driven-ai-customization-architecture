@@ -3,6 +3,15 @@
 Audience: maintainers designing a scalable Copilot customization model for one or many repositories.  
 Goal: provide a documentation portal that makes the architecture easy to learn, inspect, and reuse.
 
+## On This Page
+
+- [What This Folder Documents](#what-this-folder-documents)
+- [Documentation Structure](#documentation-structure)
+- [Documentation Map](#documentation-map)
+- [Companion Assets](#companion-assets)
+- [Suggested Reading Paths](#suggested-reading-paths)
+- [Core Design Rules](#core-design-rules)
+
 ## What This Folder Documents
 
 It documents a reusable architecture for organizing:
@@ -23,23 +32,6 @@ Operational shorthand:
 - `baseline + ownership tree + cross-cutting overlays`
 
 This folder is repository-agnostic.
-
-## On This Page
-
-- [Ownership-Driven Architecture (ODA)](#ownership-driven-architecture-oda)
-  - [What This Folder Documents](#what-this-folder-documents)
-  - [On This Page](#on-this-page)
-  - [Documentation Structure](#documentation-structure)
-  - [Documentation Map](#documentation-map)
-    - [Explanation](#explanation)
-    - [Model](#model)
-    - [Rules](#rules)
-    - [How-To](#how-to)
-    - [Recommended Skill](#recommended-skill)
-    - [Worked Examples](#worked-examples)
-  - [Companion Assets](#companion-assets)
-  - [Suggested Reading Paths](#suggested-reading-paths)
-  - [Core Design Rules](#core-design-rules)
 
 ## Documentation Structure
 

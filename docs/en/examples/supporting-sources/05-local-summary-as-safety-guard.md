@@ -1,5 +1,14 @@
 # Local Summary As Safety Guard
 
+## On This Page
+
+- [Situation](#situation)
+- [Source Entry](#source-entry)
+- [Owner Instruction](#owner-instruction)
+- [Why This Duplication Is Acceptable](#why-this-duplication-is-acceptable)
+- [Bad Version](#bad-version)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Situation
 
 A repository depends on an external policy source for billing constraints.

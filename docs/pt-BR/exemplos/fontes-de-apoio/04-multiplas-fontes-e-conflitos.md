@@ -1,5 +1,14 @@
 # Múltiplas Fontes e Conflitos
 
+## Nesta Página
+
+- [Situação](#situação)
+- [Trecho da Fonte de Apoio](#trecho-da-fonte-de-apoio)
+- [Instruction de Owner](#instruction-de-owner)
+- [Skill Opcional](#skill-opcional)
+- [Fluxo Guiado por Prompt](#fluxo-guiado-por-prompt)
+- [Lição do Exemplo](#lição-do-exemplo)
+
 ## Situação
 
 Um repositório muda comportamento de assinatura e cobrança.

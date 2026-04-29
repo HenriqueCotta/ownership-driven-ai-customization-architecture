@@ -1,5 +1,14 @@
 # One File Node With Two Instruction Files
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [On Disk](#on-disk)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 You have this repository path:

@@ -1,5 +1,13 @@
 # A Real Overlay
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 You want one shared testing-quality lens to apply across both production code and tests:

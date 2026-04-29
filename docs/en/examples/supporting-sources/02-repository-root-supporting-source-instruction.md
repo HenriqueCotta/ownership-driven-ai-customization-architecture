@@ -1,5 +1,13 @@
 # Repository-Root Supporting-Source Instruction
 
+## On This Page
+
+- [Situation](#situation)
+- [Repository Shape](#repository-shape)
+- [Baseline Pointer](#baseline-pointer)
+- [Supporting Source Instruction](#supporting-source-instruction)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Situation
 
 A repository uses several sources:

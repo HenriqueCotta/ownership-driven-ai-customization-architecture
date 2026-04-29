@@ -1,5 +1,13 @@
 # Documentation As Its Own Owner
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 You edit:

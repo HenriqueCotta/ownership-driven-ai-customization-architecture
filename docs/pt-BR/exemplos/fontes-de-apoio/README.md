@@ -4,6 +4,14 @@ Estes exemplos mostram como repositórios podem usar fontes de apoio sem transfo
 
 Eles são exemplos de formato e julgamento, não templates obrigatórios.
 
+## Nesta Página
+
+- [Exemplos Incluídos](#exemplos-incluídos)
+- [Dica de Leitura](#dica-de-leitura)
+- [Dica de Nome](#dica-de-nome)
+
+## Exemplos Incluídos
+
 Leia como variações:
 
 - [Uma Fonte Local](./01-uma-fonte-local.md)

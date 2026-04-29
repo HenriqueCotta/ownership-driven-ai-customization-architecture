@@ -5,18 +5,16 @@ Objetivo: definir a gramática canônica da ownership tree para que o mapa seja 
 
 ## Nesta Página
 
-- [Gramática da Ownership Tree](#gramática-da-ownership-tree)
-  - [Nesta Página](#nesta-página)
-  - [Regra Canônica](#regra-canônica)
-  - [Gramática Canônica](#gramática-canônica)
-  - [Owner Raiz do Repositório](#owner-raiz-do-repositório)
-  - [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
-  - [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
-  - [Guidance de Nomes](#guidance-de-nomes)
-  - [Quando Adicionar Um Nó Mais Estreito](#quando-adicionar-um-nó-mais-estreito)
-  - [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
-  - [Relação com Follow-Through](#relação-com-follow-through)
-  - [Material Relacionado](#material-relacionado)
+- [Regra Canônica](#regra-canônica)
+- [Gramática Canônica](#gramática-canônica)
+- [Owner Raiz do Repositório](#owner-raiz-do-repositório)
+- [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
+- [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
+- [Guidance de Nomes](#guidance-de-nomes)
+- [Quando Adicionar Um Nó Mais Estreito](#quando-adicionar-um-nó-mais-estreito)
+- [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
+- [Relação com Follow-Through](#relação-com-follow-through)
+- [Material Relacionado](#material-relacionado)
 
 ## Regra Canônica
 

@@ -1,5 +1,13 @@
 # Consumer Instructions
 
+## On This Page
+
+- [Situation](#situation)
+- [Provider Adapter Owner](#provider-adapter-owner)
+- [UI Owner](#ui-owner)
+- [Public Contract Overlay](#public-contract-overlay)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Situation
 
 A repository has a repository-root supporting-source instruction.

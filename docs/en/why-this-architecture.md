@@ -3,7 +3,7 @@
 Audience: maintainers, platform teams, and engineering leaders evaluating whether this pattern is worth adopting.  
 Goal: explain the business case, technical rationale, expected gains, limits, and standards alignment behind the model.
 
-## Jump To
+## On This Page
 
 - [Executive Summary](#executive-summary)
 - [Why The Model Makes Sense](#why-the-model-makes-sense)

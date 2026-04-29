@@ -1,5 +1,15 @@
 # One Local Source
 
+## On This Page
+
+- [Situation](#situation)
+- [Repository Shape](#repository-shape)
+- [Supporting Source Instruction](#supporting-source-instruction)
+- [Consumer Instruction](#consumer-instruction)
+- [Docs Owner Instruction](#docs-owner-instruction)
+- [Common Questions](#common-questions)
+- [Why This Is Enough](#why-this-is-enough)
+
 ## Situation
 
 A small service keeps customer-facing product behavior notes in `docs/product/`.

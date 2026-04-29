@@ -1,5 +1,14 @@
 # Resumo Local Como Guarda de Segurança
 
+## Nesta Página
+
+- [Situação](#situação)
+- [Entrada de Fonte](#entrada-de-fonte)
+- [Instruction de Owner](#instruction-de-owner)
+- [Por Que Esta Duplicação É Aceitável](#por-que-esta-duplicação-é-aceitável)
+- [Versão Ruim](#versão-ruim)
+- [Lição do Exemplo](#lição-do-exemplo)
+
 ## Situação
 
 Um repositório depende de uma fonte externa de policy para restrições de cobrança.

@@ -1,5 +1,14 @@
 # Um Nó de Arquivo com Dois Arquivos de Instruction
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [No Disco](#no-disco)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você tem este path de repositório:

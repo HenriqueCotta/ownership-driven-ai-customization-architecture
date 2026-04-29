@@ -1,5 +1,16 @@
 # Source-Specific Interpretation Instruction
 
+## On This Page
+
+- [Situation](#situation)
+- [Preferred Default](#preferred-default)
+- [When The Extra Instruction Is Worth It](#when-the-extra-instruction-is-worth-it)
+- [Repository Shape](#repository-shape)
+- [Supporting Source Entry](#supporting-source-entry)
+- [Source-Specific Interpretation Instruction](#source-specific-interpretation-instruction-1)
+- [What Stays Out](#what-stays-out)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Situation
 
 A repository uses a work board to track planned work, deferred follow-through, release coordination, and accepted follow-ups.

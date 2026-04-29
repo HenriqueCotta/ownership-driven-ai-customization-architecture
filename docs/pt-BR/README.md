@@ -3,6 +3,15 @@
 Público: mantenedores que estão desenhando um modelo escalável de personalização do Copilot para um ou vários repositórios.  
 Objetivo: fornecer um portal de documentação que deixe a arquitetura fácil de aprender, consultar e reutilizar.
 
+## Nesta Página
+
+- [O Que Esta Pasta Documenta](#o-que-esta-pasta-documenta)
+- [Estrutura da Documentação](#estrutura-da-documentação)
+- [Mapa da Documentação](#mapa-da-documentação)
+- [Materiais Complementares](#materiais-complementares)
+- [Trilhas Sugeridas de Leitura](#trilhas-sugeridas-de-leitura)
+- [Regras Centrais de Design](#regras-centrais-de-design)
+
 ## O Que Esta Pasta Documenta
 
 Esta pasta é agnóstica ao repositório.
@@ -23,16 +32,6 @@ Nome formal:
 Atalho operacional:
 
 - `baseline + ownership tree + cross-cutting overlays`
-
-## Nesta Página
-
-- [O Que Esta Pasta Documenta](#o-que-esta-pasta-documenta)
-- [Estrutura da Documentação](#estrutura-da-documentação)
-- [Mapa da Documentação](#mapa-da-documentação)
-- [Skill Recomendada](#skill-recomendada)
-- [Materiais Complementares](#materiais-complementares)
-- [Trilhas Sugeridas de Leitura](#trilhas-sugeridas-de-leitura)
-- [Regras Centrais de Design](#regras-centrais-de-design)
 
 ## Estrutura da Documentação
 

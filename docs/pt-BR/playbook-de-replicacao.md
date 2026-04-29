@@ -3,6 +3,27 @@
 Público: mantenedores que estão reproduzindo esta arquitetura em outro repositório.
 Objetivo: fornecer uma sequência prática para fazer o rollout do modelo sem copiar detalhes acidentais nem reconstruir duplicação.
 
+## Nesta Página
+
+- [Princípio](#princípio)
+- [Princípio de Ensino](#princípio-de-ensino)
+- [Ordem Recomendada de Montagem](#ordem-recomendada-de-montagem)
+- [Use uma Separação Default de Redação](#use-uma-separação-default-de-redação)
+- [Adicione Fontes de Apoio Só Quando Elas Importarem](#adicione-fontes-de-apoio-só-quando-elas-importarem)
+- [Organize Overlays por Família de Concern](#organize-overlays-por-família-de-concern)
+- [Faça o Rollout em Passes Pequenos](#faça-o-rollout-em-passes-pequenos)
+- [Comece Amplo e Cresça Só Quando Houver Necessidade](#comece-amplo-e-cresça-só-quando-houver-necessidade)
+- [Mantenha o Conjunto de Skills Pequeno e Orientado a Outcome](#mantenha-o-conjunto-de-skills-pequeno-e-orientado-a-outcome)
+- [Não Escreva Triggers em Todo Lugar](#não-escreva-triggers-em-todo-lugar)
+- [Skill Recomendada de Manutenção da Customização do Copilot](#skill-recomendada-de-manutenção-da-customização-do-copilot)
+- [Escolha a Closure Policy Deliberadamente](#escolha-a-closure-policy-deliberadamente)
+- [Use Carry-Forward Explícito Só Quando Isso Ajudar](#use-carry-forward-explícito-só-quando-isso-ajudar)
+- [Ensine o Modelo de Runtime Explicitamente](#ensine-o-modelo-de-runtime-explicitamente)
+- [Use Automação para Procedimentos Exatos](#use-automação-para-procedimentos-exatos)
+- [Revise a Estrutura Regularmente](#revise-a-estrutura-regularmente)
+- [Estado Final Saudável](#estado-final-saudável)
+- [Material Relacionado](#material-relacionado)
+
 ## Princípio
 
 Replique o modelo, não os nomes de arquivo.

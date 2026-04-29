@@ -1,5 +1,14 @@
 # Por Que uma Gramática de Pastas é Mais Fácil de Ensinar
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [No Disco](#no-disco)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Um novo mantenedor precisa entender quais ownership instructions se aplicam a:
