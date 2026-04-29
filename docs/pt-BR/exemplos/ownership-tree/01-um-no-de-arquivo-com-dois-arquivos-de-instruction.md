@@ -1,5 +1,14 @@
 # Um Nó de Arquivo com Dois Arquivos de Instruction
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [No Disco](#no-disco)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você tem este path de repositório:
@@ -41,13 +50,14 @@ Só o conteúdo do nó muda.
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        api/
+      repository/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
 ```
 
 ## Follow-Through

@@ -1,0 +1,35 @@
+---
+applyTo: "**"
+---
+
+# Supporting Sources
+
+Use these sources only when they could change the decision, explain a conflict, or prevent unsafe guessing.
+
+These entries are not a required schema. Keep the source IDs stable, and use only the fields each source needs.
+
+## Conflict Handling
+
+When sources diverge, classify the disputed claim first: implementation behavior, product intent, external platform fact, policy, planned work, or another source-owned claim type relevant to this repository.
+
+Prefer the source that owns that claim. If the owning source is unavailable and the missing fact could change the result, treat that part as verification-blocked.
+
+## REPLACE_WITH_SOURCE_ID
+
+Where: REPLACE_WITH_PATH_URL_CONNECTOR_PAGE_ID_SEARCH_LOCATION_REPO_RUNBOOK_OR_SKILL_RESOURCE
+Access: REPLACE_WITH_ACCESS_EXPECTATION_IF_NEEDED
+Use for: REPLACE_WITH_CLAIM_TYPE_THIS_SOURCE_CAN_ANSWER
+Freshness: REPLACE_WITH_WHEN_CURRENT_VERIFICATION_MATTERS
+If unavailable: REPLACE_WITH_SAFE_FALLBACK_OR_BLOCKED_STATE
+If it conflicts: REPLACE_WITH_SOURCE_AUTHORITY_OR_CONFLICT_RULE
+
+## Example
+
+```md
+## product-docs
+
+Where: `docs/product/`
+Use for: customer-visible behavior and product intent.
+If unavailable: preserve existing behavior and surface the missing product context when it could change the result.
+If it conflicts: product docs own intended customer semantics, but implementation and tests may reveal drift.
+```

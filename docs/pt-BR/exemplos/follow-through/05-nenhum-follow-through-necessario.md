@@ -1,5 +1,13 @@
 # Nenhum Follow-Through Necessário
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você renomeia variáveis e simplifica um helper sem mudar comportamento:

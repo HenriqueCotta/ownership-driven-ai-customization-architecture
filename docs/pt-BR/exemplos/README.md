@@ -9,6 +9,7 @@ Objetivo: fornecer exemplos curtos e linkáveis que ensinem classificação, fol
 - [Classificação](#classificação)
 - [Follow-Through](#follow-through)
 - [Ownership Tree](#ownership-tree)
+- [Fontes de Apoio](#fontes-de-apoio)
 - [Arquétipos de Repositório](#arquétipos-de-repositório)
 - [Checklist Rápido de Revisão](#checklist-rápido-de-revisão)
 
@@ -22,6 +23,8 @@ Leia os exemplos por tema:
   - como a lógica downstream de follow-through deve funcionar
 - `ownership-tree/`
   - como a ownership tree deve aparecer no disco
+- `fontes-de-apoio/`
+  - como guidance de fontes, instructions consumidoras, conflitos e workflows de fonte se encaixam
 - `repositorios/`
   - como a arquitetura aparece em arquétipos de repositório mais realistas e em prompts do dia a dia
 
@@ -35,6 +38,8 @@ Se esta for sua primeira leitura, siga esta ordem:
 6. [Um Trigger Compartilhado Supera Cópias Locais Repetidas](./follow-through/06-um-trigger-compartilhado-supera-copias-locais-repetidas.md)
 7. [Um Nó de Arquivo com Dois Arquivos de Instruction](./ownership-tree/01-um-no-de-arquivo-com-dois-arquivos-de-instruction.md)
 8. [Cresça a Tree Só Quando o Owner Amplo Deixar de Ser Suficiente](./ownership-tree/04-cresca-a-tree-so-quando-o-owner-amplo-deixar-de-ser-suficiente.md)
+9. [Instruction de Fontes de Apoio do Owner Raiz](./fontes-de-apoio/02-instruction-de-fontes-de-apoio-do-owner-raiz.md)
+10. [Instructions Consumidoras](./fontes-de-apoio/03-instructions-consumidoras.md)
 
 ## Classificação
 
@@ -58,6 +63,16 @@ Se esta for sua primeira leitura, siga esta ordem:
 - [Por Que uma Gramática de Pastas é Mais Fácil de Ensinar](./ownership-tree/03-por-que-uma-gramatica-de-pastas-e-mais-facil-de-ensinar.md)
 - [Cresça a Tree Só Quando o Owner Amplo Deixar de Ser Suficiente](./ownership-tree/04-cresca-a-tree-so-quando-o-owner-amplo-deixar-de-ser-suficiente.md)
 
+## Fontes de Apoio
+
+- [Índice de Exemplos de Fontes de Apoio](./fontes-de-apoio/README.md)
+- [Uma Fonte Local](./fontes-de-apoio/01-uma-fonte-local.md)
+- [Instruction de Fontes de Apoio do Owner Raiz](./fontes-de-apoio/02-instruction-de-fontes-de-apoio-do-owner-raiz.md)
+- [Instructions Consumidoras](./fontes-de-apoio/03-instructions-consumidoras.md)
+- [Múltiplas Fontes e Conflitos](./fontes-de-apoio/04-multiplas-fontes-e-conflitos.md)
+- [Resumo Local Como Guarda de Segurança](./fontes-de-apoio/05-resumo-local-como-guarda-de-seguranca.md)
+- [Instruction de Interpretação Específica da Fonte](./fontes-de-apoio/06-instruction-de-interpretacao-especifica-da-fonte.md)
+
 ## Arquétipos de Repositório
 
 - [Índice de Arquétipos de Repositório](./repositorios/README.md)
@@ -77,5 +92,6 @@ Depois de uma mudança relevante, pergunte:
 6. Esta instruction realmente precisa de um trigger, ou estou adicionando um por reflexo?
 7. O trabalho downstream é pequeno o bastante para ser feito diretamente, ou ele justifica uma skill existente orientada a outcome?
 8. Algum check exato e repetível ficaria mais claro como automação ou runbook?
-9. Estou inventando uma nova camada de hints ou uma skill por trigger quando o mapa existente já é suficiente?
-10. Estou aprofundando a tree antes de o owner mais amplo realmente provar que não basta?
+9. Se evidência mais profunda ou viva importa, localização, acesso, fallback e conflito de fontes estão claros?
+10. Estou inventando uma nova camada de hints, um registro de fontes ou uma skill por trigger quando o mapa existente já é suficiente?
+11. Estou aprofundando a tree antes de o owner mais amplo realmente provar que não basta?

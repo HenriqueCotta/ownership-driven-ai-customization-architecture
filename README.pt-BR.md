@@ -25,9 +25,9 @@
 
 # Ownership-Driven Architecture (ODA)
 
-Uma arquitetura escalável para GitHub Copilot custom instructions, path-specific instructions, skills e AGENTS.md em repositórios grandes e monorepos.
+Uma arquitetura escalável para GitHub Copilot custom instructions, path-specific instructions, skills, fontes de apoio opcionais e AGENTS.md em repositórios grandes e monorepos.
 
-Ela ajuda times a organizar `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers` e `skills` sem transformar tudo em custom agents.
+Ela ajuda times a organizar `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers`, `fontes de apoio` opcionais e `skills` sem transformar tudo em custom agents.
 
 Nome formal da arquitetura:
 
@@ -69,6 +69,7 @@ Em alto nível, o modelo separa:
 - `baseline`
 - `ownership tree`
 - `cross-cutting overlays`
+- `fontes de apoio` opcionais
 - `skills`
 
 Mantenha a visão geral do repositório curta aqui.
@@ -93,6 +94,7 @@ Este projeto propõe um modelo operacional mais simples:
 - ligar a maior parte do comportamento a boundaries de ownership
 - usar overlays apenas para concerns realmente transversais
 - manter comportamento downstream de revisão e atualização em `Follow-Through Triggers`
+- usar fontes de apoio opcionais para evidência mais profunda ou viva sem transformar fontes em outra ownership tree
 - usar skills apenas para workflows reutilizáveis que inchariam instructions always-on
 
 ## O Que Você Encontra Aqui
@@ -101,14 +103,15 @@ Este projeto propõe um modelo operacional mais simples:
 - uma justificativa clara de por que esse modelo existe e onde ele faz sentido
 - um starter kit copiável para outro repositório
 - scaffolds adaptáveis de baseline, ownership nodes e overlays
+- guidance e exemplos para instructions opcionais de fontes, IDs de fonte, fallback e tratamento de conflitos
 - uma skill recomendada de manutenção do repositório para desenhar e auditar a própria customização do Copilot
-- um script auxiliar para instalar skills do repositório em diretórios pessoais suportados
+- guidance para reutilizar skills de repositório por locais de skills suportados pelo Copilot
 - arquivos de comunidade para operar isso como projeto open source
 
 ## Começo Rápido
 
 1. Leia a arquitetura em [docs/pt-BR](./docs/pt-BR/README.md).
-2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md), [Modelo Operacional](./docs/pt-BR/modelo/modelo-operacional.md), [Regras de Decisão](./docs/pt-BR/regras/regras-de-decisao.md) e [Gramática da Ownership Tree](./docs/pt-BR/regras/gramatica-da-ownership-tree.md).
+2. Leia [Por Que Esta Arquitetura](./docs/pt-BR/por-que-esta-arquitetura.md), [Modelo Operacional](./docs/pt-BR/modelo/modelo-operacional.md), [Fontes de Apoio](./docs/pt-BR/modelo/fontes-de-apoio.md), [Regras de Decisão](./docs/pt-BR/regras/regras-de-decisao.md) e [Gramática da Ownership Tree](./docs/pt-BR/regras/gramatica-da-ownership-tree.md).
 3. Copie o [starter-kit](./starter-kit/README.md) para um repositório de teste.
 4. Adapte o mapa de ownership aos seus caminhos reais.
 5. Adicione apenas os overlays que realmente atravessam vários owners.
@@ -117,7 +120,7 @@ Este projeto propõe um modelo operacional mais simples:
 
 ## Instale a Skill Recomendada
 
-As docs atuais do GitHub Copilot descrevem skills de repositório em `.github/skills` e skills pessoais em `~/.copilot/skills`, `~/.claude/skills` ou `~/.agents/skills`.
+As docs atuais do GitHub Copilot descrevem skills de projeto em `.github/skills`, `.claude/skills` ou `.agents/skills`; skills de repositório usam `.github/skills`, e skills pessoais usam `~/.copilot/skills` ou `~/.agents/skills`.
 
 Este repositório mantém a fonte canônica em [`.github/skills/oda-copilot-customization`](./.github/skills/oda-copilot-customization/SKILL.md).
 
@@ -147,6 +150,7 @@ Se você estiver usando Copilot CLI e quiser usar este próprio repositório com
 - Preferir previsibilidade a roteamento esperto demais.
 - Preferir ownership a abstração excessiva.
 - Preferir refinamento a reversão.
+- Preferir evidência governada a busca vaga por fontes.
 - Preferir workflows reutilizáveis a instructions gigantes.
 - Preferir exemplos públicos a convenções escondidas.
 

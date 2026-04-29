@@ -1,5 +1,14 @@
 # One File Node With Two Instruction Files
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [On Disk](#on-disk)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 You have this repository path:
@@ -41,13 +50,14 @@ Only the contents of the node change.
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        api/
+      repository/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
 ```
 
 ## Follow-Through

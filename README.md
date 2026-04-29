@@ -25,9 +25,9 @@
 
 # Ownership-Driven Architecture (ODA)
 
-A scalable architecture for GitHub Copilot custom instructions, path-specific instructions, skills, and AGENTS.md across large repositories and monorepos.
+A scalable architecture for GitHub Copilot custom instructions, path-specific instructions, skills, optional supporting sources, and AGENTS.md across large repositories and monorepos.
 
-It helps teams organize `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers`, and `skills` without turning everything into custom agents.
+It helps teams organize `baseline`, `ownership tree`, `cross-cutting overlays`, `Follow-Through Triggers`, optional `supporting sources`, and `skills` without turning everything into custom agents.
 
 Formal architecture name:
 
@@ -69,6 +69,7 @@ At a glance, the model separates:
 - `baseline`
 - `ownership tree`
 - `cross-cutting overlays`
+- optional `supporting sources`
 - `skills`
 
 Keep the repository overview short here.
@@ -93,6 +94,7 @@ This project proposes a simpler operating model:
 - tie most behavior to ownership boundaries
 - use overlays only for truly cross-cutting concerns
 - keep downstream review and update behavior in `Follow-Through Triggers`
+- use optional supporting sources for deeper or live evidence without turning sources into another ownership tree
 - use skills only for reusable workflows that would bloat always-on instructions
 
 ## What You Get
@@ -101,14 +103,15 @@ This project proposes a simpler operating model:
 - a clear rationale for why this model exists and where it fits
 - a starter kit you can copy into a repository
 - adaptable scaffolds for baseline, ownership nodes, and overlays
+- guidance and examples for optional source instructions, source IDs, fallback, and conflict handling
 - a recommended repository-maintenance skill for shaping and auditing Copilot customization itself
-- a helper script for installing repository skills into supported personal skill directories
+- guidance for reusing repository skills through supported Copilot skill locations
 - community files for running this as an open source project
 
 ## Quick Start
 
 1. Read the architecture docs in [docs/en](./docs/en/README.md).
-2. Read [Why This Architecture](./docs/en/why-this-architecture.md), [Operating Model](./docs/en/model/operating-model.md), [Decision Rules](./docs/en/rules/decision-rules.md), and [Ownership Tree Grammar](./docs/en/rules/ownership-tree-grammar.md).
+2. Read [Why This Architecture](./docs/en/why-this-architecture.md), [Operating Model](./docs/en/model/operating-model.md), [Supporting Sources](./docs/en/model/supporting-sources.md), [Decision Rules](./docs/en/rules/decision-rules.md), and [Ownership Tree Grammar](./docs/en/rules/ownership-tree-grammar.md).
 3. Copy the [starter-kit](./starter-kit/README.md) into a test repository.
 4. Adapt the ownership map to your own paths.
 5. Add only the overlays that truly span multiple owners.
@@ -117,7 +120,7 @@ This project proposes a simpler operating model:
 
 ## Install The Recommended Skill
 
-Current GitHub Copilot docs describe repository skills in `.github/skills` and personal skills in `~/.copilot/skills`, `~/.claude/skills`, or `~/.agents/skills`.
+Current GitHub Copilot docs describe project skills in `.github/skills`, `.claude/skills`, or `.agents/skills`; repository skills use `.github/skills`, and personal skills use `~/.copilot/skills` or `~/.agents/skills`.
 
 This repository keeps the canonical source in [`.github/skills/oda-copilot-customization`](./.github/skills/oda-copilot-customization/SKILL.md).
 
@@ -147,6 +150,7 @@ If you are using Copilot CLI and want to use this repository itself as a skill s
 - Favor predictability over clever routing.
 - Favor ownership over abstraction.
 - Favor refinement over reversal.
+- Favor governed evidence over vague source hunting.
 - Favor reusable workflows over giant instructions.
 - Favor public examples over hidden conventions.
 

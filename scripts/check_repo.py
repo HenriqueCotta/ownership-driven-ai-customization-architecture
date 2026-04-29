@@ -14,26 +14,32 @@ REQUIRED_FILES = [
     "scripts/check_repo.py",
     ".github/copilot-instructions.md",
     ".github/workflows/docs-hygiene.yml",
-    ".github/instructions/ownership/.github/general.instructions.md",
-    ".github/instructions/ownership/docs/general.instructions.md",
-    ".github/instructions/ownership/starter-kit/general.instructions.md",
-    ".github/instructions/ownership/templates/general.instructions.md",
-    ".github/instructions/ownership/scripts/general.instructions.md",
-    ".github/instructions/ownership/README.md.instructions.md",
-    ".github/instructions/ownership/README.pt-BR.md.instructions.md",
-    ".github/instructions/overlays/quality/markdown-quality.instructions.md",
+    ".github/skills/oda-copilot-customization/SKILL.md",
+    ".github/skills/oda-task-tracking/SKILL.md",
+    ".github/instructions/ownership/repository/general.instructions.md",
+    ".github/instructions/ownership/repository/oda-board.instructions.md",
+    ".github/instructions/ownership/repository/supporting-sources.instructions.md",
+    ".github/instructions/ownership/repository/.github/general.instructions.md",
+    ".github/instructions/ownership/repository/.github/skills/general.instructions.md",
+    ".github/instructions/ownership/repository/docs/general.instructions.md",
+    ".github/instructions/ownership/repository/starter-kit/general.instructions.md",
+    ".github/instructions/ownership/repository/templates/general.instructions.md",
+    ".github/instructions/ownership/repository/scripts/general.instructions.md",
+    ".github/instructions/ownership/repository/README.md.instructions.md",
+    ".github/instructions/ownership/repository/README.pt-BR.md.instructions.md",
     ".github/instructions/overlays/quality/bilingual-parity.instructions.md",
-    ".github/instructions/overlays/quality/repo-hygiene.instructions.md",
     ".github/instructions/overlays/workflow/community-health.instructions.md",
     "docs/en/README.md",
     "docs/pt-BR/README.md",
     "starter-kit/README.md",
     "starter-kit/.github/copilot-instructions.md",
     "templates/README.md",
+    "templates/supporting-sources.instructions.md.template",
 ]
 
 REQUIRED_DIRS = [
     ".github/instructions/ownership",
+    ".github/instructions/ownership/repository",
     ".github/instructions/overlays",
     "docs/en",
     "docs/en/model",
@@ -42,16 +48,19 @@ REQUIRED_DIRS = [
     "docs/en/examples/classification",
     "docs/en/examples/follow-through",
     "docs/en/examples/ownership-tree",
+    "docs/en/examples/supporting-sources",
     "docs/en/examples/repositories",
     "docs/pt-BR",
     "docs/pt-BR/exemplos",
     "docs/pt-BR/exemplos/classification",
     "docs/pt-BR/exemplos/follow-through",
     "docs/pt-BR/exemplos/ownership-tree",
+    "docs/pt-BR/exemplos/fontes-de-apoio",
     "docs/pt-BR/exemplos/repositorios",
     "docs/pt-BR/modelo",
     "docs/pt-BR/regras",
     "starter-kit/.github/instructions/ownership",
+    "starter-kit/.github/instructions/ownership/repository",
     "starter-kit/.github/instructions/overlays",
     "templates",
 ]
@@ -84,6 +93,25 @@ def ensure_instruction_tree_layout() -> None:
             fail(
                 f"Flat instruction files found under {rel_root}: "
                 + ", ".join(path.name for path in flat_files)
+            )
+
+
+def ensure_ownership_roots_are_explicit() -> None:
+    for rel_root in [".github/instructions/ownership", "starter-kit/.github/instructions/ownership"]:
+        root = ROOT / rel_root
+        repository_root = root / "repository"
+        if not repository_root.is_dir():
+            fail(f"Ownership root missing literal repository node: {rel_root}/repository")
+
+        misplaced = [
+            path.relative_to(ROOT)
+            for path in root.rglob("*.instructions.md")
+            if path.relative_to(root).parts[0] != "repository"
+        ]
+        if misplaced:
+            fail(
+                "Owner instruction files must live under the literal repository root node: "
+                + ", ".join(str(path) for path in misplaced)
             )
 
 
@@ -175,6 +203,7 @@ def ensure_language_doc_sets() -> None:
         "docs/en/model/operating-model.md",
         "docs/en/model/ownership-vs-overlay.md",
         "docs/en/model/follow-through-triggers.md",
+        "docs/en/model/supporting-sources.md",
         "docs/en/rules/decision-rules.md",
         "docs/en/rules/ownership-tree-grammar.md",
         "docs/en/rules/instruction-conflicts-and-precedence.md",
@@ -192,6 +221,13 @@ def ensure_language_doc_sets() -> None:
         "docs/en/examples/ownership-tree/02-mixed-children-under-one-parent.md",
         "docs/en/examples/ownership-tree/03-why-a-folder-grammar-is-easier-to-teach.md",
         "docs/en/examples/ownership-tree/04-grow-the-tree-only-when-the-broad-owner-stops-being-enough.md",
+        "docs/en/examples/supporting-sources/README.md",
+        "docs/en/examples/supporting-sources/01-one-local-source.md",
+        "docs/en/examples/supporting-sources/02-repository-root-supporting-source-instruction.md",
+        "docs/en/examples/supporting-sources/03-consumer-instructions.md",
+        "docs/en/examples/supporting-sources/04-multiple-sources-and-conflicts.md",
+        "docs/en/examples/supporting-sources/05-local-summary-as-safety-guard.md",
+        "docs/en/examples/supporting-sources/06-source-specific-interpretation-instruction.md",
         "docs/en/examples/repositories/README.md",
         "docs/en/examples/repositories/01-api-service.md",
         "docs/en/examples/repositories/02-web-product-app.md",
@@ -204,6 +240,7 @@ def ensure_language_doc_sets() -> None:
         "docs/pt-BR/modelo/modelo-operacional.md",
         "docs/pt-BR/modelo/ownership-vs-overlay.md",
         "docs/pt-BR/modelo/follow-through-triggers.md",
+        "docs/pt-BR/modelo/fontes-de-apoio.md",
         "docs/pt-BR/regras/regras-de-decisao.md",
         "docs/pt-BR/regras/gramatica-da-ownership-tree.md",
         "docs/pt-BR/regras/conflitos-e-precedencia-de-instrucoes.md",
@@ -221,6 +258,13 @@ def ensure_language_doc_sets() -> None:
         "docs/pt-BR/exemplos/ownership-tree/02-filhos-mistos-sob-um-mesmo-pai.md",
         "docs/pt-BR/exemplos/ownership-tree/03-por-que-uma-gramatica-de-pastas-e-mais-facil-de-ensinar.md",
         "docs/pt-BR/exemplos/ownership-tree/04-cresca-a-tree-so-quando-o-owner-amplo-deixar-de-ser-suficiente.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/README.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/01-uma-fonte-local.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/02-instruction-de-fontes-de-apoio-do-owner-raiz.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/03-instructions-consumidoras.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/04-multiplas-fontes-e-conflitos.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/05-resumo-local-como-guarda-de-seguranca.md",
+        "docs/pt-BR/exemplos/fontes-de-apoio/06-instruction-de-interpretacao-especifica-da-fonte.md",
         "docs/pt-BR/exemplos/repositorios/README.md",
         "docs/pt-BR/exemplos/repositorios/01-servico-de-api.md",
         "docs/pt-BR/exemplos/repositorios/02-aplicacao-web-de-produto.md",
@@ -243,6 +287,7 @@ def ensure_language_doc_sets() -> None:
 def main() -> int:
     ensure_required_paths()
     ensure_instruction_tree_layout()
+    ensure_ownership_roots_are_explicit()
     ensure_instruction_sets_have_content()
     ensure_optional_skill_layout()
     ensure_templates_have_content()

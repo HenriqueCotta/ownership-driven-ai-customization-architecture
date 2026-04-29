@@ -1,9 +1,17 @@
 # Monorepo de Produto
 
+## Nesta Página
+
+- [Estrutura do Repositório](#estrutura-do-repositório)
+- [Um Mapa de Ownership Realista](#um-mapa-de-ownership-realista)
+- [Por Que Este Mapa É Realista](#por-que-este-mapa-é-realista)
+- [Situações Guiadas por Prompt](#situações-guiadas-por-prompt)
+- [Takeaway de Ensino](#takeaway-de-ensino)
+
 ## Estrutura do Repositório
 
 ```text
-repo/
+<repository-root>/
   apps/
     web/
     admin/
@@ -28,27 +36,30 @@ repo/
 .github/
   instructions/
     ownership/
-      apps/
-        general.instructions.md
-        admin/
-          authorization.instructions.md
-      packages/
-        contracts/
+      repository/
+        apps/
           general.instructions.md
-        auth/
-          security.instructions.md
-      infra/
-        terraform/
-          safety.instructions.md
-      docs/
-        runbooks/
-          general.instructions.md
+          admin/
+            authorization.instructions.md
+        packages/
+          contracts/
+            general.instructions.md
+          auth/
+            security.instructions.md
+        infra/
+          terraform/
+            safety.instructions.md
+        docs/
+          runbooks/
+            general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
       operability/
         observability.instructions.md
 ```
+
+Os nomes de contexto de instructions abaixo, como `apps/general`, são atalhos para nós abaixo de `ownership/repository/`.
 
 ## Por Que Este Mapa É Realista
 

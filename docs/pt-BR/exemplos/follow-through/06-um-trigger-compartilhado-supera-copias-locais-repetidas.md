@@ -1,5 +1,14 @@
 # Um Trigger Compartilhado Supera Cópias Locais Repetidas
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Forma Melhor](#forma-melhor)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Um repositório tem nós irmãos de ownership como:

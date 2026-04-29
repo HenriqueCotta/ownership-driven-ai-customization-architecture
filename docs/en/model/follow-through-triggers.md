@@ -11,6 +11,7 @@ Goal: explain what `Follow-Through Triggers` is, why it exists, and where it sho
 - [Triggers Are Optional](#triggers-are-optional)
 - [Source-Anchored Triggers](#source-anchored-triggers)
 - [Relationship To Skills And Automation](#relationship-to-skills-and-automation)
+- [Relationship To Supporting Sources](#relationship-to-supporting-sources)
 - [Relationship To Policy And Tracking](#relationship-to-policy-and-tracking)
 - [How Follow-Through Expands Scope](#how-follow-through-expands-scope)
 - [Typical Triggers](#typical-triggers)
@@ -64,6 +65,8 @@ An instruction with no trigger is normal when it has no unique downstream conseq
 
 ## Source-Anchored Triggers
 
+Here, "source" means the origin of the change, not a supporting source.
+
 The condition that fires a trigger should come from inside the instruction's own scope.
 
 A follow-through rule may point to paths or surfaces outside the instruction's `applyTo`.
@@ -106,6 +109,30 @@ For example:
 Do not treat follow-through as a dispatch table from trigger types to matching skills.
 
 If a team wants discoverability help, keep it as a small hint inside existing docs or instructions rather than introducing a separate hint layer.
+
+## Relationship To Supporting Sources
+
+Supporting sources answer a different question from triggers.
+
+A trigger says what downstream surfaces may now need attention because a meaningful change happened.
+
+A supporting source says where deeper or live evidence lives, what kind of claim it can answer, and what to do when it is unavailable or conflicts with other evidence.
+
+If a source is needed to make the current change correct, put that source reference in the active baseline, owner, or overlay guidance:
+
+```md
+Before changing provider-owned fields or error semantics, use supporting source `payment-provider-docs`.
+```
+
+If a change may leave a downstream surface stale, put that consequence in `Follow-Through Triggers`:
+
+```md
+If public API behavior changes, review docs, examples, tests, and accepted carry-forward work.
+```
+
+If several triggered surfaces require a repeatable source-comparison workflow, use a skill around that workflow.
+
+Do not make triggers a rigid source-dispatch table.
 
 ## Relationship To Policy And Tracking
 
@@ -184,6 +211,7 @@ Typical examples:
 - a reason to create new instruction files by itself
 - a section that every instruction must contain
 - a dispatch table from trigger categories to matching skills
+- a dispatch table from trigger categories to supporting sources
 - a procedural checklist for exact commands or file-by-file updates
 - a separate architectural hint layer
 - a replacement for CI, review, or testing
@@ -196,8 +224,8 @@ It is a structured reminder of likely downstream work.
   <https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions>
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
 - GitHub Docs, Support for different types of custom instructions  
@@ -207,6 +235,7 @@ It is a structured reminder of likely downstream work.
 
 - [Operating Model](./operating-model.md)
 - [Ownership vs Overlay](./ownership-vs-overlay.md)
+- [Supporting Sources](./supporting-sources.md)
 - [Decision Rules](../rules/decision-rules.md)
 - [Replication Playbook](../replication-playbook.md)
 - [Examples](../examples/README.md)

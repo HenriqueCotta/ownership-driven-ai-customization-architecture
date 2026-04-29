@@ -5,21 +5,24 @@ Objetivo: definir a gramática canônica da ownership tree para que o mapa seja 
 
 ## Nesta Página
 
-- [Gramática da Ownership Tree](#gramática-da-ownership-tree)
-  - [Nesta Página](#nesta-página)
-  - [Regra Canônica](#regra-canônica)
-  - [Gramática Canônica](#gramática-canônica)
-  - [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
-  - [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
-  - [Guidance de Nomes](#guidance-de-nomes)
-  - [Quando Adicionar Um Nó Mais Estreito](#quando-adicionar-um-nó-mais-estreito)
-  - [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
-  - [Relação com Follow-Through](#relação-com-follow-through)
-  - [Material Relacionado](#material-relacionado)
+- [Regra Canônica](#regra-canônica)
+- [Gramática Canônica](#gramática-canônica)
+- [Owner Raiz do Repositório](#owner-raiz-do-repositório)
+- [O Que Uma Pasta de Nó Pode Conter](#o-que-uma-pasta-de-nó-pode-conter)
+- [Atalho Opcional Para Um Nó Simples de Arquivo](#atalho-opcional-para-um-nó-simples-de-arquivo)
+- [Guidance de Nomes](#guidance-de-nomes)
+- [Quando Adicionar Um Nó Mais Estreito](#quando-adicionar-um-nó-mais-estreito)
+- [Quando Dividir Um Nó em Vários Arquivos de Instruction](#quando-dividir-um-nó-em-vários-arquivos-de-instruction)
+- [Relação com Follow-Through](#relação-com-follow-through)
+- [Material Relacionado](#material-relacionado)
 
 ## Regra Canônica
 
-Represente todo boundary owned como uma pasta de nó dentro de `.github/instructions/ownership/`.
+Represente o owner raiz do repositório como `.github/instructions/ownership/repository/`.
+
+O nome de pasta `repository/` é literal. Não substitua pelo nome real do checkout do repositório.
+
+Represente todo boundary owned mais estreito como uma pasta de nó filha desse owner raiz.
 
 Essa regra vale tanto quando o boundary owned no repositório é:
 
@@ -34,8 +37,8 @@ Os arquivos de instruction dentro da pasta descrevem a guidance que pertence àq
 
 Use estas regras:
 
-1. Todo boundary de ownership vira uma pasta de nó.
-2. Diretórios do repositório continuam diretórios na instruction tree.
+1. `repository/` é o owner raiz explícito do repositório.
+2. Diretórios do repositório continuam diretórios abaixo de `repository/` na instruction tree.
 3. Arquivos do repositório também podem virar pastas de nó, nomeadas com o nome do arquivo.
 4. Os arquivos de instruction dentro da pasta de nó são nomeados pela concern ou propósito, e não pelo caminho novamente.
 5. Pastas filhas representam boundaries de ownership mais estreitos.
@@ -46,14 +49,40 @@ Exemplo canônico mínimo:
 .github/
   instructions/
     ownership/
-      src/
+      repository/
         general.instructions.md
-        api/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
 ```
+
+## Owner Raiz do Repositório
+
+Use `ownership/repository/` quando a guidance pertencer ao boundary raiz do repositório.
+
+Isso é útil para contratos owned pelo repo inteiro, aplicados da raiz para baixo, mas que deixariam o baseline grande ou procedural demais.
+
+Exemplos:
+
+- `ownership/repository/general.instructions.md`
+- `ownership/repository/supporting-sources.instructions.md`
+- `ownership/repository/repository-structure.instructions.md`
+
+O nó `repository/` é explícito de propósito.
+
+Ele evita que `ownership/` vire uma gaveta ambígua para qualquer regra global.
+
+Ele também evita acoplar a instruction tree ao nome local do clone, ao nome de um fork ou a uma futura renomeação do repositório.
+
+Ele também mantém os owners mais estreitos dentro da mesma árvore: um path top-level real `src/` vira `ownership/repository/src/`, e não um irmão do owner raiz do repositório.
+
+Mantenha o baseline curto e use o owner raiz para guidance owned pelo repo que ainda merece um arquivo de instruction.
+
+Não use o owner raiz como um segundo baseline, um registro de fontes para todo documento ou um lugar para esconder overlays transversais.
 
 ## O Que Uma Pasta de Nó Pode Conter
 
@@ -73,23 +102,15 @@ Não existe arquivo "main" nem `_self` obrigatório.
 
 Se um arquivo do repositório for um nó leaf e precisar de exatamente uma instruction, você pode usar a forma curta:
 
-- `src/api/orders.ts.instructions.md`
+- `ownership/repository/src/api/orders.ts.instructions.md`
 
 em vez de:
 
-- `src/api/orders.ts/<concern>.instructions.md`
+- `ownership/repository/src/api/orders.ts/<concern>.instructions.md`
 
-Use esse atalho apenas quando tudo abaixo for verdade:
+Use esse atalho apenas para um boundary de arquivo do repositório que precisa de exatamente uma instruction e em que a tree mais curta melhora a legibilidade.
 
-- o boundary owned é um arquivo do repositório, não um diretório
-- esse nó de arquivo precisa de exatamente uma instruction
-- você está otimizando por uma tree mais curta
-
-Prefira a forma canônica em pasta quando:
-
-- você espera que esse nó de arquivo cresça
-- você quer a gramática mais ensinável e uniforme
-- você quer evitar uma segunda representação na mesma área
+Prefira a forma canônica em pasta quando o nó de arquivo pode crescer, quando ensinabilidade e uniformidade importam mais do que brevidade, ou quando uma segunda representação na mesma área deixaria o mapa mais difícil de ler.
 
 ## Guidance de Nomes
 

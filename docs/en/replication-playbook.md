@@ -3,6 +3,27 @@
 Audience: maintainers reproducing this architecture in another repository.
 Goal: provide a practical sequence for rolling the model out without copying accidental details or rebuilding duplication.
 
+## On This Page
+
+- [Principle](#principle)
+- [Teaching Principle](#teaching-principle)
+- [Recommended Build Order](#recommended-build-order)
+- [Use A Default Authoring Split](#use-a-default-authoring-split)
+- [Add Supporting Sources Only When They Matter](#add-supporting-sources-only-when-they-matter)
+- [Organize Overlays By Concern Family](#organize-overlays-by-concern-family)
+- [Roll Out In Small Passes](#roll-out-in-small-passes)
+- [Start Broad And Grow Only When Needed](#start-broad-and-grow-only-when-needed)
+- [Keep The Skill Set Small And Outcome-Based](#keep-the-skill-set-small-and-outcome-based)
+- [Do Not Write Triggers Everywhere](#do-not-write-triggers-everywhere)
+- [Recommended Maintenance Skill For Copilot Customization](#recommended-maintenance-skill-for-copilot-customization)
+- [Choose The Closure Policy Deliberately](#choose-the-closure-policy-deliberately)
+- [Use Explicit Carry-Forward Only When It Helps](#use-explicit-carry-forward-only-when-it-helps)
+- [Teach The Runtime Model Explicitly](#teach-the-runtime-model-explicitly)
+- [Use Automation For Exact Procedures](#use-automation-for-exact-procedures)
+- [Review The Structure Regularly](#review-the-structure-regularly)
+- [Healthy End State](#healthy-end-state)
+- [Related Material](#related-material)
+
 ## Principle
 
 Replicate the model, not the filenames.
@@ -14,6 +35,7 @@ The stable part is the structure:
 - the ownership-tree disk grammar
 - cross-cutting overlays
 - skills
+- optional supporting-source guidance
 - hygiene checks that keep the map from drifting
 
 The variable part is the ownership map of the target repository.
@@ -36,20 +58,51 @@ This is easier to teach and easier to retain than starting with taxonomy alone.
 3. Identify the largest stable ownership boundaries.
 4. Add only the ownership-tree instructions that match those boundaries.
 5. Add true cross-cutting overlays.
-6. Add a small set of reusable skills.
-7. Add checks that prevent drift, dead layers, and legacy structures.
+6. Add supporting-source guidance only when source lookup would otherwise be vague or risky.
+7. Add a small set of reusable skills.
+8. Add checks that prevent drift, dead layers, and legacy structures.
 
 Use [Decision Rules](./rules/decision-rules.md) to classify guidance before you write it.
 
 Use [Ownership Tree Grammar](./rules/ownership-tree-grammar.md) to decide how the ownership map should look on disk.
 
-Use [Operating Model](./model/operating-model.md), [Follow-Through Triggers](./model/follow-through-triggers.md), and [Decision Rules](./rules/decision-rules.md) together to design how policy, triggers, skills, automation, and any optional explicit carry-forward surface should work together in the target repository.
+Use [Operating Model](./model/operating-model.md), [Follow-Through Triggers](./model/follow-through-triggers.md), [Supporting Sources](./model/supporting-sources.md), and [Decision Rules](./rules/decision-rules.md) together to design how policy, triggers, sources, skills, automation, and any optional explicit carry-forward surface should work together in the target repository.
 
 ## Use A Default Authoring Split
 
 When you start writing instructions, use the default split from [Decision Rules](./rules/decision-rules.md) unless the repository has a reason to deviate.
 
 In practice, that means keeping local guidance, `Follow-Through Triggers`, closure policy, and reusable workflow clearly separated without turning them into a new layer or a required heading template.
+
+If the repository needs source guidance, keep that separate too: local instructions carry the active contract, while supporting-source guidance carries location, access, authority, fallback, and conflict handling.
+
+## Add Supporting Sources Only When They Matter
+
+Do not add a source map just because the repository has documentation.
+
+Add supporting-source guidance when "check the docs" would be too vague, risky, or inaccessible.
+
+Good signs:
+
+- an external or private source must be accessed through a connector, MCP server, runbook, or local checkout
+- current provider or platform facts could change the implementation path
+- several sources own different claim types and may conflict
+- source unavailability should block or narrow a change instead of inviting guesses
+- a short local summary is needed to preserve a critical invariant when access fails
+
+The common repository-local pattern is `.github/instructions/ownership/repository/supporting-sources.instructions.md` with `applyTo: "**"` and a short baseline pointer.
+
+That is a useful pattern, not a required filename.
+
+The `ownership/repository/` node represents the repository root owner. Use it for repo-owned source policy without turning `ownership/` itself into a bucket for every global rule.
+
+Keep source entries compact and source IDs stable, such as `product-docs`, `payment-provider-docs`, or `finance-policy`.
+
+If one source needs deeper interpretation policy, add a source-specific repository-root instruction only when lighter source guidance is not enough.
+
+Be cautious: if that guidance can apply anywhere, it usually needs `applyTo: "**"` and may become always-on context in surfaces that support path-specific instructions.
+
+Use [Supporting Source Examples](./examples/supporting-sources/README.md) for variations.
 
 ## Organize Overlays By Concern Family
 
@@ -112,6 +165,8 @@ That usually scales better than creating variants such as `review-contract-chang
 Different follow-through triggers should usually reuse the same small skill set, with local context coming from the ownership tree and overlays.
 
 Add a more specific skill only when the workflow itself materially differs in evidence, steps, or expected output.
+
+If the workflow is source comparison or source reconciliation, the skill should read the supporting-source guidance and inspect only the sources that could own the disputed claim.
 
 ## Do Not Write Triggers Everywhere
 
@@ -185,6 +240,7 @@ In practice, adopters should understand that:
 - repository-wide instructions provide default context
 - path-specific instructions can become relevant as the agent touches new paths
 - follow-through can expand the scope into new surfaces
+- supporting sources can provide deeper or live evidence without becoming another structural layer
 - generic skills can be chosen just-in-time when the type of work changes
 - exact repeatable checks may live in scripts, CI, or runbooks rather than in prose alone
 - when a repository chooses to defer meaningful follow-through, a board item, issue, review finding, handoff note, or another explicit carry-forward surface may preserve it outside conversation memory
@@ -192,7 +248,7 @@ In practice, adopters should understand that:
 This helps teams avoid two common mistakes:
 
 - expecting the architecture to behave like a rigid dispatcher
-- expecting a separate skill for every trigger or ownership node
+- expecting a separate skill for every trigger, source, or ownership node
 
 GitHub's documentation supports this mental model:
 
@@ -220,6 +276,8 @@ Review the structure whenever one of these happens:
 - a new instruction is being proposed for a downstream consequence rather than an ownership boundary
 - a new skill is being proposed for every trigger or ownership node
 - near-identical trigger lists keep appearing across sibling or nearby nodes
+- source guidance is becoming a giant registry or another ownership tree
+- local instructions are copying long volatile details from external sources
 - the tree is expanding to leaf nodes before broader owners have proved insufficient
 - exact operational checklists are drifting into generic instructions or skills
 - a separate hint layer is being proposed just to connect triggers and skills
@@ -239,6 +297,7 @@ The model is healthy when:
 - the folder grammar can be explained without introducing special cases
 - the instruction set is small enough to reason about
 - downstream consequences are handled through `Follow-Through Triggers` instead of ad hoc duplication
+- supporting sources are locatable and governed without bloating the baseline or replacing local instructions
 - the skill catalog stays small and outcome-based rather than mirroring every trigger
 - exact procedures live in automation or runbooks instead of brittle prose
 - the same structure can be reused in another repository with a different ownership map
@@ -247,10 +306,11 @@ The model is healthy when:
 
 - [Operating Model](./model/operating-model.md)
 - [Follow-Through Triggers](./model/follow-through-triggers.md)
+- [Supporting Sources](./model/supporting-sources.md)
 - [Decision Rules](./rules/decision-rules.md)
 - [Ownership Tree Grammar](./rules/ownership-tree-grammar.md)
 - [Examples](./examples/README.md)
 - GitHub Docs, Adding custom instructions for GitHub Copilot CLI  
   <https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>

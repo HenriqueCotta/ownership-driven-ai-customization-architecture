@@ -7,6 +7,7 @@ Goal: define the canonical grammar of the ownership tree so the map is easy to t
 
 - [Canonical Rule](#canonical-rule)
 - [Canonical Grammar](#canonical-grammar)
+- [Repository Root Owner](#repository-root-owner)
 - [What A Node Folder Can Contain](#what-a-node-folder-can-contain)
 - [Optional Shortcut For A Simple File Node](#optional-shortcut-for-a-simple-file-node)
 - [Naming Guidance](#naming-guidance)
@@ -17,7 +18,11 @@ Goal: define the canonical grammar of the ownership tree so the map is easy to t
 
 ## Canonical Rule
 
-Represent every owned boundary as a node folder under `.github/instructions/ownership/`.
+Represent the repository root owner as `.github/instructions/ownership/repository/`.
+
+The folder name `repository/` is literal. Do not replace it with the repository's actual checkout name.
+
+Represent every narrower owned boundary as a child node folder under that root owner.
 
 That rule applies whether the owned boundary in the repository is:
 
@@ -32,8 +37,8 @@ The instruction files inside the folder describe the guidance that belongs to th
 
 Use these rules:
 
-1. Every ownership boundary becomes a folder node.
-2. Repository directories stay directories in the instruction tree.
+1. `repository/` is the explicit repository root owner.
+2. Repository directories stay directories below `repository/` in the instruction tree.
 3. Repository files may also become folder nodes, named after the file.
 4. Instruction files inside a node folder are named by concern or purpose, not by the path again.
 5. Child folders represent narrower ownership boundaries.
@@ -44,14 +49,40 @@ Minimal canonical example:
 .github/
   instructions/
     ownership/
-      src/
+      repository/
         general.instructions.md
-        api/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
 ```
+
+## Repository Root Owner
+
+Use `ownership/repository/` when the guidance belongs to the repository root boundary.
+
+This is useful for repo-owned contracts that apply from the root down, but that would make the baseline too large or too procedural.
+
+Examples:
+
+- `ownership/repository/general.instructions.md`
+- `ownership/repository/supporting-sources.instructions.md`
+- `ownership/repository/repository-structure.instructions.md`
+
+The `repository/` node is explicit on purpose.
+
+It prevents `ownership/` itself from becoming an ambiguous bucket for every global rule.
+
+It also avoids coupling the instruction tree to a local clone name, fork name, or future repository rename.
+
+It also keeps narrower owners inside the same tree: a real top-level `src/` path becomes `ownership/repository/src/`, not a sibling of the repository root owner.
+
+Keep the baseline short and use the root owner for repo-owned guidance that still deserves an instruction file.
+
+Do not use the root owner as a second baseline, a source registry for every document, or a place to hide cross-cutting overlays.
 
 ## What A Node Folder Can Contain
 
@@ -71,23 +102,15 @@ There is no required "main" or `_self` instruction file.
 
 If a repository file is a leaf node and needs exactly one instruction, you may use a shorter file form:
 
-- `src/api/orders.ts.instructions.md`
+- `ownership/repository/src/api/orders.ts.instructions.md`
 
 instead of:
 
-- `src/api/orders.ts/<concern>.instructions.md`
+- `ownership/repository/src/api/orders.ts/<concern>.instructions.md`
 
-Use this shortcut only when all of these are true:
+Use this shortcut only for a repository-file boundary that needs exactly one instruction and where the shorter tree improves readability.
 
-- the owned boundary is a repository file, not a directory
-- that file node needs exactly one instruction
-- you are optimizing for a shorter tree
-
-Prefer the canonical folder form when:
-
-- you expect that file node to grow
-- you want the most teachable and uniform grammar
-- you want to avoid a second representation in the same area
+Prefer the canonical folder form when the file node may grow, when teachability and uniformity matter more than brevity, or when a second representation in the same area would make the map harder to read.
 
 ## Naming Guidance
 

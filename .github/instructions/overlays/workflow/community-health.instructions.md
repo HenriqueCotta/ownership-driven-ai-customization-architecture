@@ -4,14 +4,14 @@ applyTo: ".github/ISSUE_TEMPLATE/**, .github/pull_request_template.md, CONTRIBUT
 
 # Community Health Overlay
 
-This overlay adds a contributor-experience lens across community workflow surfaces.
-It keeps collaboration paths clear, respectful, and actionable.
+Make contributor flows easy to understand.
 
-- Make issue and pull request flows easy to understand.
-- Ask for only the information maintainers truly need.
-- Keep reporting paths consistent across templates and policy docs.
+Ask for only the information maintainers truly need.
+
+Keep reporting paths consistent across contributor-facing surfaces.
 
 ## Follow-Through Triggers
 
-- If contribution workflow changes, review issue templates, pull request templates, and contributor docs together.
-- If support or security guidance changes, update all public entry points that route contributors.
+If a covered contributor-facing file changes the contribution workflow, update the surfaces that explain or route that workflow.
+
+If a covered contributor-facing file changes reporting guidance, update public entry points that route contributors.

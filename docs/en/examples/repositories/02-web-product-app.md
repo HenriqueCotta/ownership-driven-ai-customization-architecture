@@ -1,9 +1,17 @@
 # Web Product App
 
+## On This Page
+
+- [Repository Shape](#repository-shape)
+- [A Realistic Ownership Map](#a-realistic-ownership-map)
+- [Why This Map Is Realistic](#why-this-map-is-realistic)
+- [Prompt-Driven Situations](#prompt-driven-situations)
+- [Teaching Takeaway](#teaching-takeaway)
+
 ## Repository Shape
 
 ```text
-repo/
+<repository-root>/
   src/
     app/
       routes/
@@ -38,26 +46,29 @@ repo/
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        features/
-          checkout/
-            behavior.instructions.md
-        design-system/
-          tokens/
-            consistency.instructions.md
-        state/
-          auth/
-            security.instructions.md
-      docs/
-        ux/
+      repository/
+        src/
           general.instructions.md
+          features/
+            checkout/
+              behavior.instructions.md
+          design-system/
+            tokens/
+              consistency.instructions.md
+          state/
+            auth/
+              security.instructions.md
+        docs/
+          ux/
+            general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
       consistency/
         code-docs-consistency.instructions.md
 ```
+
+Instruction-context names below, such as `src/general`, are shorthand for nodes under `ownership/repository/`.
 
 ## Why This Map Is Realistic
 

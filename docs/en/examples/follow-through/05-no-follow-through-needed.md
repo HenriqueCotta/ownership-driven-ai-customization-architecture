@@ -1,5 +1,13 @@
 # No Follow-Through Needed
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 You rename variables and simplify a helper without changing behavior:

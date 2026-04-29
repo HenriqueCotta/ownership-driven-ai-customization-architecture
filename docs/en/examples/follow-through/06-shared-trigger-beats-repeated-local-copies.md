@@ -1,5 +1,14 @@
 # Shared Trigger Beats Repeated Local Copies
 
+## On This Page
+
+- [Scenario](#scenario)
+- [Wrong First Guess](#wrong-first-guess)
+- [Correct Classification](#correct-classification)
+- [Why](#why)
+- [Better Shape](#better-shape)
+- [Follow-Through](#follow-through)
+
 ## Scenario
 
 A repository has sibling ownership nodes such as:

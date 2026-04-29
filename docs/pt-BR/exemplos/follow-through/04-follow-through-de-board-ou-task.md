@@ -1,5 +1,13 @@
 # Follow-Through de Board ou Task
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você termina uma implementação e percebe que o escopo mudou:

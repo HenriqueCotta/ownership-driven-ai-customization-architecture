@@ -1,5 +1,14 @@
 # Por Que uma Gramática de Pastas é Mais Fácil de Ensinar
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [No Disco](#no-disco)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Um novo mantenedor precisa entender quais ownership instructions se aplicam a:
@@ -17,8 +26,9 @@ src/api/orders.ts
 O mesmo roteiro de ensino funciona para ambos:
 
 1. encontre o path do repositório,
-2. percorra o mesmo path dentro de `ownership/`,
-3. leia os arquivos de instruction nas pastas de nó correspondentes.
+2. entre no owner raiz explícito em `ownership/repository/`,
+3. percorra o mesmo path dentro desse owner raiz,
+4. leia os arquivos de instruction nas pastas de nó correspondentes.
 
 ## Por Que
 
@@ -36,12 +46,13 @@ O leitor não precisa memorizar:
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        api/
+      repository/
+        src/
           general.instructions.md
-          orders.ts/
-            contract.instructions.md
+          api/
+            general.instructions.md
+            orders.ts/
+              contract.instructions.md
 ```
 
 ## Follow-Through

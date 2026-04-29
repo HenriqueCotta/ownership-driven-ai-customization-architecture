@@ -3,7 +3,7 @@
 Audience: maintainers, platform teams, and engineering leaders evaluating whether this pattern is worth adopting.  
 Goal: explain the business case, technical rationale, expected gains, limits, and standards alignment behind the model.
 
-## Jump To
+## On This Page
 
 - [Executive Summary](#executive-summary)
 - [Why The Model Makes Sense](#why-the-model-makes-sense)
@@ -11,6 +11,7 @@ Goal: explain the business case, technical rationale, expected gains, limits, an
 - [Why The Model Is Path-First](#why-the-model-is-path-first)
 - [Why The Ownership Tree Uses One Folder Grammar](#why-the-ownership-tree-uses-one-folder-grammar)
 - [Why Skills Stay Optional And Selective](#why-skills-stay-optional-and-selective)
+- [Why Supporting Sources Stay Auxiliary](#why-supporting-sources-stay-auxiliary)
 - [Expected Gains](#expected-gains)
 - [Why This Is Scalable](#why-this-is-scalable)
 - [Why This Is Safer Than Ad Hoc Customization](#why-this-is-safer-than-ad-hoc-customization)
@@ -34,6 +35,7 @@ This architecture answers that problem with a small set of stable structural dec
 - route most behavior through stable ownership paths
 - add overlays only for concerns that truly span multiple owners
 - keep downstream follow-through behavior explicit through `Follow-Through Triggers`
+- use optional supporting sources for deeper or live evidence without turning evidence into another layer
 - use skills only for deeper workflows that should not stay always-on
 
 ## Why The Model Makes Sense
@@ -107,8 +109,9 @@ One folder grammar avoids those problems.
 It is more teachable because the explanation becomes:
 
 1. find the repository path
-2. walk the same path inside `ownership/`
-3. read the instruction files in the matching node folders
+2. enter the explicit root owner at `ownership/repository/`
+3. walk the same path inside that root owner
+4. read the instruction files in the matching node folders
 
 It is more scalable because:
 
@@ -134,6 +137,33 @@ A healthy skill catalog stays outcome-based rather than trigger-based.
 Many different follow-through cases can reuse the same small set of skills, such as `impact-review`, docs reconciliation, or debugging, with local context still coming from the ownership tree and overlays.
 
 When a procedure needs exact commands or deterministic checks, scripts, CI, or runbooks are usually a better fit than a more specific skill.
+
+## Why Supporting Sources Stay Auxiliary
+
+Many repositories need evidence that should not live in always-on instructions.
+
+That evidence may be local product docs, provider documentation, a private policy workspace, a design system, a work board, a runbook, or another repository.
+
+Not every repository needs a source map.
+
+Supporting sources are optional and should appear only when vague guidance such as "check the docs" would be too weak, risky, or inaccessible.
+
+The architecture supports those sources, but it does not make them another structural layer.
+
+Instructions still carry the active contract.
+
+Supporting-source guidance makes evidence locatable and governed when "check the docs" would be too vague. It can describe source IDs, access expectations, freshness, fallback, and conflict handling.
+
+The recommended repository-root instruction pattern is the clearest agent-facing shape we have found for this job, not a required source format. Other maintained source surfaces can work when active guidance points to them and explains when to consult them.
+
+That keeps source use practical:
+
+- a simple repository that needs source guidance can use one small supporting-source instruction
+- a maintained local source surface can act as the source map when active guidance points to it
+- a repeatable source-reconciliation workflow can become a skill
+- an MCP server can provide access without becoming the source of authority by itself
+
+This protects the baseline from bloat while still giving agents a safe path to deeper evidence.
 
 ## Expected Gains
 
@@ -162,6 +192,12 @@ The model is reusable because it depends on a small number of structural ideas, 
 - configs that may need reconciliation
 - workflow artifacts that may need adjustment
 
+### Better Evidence Discipline
+
+Supporting sources make deeper evidence explicit without pretending it is already loaded.
+
+They help agents distinguish product intent, implementation behavior, provider facts, policy constraints, planned work, and local summaries before choosing a path.
+
 ### Better Cost Discipline
 
 The architecture intentionally keeps always-on context small and pushes deeper workflows into optional skills.
@@ -178,6 +214,8 @@ The model scales because each part has a narrow job:
   - one extra lens across several owners
 - `Follow-Through Triggers`
   - downstream follow-through consequences
+- optional `supporting sources`
+  - auxiliary evidence that should be located and handled only when it could change the decision
 - `skills`
   - reusable workflows that should not always be loaded
 
@@ -185,6 +223,7 @@ That separation makes growth easier to control:
 
 - new owners are added by path
 - new overlays are added only when a concern truly spans multiple owners
+- new source entries are added only when source lookup would otherwise be vague or risky
 - new workflows become skills only when always-on instructions would be the wrong tool
 
 The ownership-tree folder grammar reinforces that scalability:
@@ -230,7 +269,9 @@ This architecture does not:
 - prescribe the internal prose format of each instruction
 - eliminate the need for judgment when mapping ownership or overlays
 - prescribe one universal closure policy for every repository
+- prescribe one required source format, source filename, or source registry
 - create a trigger-to-skill dispatch table or a separate hint layer
+- create a source-dispatch table for every trigger
 - turn skills into a deterministic orchestration engine
 
 It is a structure for reducing confusion and improving reuse, not a formal execution engine.
@@ -243,6 +284,7 @@ This project is intentionally aligned with the official GitHub Copilot customiza
 - path-specific instructions in `.github/instructions/**/*.instructions.md`
 - `applyTo`-based routing for path-specific instructions
 - skills in `.github/skills/<skill-name>/SKILL.md`
+- optional supporting-source guidance when deeper or live evidence could change a decision
 - conflict avoidance when multiple instruction sources apply
 
 It also follows common documentation guidance:
@@ -265,6 +307,8 @@ This documentation set is organized so each document has one primary job:
   - the main conceptual distinction in the model
 - `Follow-Through Triggers`
   - downstream follow-through behavior, including how repositories combine policy, triggers, skills, automation, and tracking without inventing a new layer
+- `Supporting Sources`
+  - source location, access, freshness, fallback, conflict handling, and safe local summaries
 - `Decision Rules`
   - guidance classification and follow-through placement
 - `Ownership Tree Grammar`
@@ -288,10 +332,14 @@ This split is influenced by Diataxis, which distinguishes explanation, model and
   <https://docs.github.com/en/copilot/reference/custom-instructions-support>
 - GitHub Docs, Using custom instructions to unlock the power of Copilot code review  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/use-custom-instructions>
-- GitHub Docs, Creating agent skills for GitHub Copilot  
-  <https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-skills>
+- GitHub Docs, Adding agent skills for GitHub Copilot
+  <https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills>
 - GitHub Docs, Comparing GitHub Copilot CLI customization features  
   <https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/copilot-cli/comparing-cli-features>
+- GitHub Docs, Copilot customization cheat sheet
+  <https://docs.github.com/en/copilot/reference/customization-cheat-sheet>
+- GitHub Docs, About Model Context Protocol
+  <https://docs.github.com/en/copilot/concepts/context/mcp>
 - VS Code Docs, Use custom instructions in VS Code  
   <https://code.visualstudio.com/docs/copilot/customization/custom-instructions>
 - GitHub Docs, Best practices for repositories  

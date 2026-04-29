@@ -3,6 +3,15 @@
 Audience: maintainers designing a scalable Copilot customization model for one or many repositories.  
 Goal: provide a documentation portal that makes the architecture easy to learn, inspect, and reuse.
 
+## On This Page
+
+- [What This Folder Documents](#what-this-folder-documents)
+- [Documentation Structure](#documentation-structure)
+- [Documentation Map](#documentation-map)
+- [Companion Assets](#companion-assets)
+- [Suggested Reading Paths](#suggested-reading-paths)
+- [Core Design Rules](#core-design-rules)
+
 ## What This Folder Documents
 
 It documents a reusable architecture for organizing:
@@ -12,6 +21,7 @@ It documents a reusable architecture for organizing:
 - cross-cutting overlays
 - reusable skills
 - downstream follow-through behavior
+- optional supporting sources for deeper or live evidence
 
 Formal name:
 
@@ -22,23 +32,6 @@ Operational shorthand:
 - `baseline + ownership tree + cross-cutting overlays`
 
 This folder is repository-agnostic.
-
-## On This Page
-
-- [Ownership-Driven Architecture (ODA)](#ownership-driven-architecture-oda)
-  - [What This Folder Documents](#what-this-folder-documents)
-  - [On This Page](#on-this-page)
-  - [Documentation Structure](#documentation-structure)
-  - [Documentation Map](#documentation-map)
-    - [Explanation](#explanation)
-    - [Model](#model)
-    - [Rules](#rules)
-    - [How-To](#how-to)
-    - [Recommended Skill](#recommended-skill)
-    - [Worked Examples](#worked-examples)
-  - [Companion Assets](#companion-assets)
-  - [Suggested Reading Paths](#suggested-reading-paths)
-  - [Core Design Rules](#core-design-rules)
 
 ## Documentation Structure
 
@@ -74,6 +67,8 @@ If a page starts repeating another page, it should usually link instead of resta
   - the core conceptual distinction in the model
 - [Follow-Through Triggers](./model/follow-through-triggers.md)
   - what downstream follow-through guidance is for
+- [Supporting Sources](./model/supporting-sources.md)
+  - how optional local, external, private, or live evidence fits without becoming another layer
 
 ### Rules
 
@@ -120,8 +115,9 @@ If this is your first contact with the architecture:
 3. Read [Operating Model](./model/operating-model.md).
 4. Read [Ownership vs Overlay](./model/ownership-vs-overlay.md).
 5. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
-6. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
-7. Read [Examples](./examples/README.md).
+6. Read [Supporting Sources](./model/supporting-sources.md).
+7. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+8. Read [Examples](./examples/README.md).
 
 If you are designing a new repository:
 
@@ -129,10 +125,11 @@ If you are designing a new repository:
 2. Read [Why This Architecture](./why-this-architecture.md).
 3. Read [Operating Model](./model/operating-model.md).
 4. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
-5. Read [Decision Rules](./rules/decision-rules.md).
-6. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
-7. Read [Replication Playbook](./replication-playbook.md).
-8. Read [Examples](./examples/README.md).
+5. Read [Supporting Sources](./model/supporting-sources.md).
+6. Read [Decision Rules](./rules/decision-rules.md).
+7. Read [Ownership Tree Grammar](./rules/ownership-tree-grammar.md).
+8. Read [Replication Playbook](./replication-playbook.md).
+9. Read [Examples](./examples/README.md).
 
 If you want to try the architecture quickly in a repository:
 
@@ -153,8 +150,9 @@ If you are debugging ambiguity or instruction conflicts:
 2. Read [Instruction Conflicts And Precedence](./rules/instruction-conflicts-and-precedence.md).
 3. Read [Ownership vs Overlay](./model/ownership-vs-overlay.md).
 4. Read [Follow-Through Triggers](./model/follow-through-triggers.md).
-5. Read [Decision Rules](./rules/decision-rules.md).
-6. Read [Examples](./examples/README.md).
+5. Read [Supporting Sources](./model/supporting-sources.md).
+6. Read [Decision Rules](./rules/decision-rules.md).
+7. Read [Examples](./examples/README.md).
 
 If you are shaping or auditing Copilot customization itself:
 
@@ -169,6 +167,7 @@ If you are shaping or auditing Copilot customization itself:
 - Represent ownership boundaries with a tree that is easy to read before it is easy to optimize.
 - Use overlays only for concerns that truly span multiple owners.
 - Keep downstream follow-through logic in `Follow-Through Triggers`, not in extra file types.
-- Compose follow-through from repository policy, source-anchored triggers, reusable skills, automation, and, when needed, an explicit carry-forward surface rather than searching for one universal trigger or one universal skill.
+- Keep supporting sources optional and auxiliary: instructions carry the active contract, source guidance locates and governs deeper evidence, and skills handle repeatable source workflows only when needed.
+- Compose follow-through from repository policy, origin-anchored triggers, optional supporting sources, reusable skills, automation, and, when needed, an explicit carry-forward surface rather than searching for one universal trigger or one universal skill.
 - Treat narrower instructions as refinements of broader ones, not as arbitrary reversals.
 - Keep overview pages short and move detail into focused model and rules documents.

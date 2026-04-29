@@ -1,5 +1,13 @@
 # Um Overlay de Verdade
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você quer uma lente compartilhada de qualidade de testes que se aplique tanto ao código de produção quanto aos testes:

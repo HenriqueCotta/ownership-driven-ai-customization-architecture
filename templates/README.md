@@ -12,6 +12,7 @@ Included templates:
 - [copilot-instructions.md.template](./copilot-instructions.md.template)
 - [ownership-node.instructions.md.template](./ownership-node.instructions.md.template)
 - [cross-cutting-overlay.instructions.md.template](./cross-cutting-overlay.instructions.md.template)
+- [supporting-sources.instructions.md.template](./supporting-sources.instructions.md.template)
 
 Adapt the wording to your repository's ownership map and operating model.
 
@@ -23,13 +24,13 @@ For ownership instructions, place the template inside the node folder that repre
 
 Examples:
 
-- `ownership/src/general.instructions.md`
-- `ownership/src/api/orders.ts/contract.instructions.md`
-- `ownership/docs/general.instructions.md`
+- `ownership/repository/src/general.instructions.md`
+- `ownership/repository/src/api/orders.ts/contract.instructions.md`
+- `ownership/repository/docs/general.instructions.md`
 
 Optional shortcut for a simple file node:
 
-- `ownership/src/api/orders.ts.instructions.md`
+- `ownership/repository/src/api/orders.ts.instructions.md`
 
 In the canonical tree convention, the folder identifies the owned path and the filename identifies the concern.
 
@@ -50,6 +51,18 @@ If a node or overlay has no distinct downstream rule worth stating, omit that se
 If several nearby nodes would repeat almost the same trigger, move the shared part upward to the broader owner or baseline instead of copying it downward.
 
 When you add skills around those templates, keep the skill set small and outcome-based rather than creating one skill per trigger.
+
+If the repository depends on deeper or live evidence that would make "check the docs" too vague, adapt `supporting-sources.instructions.md.template` for agent-facing source policy.
+
+Use another maintained source surface only when an active instruction or skill explicitly points to it.
+
+That template is optional and flexible. It is meant to show source IDs, access expectations, fallback, and conflict handling, not to force every source into the same fields.
+
+A common Copilot instruction location is `.github/instructions/ownership/repository/supporting-sources.instructions.md` with `applyTo: "**"`, plus a short baseline pointer.
+
+The `ownership/repository/` node is the explicit repository root owner. Use it for repo-owned guidance, not as a second baseline.
+
+The folder name `repository/` is literal. Do not replace it with the repository's actual name.
 
 If the repository also needs a reusable workflow for shaping or auditing its Copilot customization itself, consider copying the optional [oda-copilot-customization skill](../.github/skills/oda-copilot-customization/SKILL.md) from this repository.
 

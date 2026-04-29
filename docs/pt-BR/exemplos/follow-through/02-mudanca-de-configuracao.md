@@ -1,5 +1,13 @@
 # Mudança de Configuração
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Você muda o carregamento de config ou os defaults:

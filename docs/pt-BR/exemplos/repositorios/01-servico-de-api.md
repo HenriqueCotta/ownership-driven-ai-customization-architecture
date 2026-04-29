@@ -1,9 +1,17 @@
 # Serviço de API
 
+## Nesta Página
+
+- [Estrutura do Repositório](#estrutura-do-repositório)
+- [Um Mapa de Ownership Realista](#um-mapa-de-ownership-realista)
+- [Por Que Este Mapa É Realista](#por-que-este-mapa-é-realista)
+- [Situações Guiadas por Prompt](#situações-guiadas-por-prompt)
+- [Takeaway de Ensino](#takeaway-de-ensino)
+
 ## Estrutura do Repositório
 
 ```text
-repo/
+<repository-root>/
   src/
     routes/
       health.ts
@@ -35,28 +43,31 @@ repo/
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-        routes/
-          orders.ts/
-            contract.instructions.md
-            framework.instructions.md
-        services/
-          billing/
-            domain.instructions.md
-        contracts/
+      repository/
+        src/
           general.instructions.md
-        config/
-          general.instructions.md
-      docs/
-        api/
-          general.instructions.md
+          routes/
+            orders.ts/
+              contract.instructions.md
+              framework.instructions.md
+          services/
+            billing/
+              domain.instructions.md
+          contracts/
+            general.instructions.md
+          config/
+            general.instructions.md
+        docs/
+          api/
+            general.instructions.md
     overlays/
       quality/
         testing-quality.instructions.md
       operability/
         observability.instructions.md
 ```
+
+Os nomes de contexto de instructions abaixo, como `src/general`, são atalhos para nós abaixo de `ownership/repository/`.
 
 ## Por Que Este Mapa É Realista
 

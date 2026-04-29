@@ -1,5 +1,14 @@
 # Cresça a Tree Só Quando o Owner Amplo Deixar de Ser Suficiente
 
+## Nesta Página
+
+- [Cenário](#cenário)
+- [Primeiro Palpite Errado](#primeiro-palpite-errado)
+- [Classificação Correta](#classificação-correta)
+- [Por Que](#por-que)
+- [Melhor Primeiro Pass](#melhor-primeiro-pass)
+- [Follow-Through](#follow-through)
+
 ## Cenário
 
 Um time começa a adoção do ODA em:
@@ -44,10 +53,10 @@ O ODA foi feito para crescer, e não para ser finalizado todo de uma vez.
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-      src/app/
-        general.instructions.md
+      repository/
+        src/
+          app/
+            general.instructions.md
 ```
 
 Depois, se checkout realmente precisar de guidance distinta:
@@ -56,12 +65,12 @@ Depois, se checkout realmente precisar de guidance distinta:
 .github/
   instructions/
     ownership/
-      src/
-        general.instructions.md
-      src/app/
-        general.instructions.md
-        checkout/
-          general.instructions.md
+      repository/
+        src/
+          app/
+            general.instructions.md
+            checkout/
+              general.instructions.md
 ```
 
 ## Follow-Through
